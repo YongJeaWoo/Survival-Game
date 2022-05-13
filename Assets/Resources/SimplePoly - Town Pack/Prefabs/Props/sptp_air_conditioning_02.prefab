@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2386160}
   - component: {fileID: 6420510}
   - component: {fileID: 750800366035566074}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: sptp_air_conditioning_02
   m_TagString: Objects
   m_Icon: {fileID: 0}

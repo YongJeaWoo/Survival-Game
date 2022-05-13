@@ -40,8 +40,8 @@ TagManager:
   - 
   - 
   - 
-  - Buildings
-  - Walls
+  - Border
+  - Objects
   m_SortingLayers:
   - name: Default
     uniqueID: 0

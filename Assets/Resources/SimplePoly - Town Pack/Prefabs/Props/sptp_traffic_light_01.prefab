@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2349866}
   - component: {fileID: 6426582}
   - component: {fileID: -2441644764437999618}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: sptp_traffic_light_01
   m_TagString: Objects
   m_Icon: {fileID: 0}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2379944}
   - component: {fileID: 6431632}
   - component: {fileID: -5012326274530444667}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: sptp_bush_01
   m_TagString: Objects
   m_Icon: {fileID: 0}

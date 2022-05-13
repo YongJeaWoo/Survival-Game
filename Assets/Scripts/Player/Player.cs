@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpPower = 8f;
 
+    bool isMove = false;
+
     float hAxis;
     float vAxis;
 
@@ -19,8 +21,7 @@ public class Player : MonoBehaviour
     bool isJump;
     bool isDodge;
 
-    bool isBuilding;
-    bool isWall;
+    bool isBorder;
 
     // 무기 스왑
     bool isSwap;
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
+        Invoke("isMove", 2f);
     }
 
     private void Update()
@@ -77,9 +79,8 @@ public class Player : MonoBehaviour
     // 벽 충돌 뚫기 방지
     void StopWall()
     {
-        Debug.DrawRay(transform.position, moveVec * 0.5f, Color.green);
-        isBuilding = Physics.Raycast(transform.position, moveVec, 0.5f, LayerMask.GetMask("Buildings"));
-        isWall = Physics.Raycast(transform.position, moveVec, 0.5f, LayerMask.GetMask("Walls"));
+        Debug.DrawRay(transform.position, transform.forward * 1f, Color.green);
+        isBorder = Physics.Raycast(transform.position, transform.forward, 1f, LayerMask.GetMask("Border","Objects"));
     }
 
     private void FixedUpdate()
@@ -143,6 +144,8 @@ public class Player : MonoBehaviour
 
     void Move()
     {
+        isMove = true;
+
         // 움직이기
         moveVec = new Vector3(hAxis, 0, vAxis).normalized;
         moveVec = Quaternion.Euler(0, cam.transform.rotation.eulerAngles.y, 0) * moveVec;
@@ -155,7 +158,7 @@ public class Player : MonoBehaviour
         if (isSwap || !isFire)
             moveVec = Vector3.zero;
 
-        if (!isBuilding)
+        if (!isBorder)
             transform.position += moveVec * moveSpeed * (walkDown ? 0.3f : 1f) * Time.deltaTime;
 
         anim.SetBool("isRun", moveVec != Vector3.zero);
