@@ -9,6 +9,7 @@ TagManager:
   - Items
   - Weapons
   - Melee
+  - Walls
   layers:
   - Default
   - TransparentFX

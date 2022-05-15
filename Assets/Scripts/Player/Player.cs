@@ -7,8 +7,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpPower = 8f;
 
-    bool isMove = false;
-
     float hAxis;
     float vAxis;
 
@@ -23,6 +21,10 @@ public class Player : MonoBehaviour
 
     bool isBorder;
 
+    // 캐릭터 뭐가 있지
+    public int ammo;
+    public int hp;
+    
     // 무기 스왑
     bool isSwap;
     bool swap1;
@@ -33,6 +35,10 @@ public class Player : MonoBehaviour
     bool fireDown;
     bool isFire = true;
     float fireDelay;
+
+    // 장전
+    bool ReloadDown;
+    bool isReload;
 
     Vector3 moveVec;
     Vector3 dodgeVec;
@@ -54,7 +60,6 @@ public class Player : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
-        Invoke("isMove", 2f);
     }
 
     private void Update()
@@ -63,6 +68,7 @@ public class Player : MonoBehaviour
         Move();
         Jump();
         Attack();
+        Reload();
         Dodge();
         InterAction();
         Swap();
@@ -97,7 +103,8 @@ public class Player : MonoBehaviour
         vAxis = Input.GetAxisRaw("Vertical");
         walkDown = Input.GetButton("Walk");
         jumpDown = Input.GetButtonDown("Jump");
-        fireDown = Input.GetButtonDown("Fire1");
+        fireDown = Input.GetButton("Fire1");
+        ReloadDown = Input.GetButtonDown("Reload");
         dodgeDown = Input.GetButtonDown("Dodge");
         interAction = Input.GetButtonDown("InterAction");
         swap1 = Input.GetButtonDown("Swap1");
@@ -144,8 +151,6 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        isMove = true;
-
         // 움직이기
         moveVec = new Vector3(hAxis, 0, vAxis).normalized;
         moveVec = Quaternion.Euler(0, cam.transform.rotation.eulerAngles.y, 0) * moveVec;
@@ -155,7 +160,7 @@ public class Player : MonoBehaviour
             moveVec = dodgeVec;
 
 
-        if (isSwap || !isFire)
+        if (isSwap || !isFire || isReload)
             moveVec = Vector3.zero;
 
         if (!isBorder)
@@ -192,9 +197,38 @@ public class Player : MonoBehaviour
         if (fireDown && isFire && !isDodge && !isSwap)
         {
             equipWeapons.Use();
-            anim.SetTrigger("doSwing");
+            anim.SetTrigger(equipWeapons.type == Weapon.Type.Melee ? "doSwing" : "doShot");
             fireDelay = 0;
         }
+    }
+
+    void Reload()
+    {
+        if (equipWeapons == null)
+            return;
+
+        if (equipWeapons.type == Weapon.Type.Melee)
+            return;
+
+        if (ammo == 0)
+            return;
+
+        if (ReloadDown && !isJump && !isDodge && !isSwap && !isFire)
+        {
+            anim.SetTrigger("doReload");
+            isReload = true;
+
+            Invoke("Reloading", 1.5f);
+        }
+    }
+
+    void Reloading()
+    {
+        int reAmmo = ammo + equipWeapons.curAmmo < equipWeapons.maxAmmo ? ammo : equipWeapons.maxAmmo - equipWeapons.curAmmo;
+
+        equipWeapons.curAmmo += reAmmo;
+        ammo -= reAmmo;
+        isReload = false;
     }
 
     void Dodge()
