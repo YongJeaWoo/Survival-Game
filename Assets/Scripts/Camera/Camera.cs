@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-    public Transform player;
-    public Vector3 offset;
-
-    private void LateUpdate()
+    private void Update()
     {
-        transform.position = player.position + offset;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

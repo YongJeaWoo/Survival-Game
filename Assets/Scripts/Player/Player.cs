@@ -213,7 +213,7 @@ public class Player : MonoBehaviour
         if (ammo == 0)
             return;
 
-        if (ReloadDown && !isJump && !isDodge && !isSwap && !isFire)
+        if (ReloadDown && !isJump && !isDodge && !isSwap && isFire)
         {
             anim.SetTrigger("doReload");
             isReload = true;
