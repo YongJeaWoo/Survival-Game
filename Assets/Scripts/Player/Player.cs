@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
     void StopWall()
     {
         Debug.DrawRay(transform.position, transform.forward * 1f, Color.green);
-        isBorder = Physics.Raycast(transform.position, transform.forward, 1f, LayerMask.GetMask("Border","Objects"));
+        isBorder = Physics.Raycast(transform.position, transform.forward, 1f, LayerMask.GetMask("Border", "Objects"));
     }
 
     private void FixedUpdate()
@@ -160,7 +160,7 @@ public class Player : MonoBehaviour
             moveVec = dodgeVec;
 
 
-        if (isSwap || !isFire || isReload)
+        if (isSwap || isReload ||!isFire)
             moveVec = Vector3.zero;
 
         if (!isBorder)
@@ -175,7 +175,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (jumpDown && !isJump && !isDodge)
+        if (jumpDown && !isJump && !isDodge && !isReload)
         {
             // 즉각 반응
             rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
@@ -189,6 +189,9 @@ public class Player : MonoBehaviour
     void Attack()
     {
         if (equipWeapons == null)
+            return;
+
+        if (isReload)
             return;
 
         fireDelay += Time.deltaTime;
@@ -213,12 +216,15 @@ public class Player : MonoBehaviour
         if (ammo == 0)
             return;
 
+        if (equipWeapons.curAmmo == equipWeapons.maxAmmo)
+            return;
+
         if (ReloadDown && !isJump && !isDodge && !isSwap && isFire)
         {
             anim.SetTrigger("doReload");
             isReload = true;
 
-            Invoke("Reloading", 1.5f);
+            Invoke("Reloading", 2.5f);
         }
     }
 

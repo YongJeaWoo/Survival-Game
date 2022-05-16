@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2310674}
   - component: {fileID: 6468016}
   - component: {fileID: -770741793850432026}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sptp_grass_01
   m_TagString: Ground
   m_Icon: {fileID: 0}

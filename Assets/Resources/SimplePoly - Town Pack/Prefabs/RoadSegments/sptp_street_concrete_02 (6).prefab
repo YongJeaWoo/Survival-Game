@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7712109721881486278}
   - component: {fileID: 7712109721881486279}
   - component: {fileID: -7724067193841271386}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sptp_street_concrete_02 (6)
   m_TagString: Ground
   m_Icon: {fileID: 0}

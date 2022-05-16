@@ -10,6 +10,9 @@ TagManager:
   - Weapons
   - Melee
   - Walls
+  - BulletCheck
+  - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -19,6 +22,8 @@ TagManager:
   - UI
   - 
   - 
+  - Walls
+  - Ground
   - 
   - 
   - 
@@ -29,18 +34,16 @@ TagManager:
   - 
   - 
   - 
+  - Enemy
+  - EnemyDead
   - 
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Bullet
+  - BulletCheck
   - Border
   - Objects
   m_SortingLayers:

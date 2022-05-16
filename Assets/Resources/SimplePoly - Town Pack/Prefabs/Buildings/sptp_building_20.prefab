@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2301348}
   - component: {fileID: 6416402}
   - component: {fileID: -4940539500929005433}
-  m_Layer: 30
+  m_Layer: 31
   m_Name: sptp_building_20
   m_TagString: Objects
   m_Icon: {fileID: 0}
