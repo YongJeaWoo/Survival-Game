@@ -24,17 +24,19 @@ public class Enemy : MonoBehaviour
         {
             Weapon weapon = other.GetComponent<Weapon>();
             curHp -= weapon.damage;
-            StartCoroutine(Ondamage());
+            Vector3 reactVec = transform.position - other.transform.position;
+            StartCoroutine(Ondamage(reactVec));
         }
         else if (other.CompareTag("Bullet"))
         {
             Bullet bullet = other.GetComponent<Bullet>();
             curHp -= bullet.damage;
-            StartCoroutine(Ondamage());
+            Vector3 reactVec = transform.position - other.transform.position;
+            StartCoroutine(Ondamage(reactVec));
         }
     }
 
-    IEnumerator Ondamage()
+    IEnumerator Ondamage(Vector3 reactVec)
     {
         mat.color = Color.red;
         yield return new WaitForSeconds(0.1f);
@@ -47,6 +49,13 @@ public class Enemy : MonoBehaviour
         {
             mat.color = Color.gray;
             gameObject.layer = 21;
+
+            // 넉백
+            reactVec = reactVec.normalized;
+            reactVec += Vector3.up;
+            rigid.AddForce(reactVec * 10f, ForceMode.Impulse);
+
+
             Destroy(gameObject, 2f);
         }
     }

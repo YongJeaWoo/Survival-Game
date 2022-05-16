@@ -21,10 +21,6 @@ public class Player : MonoBehaviour
 
     bool isBorder;
 
-    // 캐릭터 뭐가 있지
-    public int ammo;
-    public int hp;
-    
     // 무기 스왑
     bool isSwap;
     bool swap1;
@@ -51,8 +47,19 @@ public class Player : MonoBehaviour
 
     int equipWeaponIndex = -1;
 
+    [Header ("Player Info")]
+    // 캐릭터 뭐가 있지
+    public int ammo;
+    public int maxAmmo;
+    public int hp;
+    public int maxHp;
+    public int hasGrenades;
+    public int maxHasGrenades;
+
+    [Header("Weapons Info")]
     public GameObject[] weapons;
     public bool[] hasWeapons;
+    public GameObject[] grenades;
 
     public Camera cam;
 
@@ -290,6 +297,33 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Buildings")
         {
             anim.SetBool("isJump", false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Items")
+        {
+            Item item = other.GetComponent<Item>();
+            switch (item.type)
+            {
+                case Item.Type.Grenade:
+                    grenades[hasGrenades].SetActive(true);
+                    hasGrenades += item.value;
+                    if (hasGrenades > maxHasGrenades)
+                        hasGrenades = maxHasGrenades;
+                    break;
+                case Item.Type.Hp:
+                    if (hp > maxHp)
+                        hp = maxHp;
+                    break;
+                case Item.Type.Ammunition:
+                    ammo += item.value;
+                    if (ammo > maxAmmo)
+                        ammo = maxAmmo;
+                    break;
+            }
+            Destroy(other.gameObject);
         }
     }
 

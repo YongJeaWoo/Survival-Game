@@ -9,7 +9,6 @@ public class Item : MonoBehaviour
     {
         Weapon,
         Grenade,
-        Coin,
         Ammunition,
         Hp,
     }
