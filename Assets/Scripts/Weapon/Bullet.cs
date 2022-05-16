@@ -8,27 +8,22 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.tag);
-        if (collision.gameObject.tag == "Objects")
-            Destroy(gameObject);
-        else if (collision.gameObject.tag == "Ground")
-            Destroy(gameObject, 1f);
-        else if (collision.gameObject.tag == "BulletCheck")
-            Destroy(gameObject);
-        //if (collision.gameObject.CompareTag("Enemy"))
-        //    Destroy(gameObject);
+        // 탄피 제거
+        if (collision.gameObject.CompareTag("BulletCheck"))
+            Destroy(gameObject, 2f);
+        else if (collision.gameObject.CompareTag("Ground"))
+            Destroy(gameObject, 2f);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.tag);
-        if (other.gameObject.tag == "Objects")
+        if (other.gameObject.CompareTag("Objects"))
             Destroy(gameObject);
-        else if (other.gameObject.tag == "Ground")
+        else if (other.gameObject.CompareTag("Ground"))
             Destroy(gameObject, 1f);
-        else if (other.gameObject.tag == "BulletCheck")
+        else if (other.gameObject.CompareTag("BulletCheck"))
             Destroy(gameObject);
-        //if (collision.gameObject.CompareTag("Enemy"))
-        //    Destroy(gameObject);
+        if (other.gameObject.CompareTag("Enemy"))
+            Destroy(gameObject);
     }
 }
