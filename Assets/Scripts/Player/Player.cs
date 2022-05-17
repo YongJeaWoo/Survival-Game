@@ -231,7 +231,7 @@ public class Player : MonoBehaviour
             GameObject instantGrenade = Instantiate(grenadeObj, grenadePos.position, grenadePos.rotation);
             Rigidbody grenadeRigid = instantGrenade.GetComponent<Rigidbody>();
 
-            Vector3 grenadeVec = grenadePos.forward * 10f + Vector3.up * 3f;
+            Vector3 grenadeVec = grenadePos.forward * 10f + Vector3.up * 5f;
 
             grenadeRigid.AddForce(grenadeVec, ForceMode.Impulse);
             grenadeRigid.AddTorque(Vector3.back * 20f, ForceMode.Impulse);
