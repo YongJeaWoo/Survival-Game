@@ -62,7 +62,6 @@ public class Weapon : MonoBehaviour
     IEnumerator Shot()
     {
         GameObject instantBullet = Instantiate(bullet, bulletPos.position, bulletPos.rotation);
-        Destroy(instantBullet, 5.0f);
         Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();
 
         bulletRigid.velocity = bulletPos.forward * 50f;

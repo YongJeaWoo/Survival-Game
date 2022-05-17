@@ -37,6 +37,9 @@ public class Player : MonoBehaviour
     bool ReloadDown;
     bool isReload;
 
+    // 무적
+    bool isDamage;
+
     Vector3 moveVec;
     Vector3 dodgeVec;
 
@@ -45,6 +48,7 @@ public class Player : MonoBehaviour
 
     GameObject objs;
     Weapon equipWeapons;
+    MeshRenderer[] meshRender;
 
     int equipWeaponIndex = -1;
 
@@ -74,6 +78,7 @@ public class Player : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
+        meshRender = GetComponentsInChildren<MeshRenderer>();
     }
 
     private void Update()
@@ -100,8 +105,10 @@ public class Player : MonoBehaviour
     // 벽 충돌 뚫기 방지
     void StopWall()
     {
-        Debug.DrawRay(transform.position, transform.forward * 1f, Color.green);
-        isBorder = Physics.Raycast(transform.position, transform.forward, 1f, LayerMask.GetMask("Border", "Objects"));
+        Vector3 rayVec = transform.position;
+        rayVec.y += 0.5f;
+        Debug.DrawRay(rayVec, transform.forward * 1f, Color.green);
+        isBorder = Physics.Raycast(rayVec, transform.forward, 1f, LayerMask.GetMask("Border", "Objects"));
     }
 
     private void FixedUpdate()
@@ -321,7 +328,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Weapons")
+        if (other.CompareTag("Weapons"))
         {
             Item item = other.GetComponent<Item>();
             int weaponIndex = item.value;
@@ -330,7 +337,7 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (other.tag == "Items")
+        else if (other.CompareTag("Items"))
         {
             Item item = other.GetComponent<Item>();
             switch (item.type)
@@ -353,6 +360,33 @@ public class Player : MonoBehaviour
             }
             Destroy(other.gameObject);
         }
+
+        else if (other.CompareTag("EnemyMelee"))
+        {
+            if (!isDamage)
+            {
+                Bullet enemyBullet = other.GetComponent<Bullet>();
+                hp -= enemyBullet.damage;
+                StartCoroutine(OnDamage());
+            }
+        }
+    }
+
+    IEnumerator OnDamage()
+    {
+        isDamage = true;
+        foreach(MeshRenderer mesh in meshRender)
+        {
+            mesh.material.color = Color.cyan;
+        }
+
+        yield return new WaitForSeconds(1f);
+        foreach (MeshRenderer mesh in meshRender)
+        {
+            mesh.material.color = Color.white;
+        }
+
+        isDamage = false;
     }
 
     private void OnTriggerStay(Collider other)

@@ -9,6 +9,9 @@ public class Enemy : MonoBehaviour
     public int curHp;
 
     public bool isChase;
+    public bool isAttack;
+
+    public BoxCollider meleeArea;
 
     public Transform target;
 
@@ -20,7 +23,41 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Targeting();
         FreezeVelocity();
+    }
+
+    void Targeting()
+    {
+        float targetRadius = 1.5f;
+        float targetRange = 1f;
+
+        RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, targetRadius, transform.forward, targetRange, LayerMask.GetMask("Player"));
+
+        if(rayHits.Length > 0 && !isAttack)
+        {
+            StartCoroutine(Attack());
+        }
+    }
+
+    IEnumerator Attack()
+    {
+        isChase = false;
+        isAttack = true;
+        anim.SetBool("isAttack", true);
+        
+
+        yield return new WaitForSeconds(0.6f);
+        meleeArea.enabled = true;
+
+        yield return new WaitForSeconds(1.5f);
+        meleeArea.enabled = false;
+
+        yield return new WaitForSeconds(1f);
+
+        isChase = true;
+        isAttack = false;
+        anim.SetBool("isAttack", false);
     }
 
     private void Awake()
@@ -42,8 +79,11 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (isChase)
+        if (nav.enabled)
+        {
             nav.SetDestination(target.position);
+            nav.isStopped = !isChase;
+        }
     }
 
     void FreezeVelocity()

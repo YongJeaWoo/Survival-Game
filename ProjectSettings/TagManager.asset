@@ -13,6 +13,8 @@ TagManager:
   - BulletCheck
   - Bullet
   - Enemy
+  - EnemyBullet
+  - EnemyMelee
   layers:
   - Default
   - TransparentFX
@@ -41,7 +43,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - EnemyBullet
   - Bullet
   - BulletCheck
   - Border
