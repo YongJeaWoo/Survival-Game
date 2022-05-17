@@ -1,21 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
     public int maxHp;
     public int curHp;
 
+    public bool isChase;
+
+    public Transform target;
+
     Rigidbody rigid;
     BoxCollider boxCollider;
     Material mat;
+    NavMeshAgent nav;
+    Animator anim;
+
+    private void FixedUpdate()
+    {
+        FreezeVelocity();
+    }
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
-        mat = GetComponent<MeshRenderer>().material;
+        mat = GetComponentInChildren<MeshRenderer>().material;
+        nav = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
+
+        Invoke("ChaseStart", 2f);
+    }
+
+    void ChaseStart()
+    {
+        isChase = true;
+        anim.SetBool("isWalk", true);
+    }
+
+    private void Update()
+    {
+        if (isChase)
+            nav.SetDestination(target.position);
+    }
+
+    void FreezeVelocity()
+    {
+        if (isChase)
+        {
+            rigid.velocity = Vector3.zero;
+            rigid.angularVelocity = Vector3.zero;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,7 +77,25 @@ public class Enemy : MonoBehaviour
     {
         mat.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        
+
+        // 넉백
+        if (grenadeReact)
+        {
+            reactVec = reactVec.normalized;
+            reactVec += Vector3.up;
+
+            rigid.freezeRotation = false;
+            rigid.AddForce(reactVec * Random.Range(1, 5), ForceMode.Impulse);
+            rigid.AddTorque(reactVec * 15, ForceMode.Impulse);
+
+        }
+        else
+        {
+            reactVec = reactVec.normalized;
+            reactVec += Vector3.forward;
+            rigid.AddForce(reactVec * 10f, ForceMode.Impulse);
+        }
+
         if (curHp > 0)
         {
             mat.color = Color.white;
@@ -50,25 +105,9 @@ public class Enemy : MonoBehaviour
             mat.color = Color.gray;
             gameObject.layer = 21;
 
-            // 넉백
-            if (grenadeReact)
-            {
-                reactVec = reactVec.normalized;
-                reactVec += Vector3.up;
-
-                rigid.freezeRotation = false;
-                rigid.AddForce(reactVec * Random.Range(1, 5), ForceMode.Impulse);
-                rigid.AddTorque(reactVec * 15, ForceMode.Impulse);
-
-            }
-            else
-            {
-                reactVec = reactVec.normalized;
-                reactVec += Vector3.up;
-                rigid.AddForce(reactVec * 10f, ForceMode.Impulse);
-            }
-
-
+            isChase = false;
+            nav.enabled = false;
+            anim.SetTrigger("doDie");
             Destroy(gameObject, 2f);
         }
     }
