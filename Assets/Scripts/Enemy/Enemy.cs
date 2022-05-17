@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
             // 넉백
             reactVec = reactVec.normalized;
             reactVec += Vector3.up;
-            rigid.AddForce(reactVec * 10f, ForceMode.Impulse);
+            rigid.AddForce(reactVec * 5f, ForceMode.Impulse);
 
 
             Destroy(gameObject, 2f);
