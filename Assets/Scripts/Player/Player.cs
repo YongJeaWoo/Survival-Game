@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
         Grenade();
         Reload();
         Dodge();
-        InterAction();
+        // InterAction();
         Swap();
     }
 
@@ -296,17 +296,7 @@ public class Player : MonoBehaviour
 
     void InterAction()
     {
-        if (interAction && objs != null && !isDodge)
-        {
-            if (objs.tag == "Weapons")
-            {
-                Item item = objs.GetComponent<Item>();
-                int weaponIndex = item.value;
-                hasWeapons[weaponIndex] = true;
-
-                Destroy(objs);
-            }
-        }
+        // npc 대화 구현 
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -331,6 +321,15 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Weapons")
+        {
+            Item item = other.GetComponent<Item>();
+            int weaponIndex = item.value;
+            hasWeapons[weaponIndex] = true;
+
+            Destroy(other.gameObject);
+        }
+
         if (other.tag == "Items")
         {
             Item item = other.GetComponent<Item>();

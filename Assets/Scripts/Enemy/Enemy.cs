@@ -50,7 +50,6 @@ public class Enemy : MonoBehaviour
     {
         if (isChase)
         {
-            rigid.velocity = Vector3.zero;
             rigid.angularVelocity = Vector3.zero;
         }
     }
@@ -85,15 +84,15 @@ public class Enemy : MonoBehaviour
             reactVec += Vector3.up;
 
             rigid.freezeRotation = false;
-            rigid.AddForce(reactVec * Random.Range(1, 5), ForceMode.Impulse);
+            rigid.AddForce(reactVec * Random.Range(30, 50), ForceMode.Impulse);
             rigid.AddTorque(reactVec * 15, ForceMode.Impulse);
 
         }
         else
         {
-            reactVec = reactVec.normalized;
-            reactVec += Vector3.forward;
-            rigid.AddForce(reactVec * 10f, ForceMode.Impulse);
+            reactVec = -reactVec.normalized;
+            reactVec += Vector3.up;
+            rigid.AddForce(reactVec * 8f, ForceMode.Impulse);
         }
 
         if (curHp > 0)

@@ -18293,7 +18293,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600850058}
-  m_LocalRotation: {x: 0.19672236, y: 0.000000016870159, z: -0.0000000033848806, w: 0.9804593}
+  m_LocalRotation: {x: 0.19672236, y: -0.000000016870151, z: 0.0000000033848793, w: 0.9804593}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -32934,7 +32934,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111187808}
-  m_LocalRotation: {x: 0.19672237, y: 0.000000017290505, z: -0.0000000032999874, w: 0.9804593}
+  m_LocalRotation: {x: 0.19672237, y: -0.000000017290498, z: 0.0000000032999876, w: 0.9804593}
   m_LocalPosition: {x: -12.12, y: 2.3713098, z: -22.296164}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -58554,7 +58554,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953534808}
-  m_LocalRotation: {x: 0.21452388, y: -0.000000008402898, z: 0.0000000018455898, w: 0.9767188}
+  m_LocalRotation: {x: 0.21452388, y: 0.000000008402898, z: -0.0000000018455898, w: 0.9767188}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -59016,7 +59016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 480426, guid: 2d7ff3605aa9cff4eb8e82f140a295da, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 129.92
+      value: 198.51
       objectReference: {fileID: 0}
     - target: {fileID: 480426, guid: 2d7ff3605aa9cff4eb8e82f140a295da, type: 3}
       propertyPath: m_LocalRotation.w
@@ -62814,7 +62814,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106408227}
-  m_LocalRotation: {x: 0.18003938, y: -0.000000016925224, z: 0.0000000030978264, w: 0.98365945}
+  m_LocalRotation: {x: 0.18003938, y: 0.000000016925217, z: -0.000000003097825, w: 0.98365945}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

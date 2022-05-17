@@ -20,6 +20,7 @@ public class Weapon : MonoBehaviour
     public BoxCollider meleeArea;
     public TrailRenderer trailRenderer;
 
+    [Header ("Weapon Info")]
     public Transform bulletPos;
     public GameObject bullet;
 
