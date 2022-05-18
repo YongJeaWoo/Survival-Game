@@ -5,9 +5,21 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [Header ("Fade Effect && UI")]
     public Image image;
     public GameObject imageGo;
     public Image infoUI;
+
+    public GameObject menuCam;
+
+    
+
+
+
+
+
+
+
 
     private void Awake()
     {

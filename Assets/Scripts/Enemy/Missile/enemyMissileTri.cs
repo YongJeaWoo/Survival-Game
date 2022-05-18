@@ -12,7 +12,5 @@ public class enemyMissileTri : MonoBehaviour
             Destroy(gameObject);
         else if (other.gameObject.CompareTag("Objects"))
             Destroy(gameObject);
-        if (other.gameObject.CompareTag("BulletCheck"))
-            Destroy(gameObject);
     }
 }
