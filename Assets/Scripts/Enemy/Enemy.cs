@@ -5,6 +5,16 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public enum Type
+    {
+        A,
+        B,
+        C,
+    };
+
+    public Type enemyType;
+
+
     public int maxHp;
     public int curHp;
 
@@ -29,8 +39,24 @@ public class Enemy : MonoBehaviour
 
     void Targeting()
     {
-        float targetRadius = 1.5f;
-        float targetRange = 1f;
+        float targetRadius = 0f;
+        float targetRange = 0f;
+
+        switch (enemyType)
+        {
+            case Type.A:
+                targetRadius = 0.8f;
+                targetRange = 1f;
+                break;
+            case Type.B:
+                targetRadius = 0.8f;
+                targetRange = 3f;
+                break;
+            case Type.C:
+                break;
+        }
+
+
 
         RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, targetRadius, transform.forward, targetRange, LayerMask.GetMask("Player"));
 
@@ -45,15 +71,34 @@ public class Enemy : MonoBehaviour
         isChase = false;
         isAttack = true;
         anim.SetBool("isAttack", true);
-        
 
-        yield return new WaitForSeconds(0.6f);
-        meleeArea.enabled = true;
+        switch (enemyType)
+        {
+            case Type.A:
+                yield return new WaitForSeconds(0.6f);
+                meleeArea.enabled = true;
 
-        yield return new WaitForSeconds(1.5f);
-        meleeArea.enabled = false;
+                yield return new WaitForSeconds(1.5f);
+                meleeArea.enabled = false;
 
-        yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(1f);
+
+                break;
+            case Type.B:
+                yield return new WaitForSeconds(0.1f);
+
+                rigid.AddForce(transform.forward * 20f, ForceMode.Impulse);
+                meleeArea.enabled = true;
+
+                yield return new WaitForSeconds(0.5f);
+                rigid.velocity = Vector3.zero;
+                meleeArea.enabled = false;
+
+                yield return new WaitForSeconds(2f);
+                break;
+            case Type C:
+                break;
+        }
 
         isChase = true;
         isAttack = false;
