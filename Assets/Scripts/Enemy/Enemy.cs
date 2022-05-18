@@ -103,7 +103,7 @@ public class Enemy : MonoBehaviour
                 yield return new WaitForSeconds(0.78f);
                 enemyArea.enabled = true;
 
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitForSeconds(1.1f);
                 enemyArea.enabled = false;
 
                 yield return new WaitForSeconds(1f);
