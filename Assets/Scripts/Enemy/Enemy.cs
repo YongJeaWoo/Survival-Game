@@ -26,6 +26,8 @@ public class Enemy : MonoBehaviour
 
     public Transform target;
 
+    float missileSpeed = 40f;
+
     Rigidbody rigid;
     BoxCollider boxCollider;
     Material mat;
@@ -124,7 +126,7 @@ public class Enemy : MonoBehaviour
 
                 GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = transform.forward * 20f;
+                rigidBullet.velocity = transform.forward * missileSpeed;
                     
                 yield return new WaitForSeconds(2f);
                 break;
