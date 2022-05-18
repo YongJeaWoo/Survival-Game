@@ -7,11 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public Image image;
     public GameObject imageGo;
+    public Image infoUI;
 
     private void Awake()
     {
-        StopAllCoroutines();
         StartCoroutine(Fade());
+        StartCoroutine(ShowInfo());
     }
 
     IEnumerator Fade()
@@ -24,5 +25,17 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             image.color = new Color(0, 0, 0, fadeCount);
         }
+
+        yield break;
+    }
+
+    IEnumerator ShowInfo()
+    {
+        yield return new WaitForSeconds(2f);
+        infoUI.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        infoUI.gameObject.SetActive(false);
+
+        yield break;
     }
 }

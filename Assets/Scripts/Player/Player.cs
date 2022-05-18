@@ -370,6 +370,16 @@ public class Player : MonoBehaviour
                 StartCoroutine(OnDamage());
             }
         }
+
+        else if (other.CompareTag("EnemyBullet"))
+        {
+            if (!isDamage)
+            {
+                enemyMissileTri enemyMissile = other.GetComponent<enemyMissileTri>();
+                hp -= enemyMissile.damage;
+                StartCoroutine(OnDamage());
+            }
+        }
     }
 
     IEnumerator OnDamage()

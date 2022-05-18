@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject, 1f);
         else if (other.gameObject.CompareTag("BulletCheck"))
             Destroy(gameObject);
-        if (other.gameObject.CompareTag("Enemy"))
+        else if (other.gameObject.CompareTag("Enemy"))
             Destroy(gameObject);
     }
 }
