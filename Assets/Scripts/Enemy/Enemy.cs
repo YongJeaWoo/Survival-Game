@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
                 break;
             case Type.C:
                 targetRadius = 0.3f;
-                targetRange = 20f;
+                targetRange = 25f;
                 break;
         }
 
@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour
                 yield return new WaitForSeconds(3f);
                 break;
             case Type C:
-                yield return new WaitForSeconds(0.4f);
+                yield return new WaitForSeconds(0.35f);
 
                 GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
