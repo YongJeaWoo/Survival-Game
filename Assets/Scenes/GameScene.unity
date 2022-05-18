@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12681,6 +12681,10 @@ PrefabInstance:
       propertyPath: m_AngularSpeed
       value: 360
       objectReference: {fileID: 0}
+    - target: {fileID: 422190865, guid: 1f51b6a4e6e1f0841aed4aae365c2f62, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 72157506252500294, guid: 1f51b6a4e6e1f0841aed4aae365c2f62,
         type: 3}
       propertyPath: m_Layer
@@ -12719,7 +12723,7 @@ PrefabInstance:
     - target: {fileID: 4226423182128734256, guid: 1f51b6a4e6e1f0841aed4aae365c2f62,
         type: 3}
       propertyPath: m_Layer
-      value: 27
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 5000172026905233254, guid: 1f51b6a4e6e1f0841aed4aae365c2f62,
         type: 3}
@@ -46870,6 +46874,10 @@ PrefabInstance:
     - target: {fileID: 1570396171, guid: 7a4306ce060eacc4289a8f1801d1494c, type: 3}
       propertyPath: m_AngularSpeed
       value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916204073, guid: 7a4306ce060eacc4289a8f1801d1494c, type: 3}
+      propertyPath: m_Layer
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 328409505970683906, guid: 7a4306ce060eacc4289a8f1801d1494c,
         type: 3}

@@ -42,7 +42,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - EnemyDamage
   - EnemyBullet
   - Bullet
   - BulletCheck

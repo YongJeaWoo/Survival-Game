@@ -365,8 +365,8 @@ public class Player : MonoBehaviour
         {
             if (!isDamage)
             {
-                Bullet enemyBullet = other.GetComponent<Bullet>();
-                hp -= enemyBullet.damage;
+                EnemyCol enemyCol = other.GetComponent<EnemyCol>();
+                hp -= enemyCol.damage;
                 StartCoroutine(OnDamage());
             }
         }
