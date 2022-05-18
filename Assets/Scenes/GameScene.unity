@@ -109,7 +109,7 @@ NavMeshSettings:
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: -0
+    agentClimb: 0.3
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -12687,7 +12687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 422190865, guid: 1f51b6a4e6e1f0841aed4aae365c2f62, type: 3}
       propertyPath: m_Constraints
-      value: 80
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 72157506252500294, guid: 1f51b6a4e6e1f0841aed4aae365c2f62,
         type: 3}
@@ -18307,7 +18307,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600850058}
-  m_LocalRotation: {x: 0.19672236, y: -0.000000016870151, z: 0.0000000033848793, w: 0.9804593}
+  m_LocalRotation: {x: 0.19672236, y: 0.000000016870159, z: -0.0000000033848806, w: 0.9804593}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -23875,10 +23875,10 @@ RectTransform:
   m_Father: {fileID: 1115922978}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: 600, y: 100}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -15}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &812164195
 MonoBehaviour:
@@ -33001,7 +33001,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111187808}
-  m_LocalRotation: {x: 0.19672237, y: -0.000000017290498, z: 0.0000000032999876, w: 0.9804593}
+  m_LocalRotation: {x: 0.19672237, y: 0.000000017290505, z: -0.0000000032999874, w: 0.9804593}
   m_LocalPosition: {x: -12.12, y: 2.3713098, z: -22.296164}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -47176,6 +47176,10 @@ PrefabInstance:
       propertyPath: enemyArea
       value: 
       objectReference: {fileID: 976264619}
+    - target: {fileID: 1570396170, guid: 7a4306ce060eacc4289a8f1801d1494c, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 1570396171, guid: 7a4306ce060eacc4289a8f1801d1494c, type: 3}
       propertyPath: m_Speed
       value: 5
@@ -58276,7 +58280,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953534808}
-  m_LocalRotation: {x: 0.21452388, y: 0.000000008402898, z: -0.0000000018455898, w: 0.9767188}
+  m_LocalRotation: {x: 0.21452388, y: -0.000000008402898, z: 0.0000000018455898, w: 0.9767188}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -61994,6 +61998,10 @@ PrefabInstance:
       propertyPath: m_AngularSpeed
       value: 550
       objectReference: {fileID: 0}
+    - target: {fileID: 2081468828, guid: 1757e18afe7f917469f8fbb19009d54a, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 2062362018885022397, guid: 1757e18afe7f917469f8fbb19009d54a,
         type: 3}
       propertyPath: m_RootOrder
@@ -62452,7 +62460,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106408227}
-  m_LocalRotation: {x: 0.18003938, y: 0.000000016925217, z: -0.000000003097825, w: 0.98365945}
+  m_LocalRotation: {x: 0.18003938, y: -0.000000016925217, z: 0.000000003097825, w: 0.98365945}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
