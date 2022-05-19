@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     Animator anim;
 
     GameObject objs;
-    Weapon equipWeapons;
+    public Weapon equipWeapons;
     MeshRenderer[] meshRender;
 
     int equipWeaponIndex = -1;
@@ -367,7 +367,7 @@ public class Player : MonoBehaviour
             {
                 EnemyCol enemyCol = other.GetComponent<EnemyCol>();
                 hp -= enemyCol.damage;
-                StartCoroutine(OnDamage());
+                StartCoroutine(OnDamage(false));
             }
         }
 
@@ -377,26 +377,33 @@ public class Player : MonoBehaviour
             {
                 enemyMissileTri enemyMissile = other.GetComponent<enemyMissileTri>();
                 hp -= enemyMissile.damage;
-                StartCoroutine(OnDamage());
+
+                bool isBossAtk = other.name == "BossMelee";
+                StartCoroutine(OnDamage(isBossAtk));
             }
         }
     }
 
-    IEnumerator OnDamage()
+    IEnumerator OnDamage(bool isBossAtk)
     {
         isDamage = true;
         foreach(MeshRenderer mesh in meshRender)
         {
             mesh.material.color = Color.cyan;
         }
+        if (isBossAtk)
+            rigid.AddForce(-(transform.forward) * 25, ForceMode.Impulse);
 
         yield return new WaitForSeconds(1f);
+
+        isDamage = false;
         foreach (MeshRenderer mesh in meshRender)
         {
             mesh.material.color = Color.white;
         }
 
-        isDamage = false;
+        if(isBossAtk)
+            rigid.velocity = Vector3.zero;
     }
 
     private void OnTriggerStay(Collider other)

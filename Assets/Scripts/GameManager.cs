@@ -10,15 +10,35 @@ public class GameManager : MonoBehaviour
     public GameObject imageGo;
     public Image infoUI;
 
-    public GameObject menuCam;
+    [Header ("InGame Units")]
+    public Player player;
+    public Boss boss;
 
-    
+    public int enemyACount;
+    public int enemyBCount;
+    public int enemyCCount;
 
+    [Header ("UI Info")]
+    public GameObject gamePanel;
 
+    [Header("Player Info")]
+    public Text playerHpTxt;
+    public Text playerAmmoTxt;
 
+    [Header("Enemy Info")]
+    public Text enemyATxt;
+    public Text enemyBTxt;
+    public Text enemyCTxt;
 
+    [Header("Boss Info")]
+    public RectTransform bossHpGroup;
+    public RectTransform bossCurHpBar;
 
-
+    [Header("Inven Window")]
+    public Image weapon1Img;
+    public Image weapon2Img;
+    public Image weapon3Img;
+    public Image weaponRImg;
 
 
     private void Awake()
@@ -49,5 +69,30 @@ public class GameManager : MonoBehaviour
         infoUI.gameObject.SetActive(false);
 
         yield break;
+    }
+
+    private void LateUpdate()
+    {
+        playerHpTxt.text = player.hp.ToString();
+
+        if (player.equipWeapons == null)
+            playerAmmoTxt.text = " - / " + player.ammo;
+        else if (player.equipWeapons.type == Weapon.Type.Melee)
+            playerAmmoTxt.text = " - / " + player.ammo;
+        else
+            playerAmmoTxt.text = player.equipWeapons.curAmmo + " / " + player.ammo;
+
+        // 무기를 가지고 있는지 없는지 알파값으로 표시
+        weapon1Img.color = new Color(1, 1, 1, player.hasWeapons[0] ? 1 : 0);
+        weapon2Img.color = new Color(1, 1, 1, player.hasWeapons[1] ? 1 : 0);
+        weapon3Img.color = new Color(1, 1, 1, player.hasWeapons[2] ? 1 : 0);
+        weaponRImg.color = new Color(1, 1, 1, player.hasGrenades > 0 ? 1 : 0);
+
+        enemyATxt.text = enemyACount.ToString();
+        enemyBTxt.text = enemyBCount.ToString();
+        enemyCTxt.text = enemyCCount.ToString();
+
+        // 보스 체력바
+        bossCurHpBar.localScale = new Vector3((float)boss.curHp / boss.maxHp, 1, 1);
     }
 }

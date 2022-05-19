@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
 
     public bool isChase;
     public bool isAttack;
+    public bool isDead;
 
     public BoxCollider attackArea;
     public GameObject bullet;
@@ -29,11 +30,11 @@ public class Enemy : MonoBehaviour
 
     float missileSpeed = 30f;
 
-    Rigidbody rigid;
-    BoxCollider boxCollider;
-    MeshRenderer[] mesh;
-    NavMeshAgent nav;
-    Animator anim;
+    public Rigidbody rigid;
+    public BoxCollider boxCollider;
+    public MeshRenderer[] mesh;
+    public NavMeshAgent nav;
+    public Animator anim;
 
     private void Awake()
     {
@@ -64,7 +65,7 @@ public class Enemy : MonoBehaviour
 
     void Targeting()
     {
-        if (enemyType != Type.Boss)
+        if (!isDead && enemyType != Type.Boss)
         {
             float targetRadius = 0f;
             float targetRange = 0f;
@@ -198,6 +199,7 @@ public class Enemy : MonoBehaviour
                 meshs.material.color = Color.grey;
             }
             gameObject.layer = 21;
+            isDead = true;
             isChase = false;
             nav.enabled = false;
             anim.SetTrigger("doDie");

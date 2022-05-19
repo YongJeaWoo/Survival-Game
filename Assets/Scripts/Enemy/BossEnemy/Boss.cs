@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Boss : Enemy
 {
@@ -16,19 +17,116 @@ public class Boss : Enemy
     // 플레이어 바라보는 플래그
     bool isLook;
 
-    void Start()
+    private void Awake()
     {
-        isLook = true;
+        rigid = GetComponent<Rigidbody>();
+        boxCollider = GetComponent<BoxCollider>();
+        mesh = GetComponentsInChildren<MeshRenderer>();
+        nav = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
+
+        nav.isStopped = true;
+        StartCoroutine(Think());
     }
 
     void Update()
     {
+        if (isDead)
+        {
+            StopAllCoroutines();
+            return;
+        }
+
         if (isLook)
         {
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
-            lookVec = new Vector3(h, 0, v) * 4f;
+            lookVec = new Vector3(h, 0, v) * 5f;
             transform.LookAt(target.position + lookVec);
         }
+        else
+        {
+            nav.SetDestination(tauntVec);
+        }
+    }
+
+    IEnumerator Think()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        int randomAct = Random.Range(0, 5);
+        switch (randomAct)
+        {
+            case 0:
+                // 기본상태
+            case 1:
+                // 미사일 공격
+                StartCoroutine(Missile());
+
+                break;
+            case 2:
+                
+            case 3:
+                // 돌 공격
+                StartCoroutine(Rock());
+
+                break;
+            case 4:
+                // 점프
+                StartCoroutine(Taunt());
+
+                break;
+        }
+    }
+
+    IEnumerator Missile()
+    {
+        anim.SetTrigger("doShot");
+        yield return new WaitForSeconds(0.4f);
+        GameObject instantMissileR = Instantiate(missile, missileR.position, missileR.rotation);
+        BossMissile bossMissileR = instantMissileR.GetComponent<BossMissile>();
+        bossMissileR.target = target;
+
+        yield return new WaitForSeconds(0.5f);
+        GameObject instantMissileL = Instantiate(missile, missileL.position, missileL.rotation);
+        BossMissile bossMissileL = instantMissileL.GetComponent<BossMissile>();
+        bossMissileL.target = target;
+
+        yield return new WaitForSeconds(3f);
+        StartCoroutine(Think());
+    }
+
+    IEnumerator Rock()
+    {
+        isLook = false;
+        anim.SetTrigger("doBigShot");
+
+        Instantiate(bullet, transform.position, transform.rotation);
+        yield return new WaitForSeconds(3f);
+
+        isLook = true;
+        StartCoroutine(Think());
+    }
+
+    IEnumerator Taunt()
+    {
+        tauntVec = target.position + lookVec;
+
+        isLook = false;
+        nav.isStopped = false;
+        boxCollider.enabled = false;
+        anim.SetTrigger("doTaunt");
+        
+        yield return new WaitForSeconds(1.5f);
+        attackArea.enabled = true;
+
+        yield return new WaitForSeconds(0.5f);
+        attackArea.enabled = false;
+
+        yield return new WaitForSeconds(3f);
+        isLook = true;
+        nav.isStopped = true;
+        boxCollider.enabled = true;
+        StartCoroutine(Think());
     }
 }
