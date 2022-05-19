@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -94,5 +95,28 @@ public class GameManager : MonoBehaviour
 
         // 보스 체력바
         bossCurHpBar.localScale = new Vector3((float)boss.curHp / boss.maxHp, 1, 1);
+    }
+
+    public void GameOver()
+    {
+        StartCoroutine(GameOverFade());
+        Cursor.lockState = CursorLockMode.None;
+        Invoke("ChangeScn", 3f);
+    }
+
+    IEnumerator GameOverFade()
+    {
+        float fadeCount = 0; // 첫 알파값
+        while (fadeCount < 1.0f)
+        {
+            fadeCount += 0.01f;
+            yield return new WaitForSeconds(0.01f);
+            image.color = new Color(0, 0, 0, fadeCount);
+        }
+    }
+
+    void ChangeScn()
+    {
+        SceneManager.LoadScene("GameOverScene");
     }
 }

@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpPower = 8f;
 
+    public GameManager manager;
+
     float hAxis;
     float vAxis;
 
@@ -19,6 +21,7 @@ public class Player : MonoBehaviour
 
     bool isJump;
     bool isDodge;
+    bool isDead;
 
     bool isBorder;
 
@@ -182,8 +185,8 @@ public class Player : MonoBehaviour
         if (isDodge)
             moveVec = dodgeVec;
 
-
-        if (isSwap || isReload ||!isFire)
+        // 움직임 제한
+        if (isSwap || isReload ||!isFire || isDead)
             moveVec = Vector3.zero;
 
         if (!isBorder)
@@ -198,7 +201,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (jumpDown && !isJump && !isDodge && !isReload)
+        if (jumpDown && !isJump && !isDodge && !isReload && !isDead)
         {
             // 즉각 반응
             rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
@@ -233,7 +236,7 @@ public class Player : MonoBehaviour
         if (hasGrenades == 0)
             return;
 
-        if (grenadeDown && !isSwap && !isDodge && !isReload)
+        if (grenadeDown && !isSwap && !isDodge && !isReload && !isDead)
         {
             GameObject instantGrenade = Instantiate(grenadeObj, grenadePos.position, grenadePos.rotation);
             Rigidbody grenadeRigid = instantGrenade.GetComponent<Rigidbody>();
@@ -262,7 +265,7 @@ public class Player : MonoBehaviour
         if (equipWeapons.curAmmo == equipWeapons.maxAmmo)
             return;
 
-        if (ReloadDown && !isJump && !isDodge && !isSwap && isFire)
+        if (ReloadDown && !isJump && !isDodge && !isSwap && isFire && !isDead)
         {
             anim.SetTrigger("doReload");
             isReload = true;
@@ -282,7 +285,7 @@ public class Player : MonoBehaviour
 
     void Dodge()
     {
-        if (dodgeDown && !isJump && moveVec != Vector3.zero && !isDodge)
+        if (dodgeDown && !isJump && moveVec != Vector3.zero && !isDodge && !isDead)
         {
             dodgeVec = moveVec;
 
@@ -404,6 +407,17 @@ public class Player : MonoBehaviour
 
         if(isBossAtk)
             rigid.velocity = Vector3.zero;
+
+        // 체력이 없으면 게임 오버
+        if (hp <= 0)
+            OnDie();
+    }
+
+    void OnDie()
+    {
+        anim.SetTrigger("doDie");
+        isDead = true;
+        manager.GameOver();
     }
 
     private void OnTriggerStay(Collider other)

@@ -56,11 +56,16 @@ public class DialogueSystem : MonoBehaviour
         nameTxt.text = string.Empty;
         descriptionTxt.text = string.Empty;
 
-        Invoke("ChangeScn", 2f);
+        Invoke("EndingScn", 2f);
     }
 
     void ChangeScn()
     {
         SceneManager.LoadScene("GameScene");
+    }
+
+    void EndingScn()
+    {
+        SceneManager.LoadScene("TitleScene");
     }
 }
