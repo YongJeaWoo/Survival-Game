@@ -94,7 +94,15 @@ public class GameManager : MonoBehaviour
         enemyCTxt.text = enemyCCount.ToString();
 
         // 보스 체력바
-        bossCurHpBar.localScale = new Vector3((float)boss.curHp / boss.maxHp, 1, 1);
+        if (boss != null)
+        {
+            bossHpGroup.anchoredPosition = Vector3.down * 30;
+            bossCurHpBar.localScale = new Vector3((float)boss.curHp / boss.maxHp, 1, 1);
+        }
+        else
+        {
+            bossHpGroup.anchoredPosition = Vector3.up * 200;
+        }
     }
 
     public void GoodEnding()

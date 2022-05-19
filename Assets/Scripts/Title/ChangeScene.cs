@@ -20,11 +20,6 @@ public class ChangeScene : MonoBehaviour
         }
     }
 
-    void ChangeScn()
-    {
-        SceneManager.LoadScene("ExplainScene");
-    }
-
     IEnumerator Fade()
     {
         float fadeCount = 0; // 첫 알파값
@@ -34,5 +29,10 @@ public class ChangeScene : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             image.color = new Color(0, 0, 0, fadeCount);
         }
+    }
+
+    void ChangeScn()
+    {
+        SceneManager.LoadScene("ExplainScene");
     }
 }
