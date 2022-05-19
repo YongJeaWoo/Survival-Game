@@ -21,7 +21,6 @@ public class TitleButton : MonoBehaviour
         image.enabled = false;
         StartCoroutine(Fade());
 
-        // Invoke("ChangeScn", 10f);
     }
 
     IEnumerator Fade()
@@ -36,11 +35,6 @@ public class TitleButton : MonoBehaviour
             image.color = new Color(0, 0, 0, fadeCount);
         }
     }
-
-    //void ChangeScn()
-    //{
-    //    SceneManager.LoadScene("GameScene");
-    //}
 
     public void ExitButton()
     {

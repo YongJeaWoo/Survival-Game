@@ -15,6 +15,7 @@ TagManager:
   - Enemy
   - EnemyBullet
   - EnemyMelee
+  - Victory
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - Item
   - Weapon
   - 
-  - 
+  - Victory
   - 
   - 
   - 

@@ -97,10 +97,34 @@ public class GameManager : MonoBehaviour
         bossCurHpBar.localScale = new Vector3((float)boss.curHp / boss.maxHp, 1, 1);
     }
 
+    public void GoodEnding()
+    {
+        StartCoroutine(GoodFade());
+        Invoke("VictoryChangeScn", 3f);
+    }
+
+    IEnumerator GoodFade()
+    {
+        float fadeCount = 0; // 첫 알파값
+        while (fadeCount < 1.0f)
+        {
+            fadeCount += 0.01f;
+            yield return new WaitForSeconds(0.01f);
+            image.color = new Color(0, 0, 0, fadeCount);
+        }
+    }
+
+    public void VictoryChangeScn()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene("OpenEndingScene");
+    }
+
+
     public void GameOver()
     {
         StartCoroutine(GameOverFade());
-        Cursor.lockState = CursorLockMode.None;
         Invoke("ChangeScn", 3f);
     }
 
@@ -117,6 +141,8 @@ public class GameManager : MonoBehaviour
 
     void ChangeScn()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("GameOverScene");
     }
 }

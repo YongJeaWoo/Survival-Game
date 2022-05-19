@@ -76,7 +76,6 @@ public class Player : MonoBehaviour
     public Camera cam;
 
 
-
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -384,6 +383,12 @@ public class Player : MonoBehaviour
                 bool isBossAtk = other.name == "BossMelee";
                 StartCoroutine(OnDamage(isBossAtk));
             }
+        }
+
+        // 굿 엔딩 분기점
+        else if (other.CompareTag("Victory"))
+        {
+            manager.GoodEnding();
         }
     }
 

@@ -321,7 +321,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 171446715}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2d520e83c6f11d45ab9468f6b945887, type: 3}
+  m_Script: {fileID: 11500000, guid: a9b2e9fb5eddf6c4d8b29880bb72a42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   info:
@@ -330,9 +330,8 @@ MonoBehaviour:
     - "\uB098\uB294 \uBE60\uC838\uB098\uAC00\uAE30 \uC704\uD574 \uC628\uAC16 \uB178\uB825\uC744
       \uD574 \uBD24\uC9C0\uB9CC"
     - "\uBAAC\uC2A4\uD130\uB4E4\uC5D0 \uB300\uC751\uD558\uAE30 \uD798\uB4E4\uC5C8\uB2E4."
-    - "\uADF8\uB807\uAC8C \uB208\uC774 \uAC10\uAE30\uBA70 \uC9C0\uAE08\uAE4C\uC9C0\uC758
-      \uC77C\uB4E4\uC744 \uD68C\uC0C1\uD558\uBA70 \uB0B4 \uC778\uC0DD\uC740 \uC5EC\uAE30\uC11C
-      \uB05D\uB9C8\uCCE4\uB2E4."
+    - " \uAC10\uAE30\uBA70 \uC9C0\uAE08\uAE4C\uC9C0\uC758 \uC77C\uB4E4\uC744 \uD68C\uC0C1\uD558\uBA70
+      \uB0B4 \uC778\uC0DD\uC740 \uC5EC\uAE30\uC11C \uB05D\uB9C8\uCCE4\uB2E4."
     - .....
 --- !u!114 &171446718
 MonoBehaviour:
@@ -871,7 +870,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1754977750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9949689e027b0d44c95e925c65e237bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ebfffceb54ea0f45914537edab6a8ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nameTxt: {fileID: 458303018}

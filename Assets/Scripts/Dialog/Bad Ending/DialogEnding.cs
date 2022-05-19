@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class DialogueSystem : MonoBehaviour
+public class DialogEnding : MonoBehaviour
 {
     public Text nameTxt;
     public Text descriptionTxt;
@@ -55,12 +55,11 @@ public class DialogueSystem : MonoBehaviour
         anim.SetBool("isOpen", false);
         nameTxt.text = string.Empty;
         descriptionTxt.text = string.Empty;
-
-        Invoke("ChangeScn", 2f);        
+        Invoke("EndingScn", 2f);        
     }
 
-    void ChangeScn()
+    void EndingScn()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("TitleScene");
     }
 }
