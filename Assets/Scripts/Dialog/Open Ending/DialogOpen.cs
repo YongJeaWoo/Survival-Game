@@ -12,6 +12,8 @@ public class DialogOpen : MonoBehaviour
     Queue<string> descriptions = new Queue<string> ();
 
     public Animator anim;
+    public Transform panel;
+    public Image image;
 
     public void Begin(Dialogue info)
     {
@@ -35,6 +37,8 @@ public class DialogOpen : MonoBehaviour
             End();
             return;
         }
+
+        //image.color = new Color(0,0,0,0)
 
         descriptionTxt.text = string.Empty;
         StopAllCoroutines();
