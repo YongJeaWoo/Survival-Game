@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -329,9 +329,11 @@ MonoBehaviour:
     descriptions:
     - "\uB098\uB294 \uBE60\uC838\uB098\uAC00\uAE30 \uC704\uD574 \uC628\uAC16 \uB178\uB825\uC744
       \uD574 \uBD24\uC9C0\uB9CC"
-    - "\uBAAC\uC2A4\uD130\uB4E4\uC5D0 \uB300\uC751\uD558\uAE30 \uD798\uB4E4\uC5C8\uB2E4."
-    - " \uAC10\uAE30\uBA70 \uC9C0\uAE08\uAE4C\uC9C0\uC758 \uC77C\uB4E4\uC744 \uD68C\uC0C1\uD558\uBA70
-      \uB0B4 \uC778\uC0DD\uC740 \uC5EC\uAE30\uC11C \uB05D\uB9C8\uCCE4\uB2E4."
+    - "\uC608\uC0C1\uCE58 \uBABB\uD55C \uADF8\uAC83\uB4E4\uC758 \uC6C0\uC9C1\uC784\uC5D0
+      \uC774\uACA8\uB0BC \uC218 \uC5C6\uC5C8\uB2E4."
+    - "\uADF8\uB807\uAC8C \uB09C \uB208\uC774 \uAC10\uAE30\uBA70 \uC9C0\uAE08\uAE4C\uC9C0\uC758
+      \uC77C\uB4E4\uC744 \uD68C\uC0C1\uD558\uBA70 \uB0B4 \uC778\uC0DD\uC740 \uC5EC\uAE30\uC11C
+      \uB05D\uB9C8\uCCE4\uB2E4."
     - .....
 --- !u!114 &171446718
 MonoBehaviour:
