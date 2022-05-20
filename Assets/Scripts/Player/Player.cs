@@ -412,6 +412,9 @@ public class Player : MonoBehaviour
         {
             hp = 0;
             OnDie();
+
+            if (hp < 0)
+                hp = 0;
         }
 
         yield return new WaitForSeconds(1f);

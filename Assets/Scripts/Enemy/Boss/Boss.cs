@@ -110,7 +110,7 @@ public class Boss : Enemy
 
     IEnumerator Taunt()
     {
-        Collider[] rayTaunt = Physics.OverlapSphere(transform.position, 30f, LayerMask.GetMask("Player"));
+        Collider[] rayTaunt = Physics.OverlapSphere(transform.position, 40f, LayerMask.GetMask("Player"));
 
         tauntVec = target.position + lookVec;
 
