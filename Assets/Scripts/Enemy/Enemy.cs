@@ -224,8 +224,7 @@ public class Enemy : MonoBehaviour
                 rigid.AddForce(reactVec * 8f, ForceMode.Impulse);
             }
 
-            if (enemyType != Type.Boss)
-                Destroy(gameObject, 4f);
+            Destroy(gameObject, 4f);
         }
     }
 

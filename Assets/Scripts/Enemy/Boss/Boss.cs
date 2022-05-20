@@ -110,23 +110,39 @@ public class Boss : Enemy
 
     IEnumerator Taunt()
     {
+        Collider[] rayTaunt = Physics.OverlapSphere(transform.position, 30f, LayerMask.GetMask("Player"));
+
         tauntVec = target.position + lookVec;
 
-        isLook = false;
-        nav.isStopped = false;
-        boxCollider.enabled = false;
-        anim.SetTrigger("doTaunt");
-        
-        yield return new WaitForSeconds(1.5f);
-        attackArea.enabled = true;
+        if (rayTaunt.Length > 0)
+        {
+            isLook = false;
+            nav.isStopped = false;
+            boxCollider.enabled = false;
+            anim.SetTrigger("doTaunt");
 
-        yield return new WaitForSeconds(0.5f);
-        attackArea.enabled = false;
+            yield return new WaitForSeconds(1.5f);
+            attackArea.enabled = true;
 
-        yield return new WaitForSeconds(3f);
-        isLook = true;
-        nav.isStopped = true;
-        boxCollider.enabled = true;
-        StartCoroutine(Think());
+            yield return new WaitForSeconds(0.5f);
+            attackArea.enabled = false;
+
+            yield return new WaitForSeconds(3f);
+            isLook = true;
+            nav.isStopped = true;
+            boxCollider.enabled = true;
+            StartCoroutine(Think());
+        }
+        else
+        {
+            StartCoroutine(Think());
+            yield return null;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, 20f);
     }
 }

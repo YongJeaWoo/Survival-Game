@@ -227,7 +227,7 @@ public class Player : MonoBehaviour
         fireDelay += Time.deltaTime;
         isFire = equipWeapons.rate < fireDelay;
 
-        if (fireDown && isFire && !isDodge && !isSwap)
+        if (fireDown && isFire && !isDodge && !isSwap && !isDead)
         {
             equipWeapons.Use();
             anim.SetTrigger(equipWeapons.type == Weapon.Type.Melee ? "doSwing" : "doShot");

@@ -9,7 +9,10 @@ public class GameManager : MonoBehaviour
     [Header ("Fade Effect && UI")]
     public Image image;
     public GameObject imageGo;
-    public Image infoUI;
+    public GameObject inGameInfo;
+    public Image firstDis;
+
+
 
     [Header ("InGame Units")]
     public Player player;
@@ -45,7 +48,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(Fade());
-        StartCoroutine(ShowInfo());
+        StartCoroutine(ShowDisplayInfo());
     }
 
     IEnumerator Fade()
@@ -62,12 +65,13 @@ public class GameManager : MonoBehaviour
         yield break;
     }
 
-    IEnumerator ShowInfo()
+    IEnumerator ShowDisplayInfo()
     {
-        yield return new WaitForSeconds(2f);
-        infoUI.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        firstDis.gameObject.SetActive(true);
         yield return new WaitForSeconds(4f);
-        infoUI.gameObject.SetActive(false);
+        firstDis.gameObject.SetActive(false);
+        inGameInfo.gameObject.SetActive(true);
 
         yield break;
     }
