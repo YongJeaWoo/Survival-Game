@@ -25,6 +25,9 @@ public class Player : MonoBehaviour
 
     bool isBorder;
 
+    // 사운드
+    public AudioSource jumpSound;
+
     // 무기 스왑
     bool isSwap;
     bool swap1;
@@ -208,6 +211,8 @@ public class Player : MonoBehaviour
             anim.SetBool("isJump", true);
             anim.SetTrigger("doJump");
             isJump = true;
+
+            jumpSound.Play();
         }
     }
 
@@ -402,6 +407,13 @@ public class Player : MonoBehaviour
         if (isBossAtk)
             rigid.AddForce(-(transform.forward) * 25, ForceMode.Impulse);
 
+        // 체력이 없으면 게임 오버
+        if (hp <= 0 && !isDead)
+        {
+            hp = 0;
+            OnDie();
+        }
+
         yield return new WaitForSeconds(1f);
 
         isDamage = false;
@@ -412,10 +424,6 @@ public class Player : MonoBehaviour
 
         if(isBossAtk)
             rigid.velocity = Vector3.zero;
-
-        // 체력이 없으면 게임 오버
-        if (hp <= 0)
-            OnDie();
     }
 
     void OnDie()

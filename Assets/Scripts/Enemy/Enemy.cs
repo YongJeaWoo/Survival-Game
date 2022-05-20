@@ -194,6 +194,8 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            curHp = 0;
+            
             foreach (MeshRenderer meshs in mesh)
             {
                 meshs.material.color = Color.grey;

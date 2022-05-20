@@ -138,6 +138,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator GameOverFade()
     {
+        yield return new WaitForSeconds(1f);
+
         float fadeCount = 0; // 첫 알파값
         while (fadeCount < 1.0f)
         {
