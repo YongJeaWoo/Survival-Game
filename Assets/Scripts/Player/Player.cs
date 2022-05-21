@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
         Grenade();
         Reload();
         Dodge();
-        // InterAction();
+        InterAction();
         Swap();
     }
 
@@ -310,7 +310,19 @@ public class Player : MonoBehaviour
 
     void InterAction()
     {
-        // npc 대화 구현 
+        // npc 대화 구현
+        if (interAction)
+        {
+            Vector3 searchVec = transform.position;
+            searchVec.y += 0.5f;
+            bool check = Physics.Raycast(searchVec, transform.forward, 1f, LayerMask.GetMask("NPC"));
+
+            if (check)
+            {
+                Debug.Log("안녕");
+            }
+
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
