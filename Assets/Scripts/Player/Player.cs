@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpPower = 8f;
 
     public GameManager manager;
+    public TalkManager talkManager;
 
     float hAxis;
     float vAxis;
@@ -51,6 +52,8 @@ public class Player : MonoBehaviour
 
     Rigidbody rigid;
     Animator anim;
+
+    GameObject scanObject;
 
     GameObject objs;
     public Weapon equipWeapons;
@@ -116,10 +119,29 @@ public class Player : MonoBehaviour
         isBorder = Physics.Raycast(rayVec, transform.forward, 1f, LayerMask.GetMask("Border", "Objects"));
     }
 
+    void Scanning()
+    {
+        RaycastHit rayHit;
+        Vector3 searchVec = transform.position;
+        searchVec.y += 0.3f;
+        Debug.DrawRay(searchVec, transform.forward * 1f, Color.red);
+        bool check = Physics.Raycast(searchVec, transform.forward, out rayHit, 1f, LayerMask.GetMask("NPC"));
+        
+        if (check)
+        {
+            scanObject = rayHit.collider.gameObject;
+        }
+        else
+        {
+            scanObject = null;
+        }
+    }
+
     private void FixedUpdate()
     {
         FreezeRotation();
         StopWall();
+        Scanning();
     }
 
     // 충돌 수정 끝
@@ -188,7 +210,7 @@ public class Player : MonoBehaviour
             moveVec = dodgeVec;
 
         // 움직임 제한
-        if (isSwap || isReload ||!isFire || isDead)
+        if (isSwap || isReload ||!isFire || isDead || talkManager.isAction)
             moveVec = Vector3.zero;
 
         if (!isBorder)
@@ -203,7 +225,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (jumpDown && !isJump && !isDodge && !isReload && !isDead)
+        if (jumpDown && !isJump && !isDodge && !isReload && !isDead && (!talkManager.isAction))
         {
             // 즉각 반응
             rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
@@ -227,7 +249,7 @@ public class Player : MonoBehaviour
         fireDelay += Time.deltaTime;
         isFire = equipWeapons.rate < fireDelay;
 
-        if (fireDown && isFire && !isDodge && !isSwap && !isDead)
+        if (fireDown && isFire && !isDodge && !isSwap && !isDead && !(talkManager.isAction))
         {
             equipWeapons.Use();
             anim.SetTrigger(equipWeapons.type == Weapon.Type.Melee ? "doSwing" : "doShot");
@@ -240,7 +262,7 @@ public class Player : MonoBehaviour
         if (hasGrenades == 0)
             return;
 
-        if (grenadeDown && !isSwap && !isDodge && !isReload && !isDead)
+        if (grenadeDown && !isSwap && !isDodge && !isReload && !isDead && !(talkManager.isAction))
         {
             GameObject instantGrenade = Instantiate(grenadeObj, grenadePos.position, grenadePos.rotation);
             Rigidbody grenadeRigid = instantGrenade.GetComponent<Rigidbody>();
@@ -269,7 +291,7 @@ public class Player : MonoBehaviour
         if (equipWeapons.curAmmo == equipWeapons.maxAmmo)
             return;
 
-        if (ReloadDown && !isJump && !isDodge && !isSwap && isFire && !isDead)
+        if (ReloadDown && !isJump && !isDodge && !isSwap && isFire && !isDead && !(talkManager.isAction))
         {
             anim.SetTrigger("doReload");
             isReload = true;
@@ -289,7 +311,7 @@ public class Player : MonoBehaviour
 
     void Dodge()
     {
-        if (dodgeDown && !isJump && moveVec != Vector3.zero && !isDodge && !isDead)
+        if (dodgeDown && !isJump && moveVec != Vector3.zero && !isDodge && !isDead && !(talkManager.isAction))
         {
             dodgeVec = moveVec;
 
@@ -310,19 +332,11 @@ public class Player : MonoBehaviour
 
     void InterAction()
     {
-        // npc 대화 구현
-        if (interAction)
+        if (interAction && scanObject != null)
         {
-            Vector3 searchVec = transform.position;
-            searchVec.y += 0.5f;
-            bool check = Physics.Raycast(searchVec, transform.forward, 1f, LayerMask.GetMask("NPC"));
-
-            if (check)
-            {
-                Debug.Log("안녕");
-            }
-
+            talkManager.Action(scanObject);
         }
+
     }
 
     private void OnCollisionEnter(Collision collision)
