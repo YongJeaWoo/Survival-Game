@@ -5,31 +5,28 @@ using UnityEngine.UI;
 
 public class TalkManager : MonoBehaviour
 {
-    public Text nameText;
-    public Text descriptionText;
-    public GameObject scanObject;
-    public Animator anim;
+    // 대화 값 넣기
+    Dictionary<int, string[]> talkData;
 
-    // ui 끄기
-    public GameObject uiOff;
-
-    public bool isAction;
-
-    public void Action(GameObject scanObj)
+    private void Awake()
     {
-        if (isAction)
-        {
-            isAction = false;
-            uiOff.SetActive(true);
-            anim.SetBool("isOpen", false);
-        }
+        talkData = new Dictionary<int, string[]>();             // 빈 공간 생성
+        GenerateData();
+    }
+
+    // 대사 시작
+    // TODO : 대사를 더 추가하면서 동시에 적 오브젝트들을 멈추고 대사는 진행이 되어야 함
+    void GenerateData()
+    {
+        talkData.Add(1, new string[] {"훌쩍...", "언제 오는 거야.."});
+    }
+
+    public string GetTalk(int id, int talkIndex)
+    {
+        // 대화가 끝났나?
+        if (talkIndex == talkData[id].Length)
+            return null;
         else
-        {
-            isAction = true;
-            uiOff.SetActive(false);
-            anim.SetBool("isOpen", true);
-            scanObject = scanObj;
-            nameText.text = scanObject.name;
-        }
+            return talkData[id][talkIndex];
     }
 }

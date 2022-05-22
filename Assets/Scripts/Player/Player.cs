@@ -210,7 +210,7 @@ public class Player : MonoBehaviour
             moveVec = dodgeVec;
 
         // 움직임 제한
-        if (isSwap || isReload ||!isFire || isDead || talkManager.isAction)
+        if (isSwap || isReload ||!isFire || isDead || manager.isAction)
             moveVec = Vector3.zero;
 
         if (!isBorder)
@@ -225,7 +225,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (jumpDown && !isJump && !isDodge && !isReload && !isDead && (!talkManager.isAction))
+        if (jumpDown && !isJump && !isDodge && !isReload && !isDead && (!manager.isAction))
         {
             // 즉각 반응
             rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
@@ -249,7 +249,7 @@ public class Player : MonoBehaviour
         fireDelay += Time.deltaTime;
         isFire = equipWeapons.rate < fireDelay;
 
-        if (fireDown && isFire && !isDodge && !isSwap && !isDead && !(talkManager.isAction))
+        if (fireDown && isFire && !isDodge && !isSwap && !isDead && !(manager.isAction))
         {
             equipWeapons.Use();
             anim.SetTrigger(equipWeapons.type == Weapon.Type.Melee ? "doSwing" : "doShot");
@@ -262,7 +262,7 @@ public class Player : MonoBehaviour
         if (hasGrenades == 0)
             return;
 
-        if (grenadeDown && !isSwap && !isDodge && !isReload && !isDead && !(talkManager.isAction))
+        if (grenadeDown && !isSwap && !isDodge && !isReload && !isDead && !(manager.isAction))
         {
             GameObject instantGrenade = Instantiate(grenadeObj, grenadePos.position, grenadePos.rotation);
             Rigidbody grenadeRigid = instantGrenade.GetComponent<Rigidbody>();
@@ -291,7 +291,7 @@ public class Player : MonoBehaviour
         if (equipWeapons.curAmmo == equipWeapons.maxAmmo)
             return;
 
-        if (ReloadDown && !isJump && !isDodge && !isSwap && isFire && !isDead && !(talkManager.isAction))
+        if (ReloadDown && !isJump && !isDodge && !isSwap && isFire && !isDead && !(manager.isAction))
         {
             anim.SetTrigger("doReload");
             isReload = true;
@@ -311,7 +311,7 @@ public class Player : MonoBehaviour
 
     void Dodge()
     {
-        if (dodgeDown && !isJump && moveVec != Vector3.zero && !isDodge && !isDead && !(talkManager.isAction))
+        if (dodgeDown && !isJump && moveVec != Vector3.zero && !isDodge && !isDead && !(manager.isAction))
         {
             dodgeVec = moveVec;
 
@@ -334,7 +334,7 @@ public class Player : MonoBehaviour
     {
         if (interAction && scanObject != null)
         {
-            talkManager.Action(scanObject);
+            manager.Action(scanObject);
         }
 
     }

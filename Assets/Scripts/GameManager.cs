@@ -12,8 +12,6 @@ public class GameManager : MonoBehaviour
     public GameObject inGameInfo;
     public Image firstDis;
 
-
-
     [Header ("InGame Units")]
     public Player player;
     public Boss boss;
@@ -43,6 +41,19 @@ public class GameManager : MonoBehaviour
     public Image weapon2Img;
     public Image weapon3Img;
     public Image weaponRImg;
+
+    [Header ("Conversation Info")]
+    public Text nameText;
+    public Text descriptionText;
+    public GameObject scanObject;
+    public Animator anim;
+
+    [Header("Info UI Off")]
+    public GameObject uiOff;
+    public bool isAction;
+    public int talkIndex;
+
+    public TalkManager talkManager;
 
 
     private void Awake()
@@ -158,5 +169,43 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("GameOverScene");
+    }
+
+    
+    // 대화창 표시
+    public void Action(GameObject scanObj)
+    {
+        scanObject = scanObj;
+        ObjData objData = scanObject.GetComponent<ObjData>();
+        Talk(objData.id, objData.isNpc);
+    }
+
+    void Talk(int id, bool isNpc)
+    {
+        string talkData = talkManager.GetTalk(id, talkIndex);
+
+        // 대화가 더 이상 없다면
+        if (talkData == null)
+        {
+            isAction = false;
+            uiOff.SetActive(true);
+            anim.SetBool("isOpen", false);
+            talkIndex = 0;      // 대화 초기화
+            return;
+        }
+
+        if (isNpc)
+        {
+            descriptionText.text = talkData;
+        }
+        else
+        {
+            descriptionText.text = talkData;
+        }
+
+        isAction = true;
+        talkIndex++;            // 대화 더 있으면 계속 증가
+        uiOff.SetActive(false);
+        anim.SetBool("isOpen", true);
     }
 }
