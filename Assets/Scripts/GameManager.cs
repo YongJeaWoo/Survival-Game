@@ -128,6 +128,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator GoodFade()
     {
+        uiOff.SetActive(false);
         float fadeCount = 0; // 첫 알파값
         while (fadeCount < 1.0f)
         {
@@ -191,6 +192,7 @@ public class GameManager : MonoBehaviour
             uiOff.SetActive(true);
             anim.SetBool("isOpen", false);
             talkIndex = 0;      // 대화 초기화
+            Time.timeScale = 1;
             return;
         }
 
@@ -202,7 +204,7 @@ public class GameManager : MonoBehaviour
         {
             descriptionText.text = talkData;
         }
-
+        Time.timeScale = 0;
         isAction = true;
         talkIndex++;            // 대화 더 있으면 계속 증가
         uiOff.SetActive(false);
