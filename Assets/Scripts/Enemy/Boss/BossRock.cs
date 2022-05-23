@@ -8,12 +8,12 @@ public class BossRock : enemyMissileTri
     float angularPower = 2;
     float scaleValue = 0.1f;
 
-    bool isShoot;
+    bool isShoot = false;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
-        StartCoroutine(GainPowerTime());
+        // StartCoroutine(GainPowerTime());
         StartCoroutine(GainPower());
     }
 
@@ -25,13 +25,22 @@ public class BossRock : enemyMissileTri
 
     IEnumerator GainPower()
     {
-        while(!isShoot)
+        while (scaleValue <= 5f)
         {
-            angularPower += 0.02f;
-            scaleValue += 0.01f;
+            angularPower += 1f * Time.deltaTime;
+            scaleValue += 3f * Time.deltaTime;
             transform.localScale = Vector3.one * scaleValue;
             rigid.AddTorque(transform.right * angularPower, ForceMode.Acceleration);
             yield return null;
         }
+
+        //while(!isShoot)
+        //{
+        //    angularPower += 1f * Time.deltaTime;
+        //    scaleValue += 3f * Time.deltaTime;
+        //    transform.localScale = Vector3.one * scaleValue;
+        //    rigid.AddTorque(transform.right * angularPower, ForceMode.Acceleration);
+        //    yield return null;
+        //}
     }
 }

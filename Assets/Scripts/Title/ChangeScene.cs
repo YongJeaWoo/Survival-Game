@@ -16,7 +16,7 @@ public class ChangeScene : MonoBehaviour
         if (Vector3.Distance(other.transform.position, transform.position) < 2f)
         {
             StartCoroutine(Fade());
-            Invoke("ChangeScn", 3f);
+            //Invoke("ChangeScn", 3f);
         }
     }
 
@@ -29,6 +29,7 @@ public class ChangeScene : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             image.color = new Color(0, 0, 0, fadeCount);
         }
+        ChangeScn();
     }
 
     void ChangeScn()
