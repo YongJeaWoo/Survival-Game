@@ -30,7 +30,7 @@ public class TalkManager : MonoBehaviour
 
         talkData.Add(11 + 2000, new string[] {"그쪽은 누구야..?",
                                             "나를 찾고 있는 사람이 있다고?",
-                                            "그건 아마 오빠일거야",
+                                            "이 상황에 찾는 건 아마 내 오빠겠지?",
                                             "하지만 난 다리를 다쳐서 거기까지 가다가 걸림돌이 될 거야.",
                                             "난 여기 숨어 있을 테니 우리 오빠를 데리고 같이 와 줬으면 해.",
                                             "가는 길에 도망칠 유일한 길목에 큰 괴물이 있어..",
@@ -54,8 +54,12 @@ public class TalkManager : MonoBehaviour
         {
             // 퀘스트 진행 순서 대사가 없을 경우
             // 퀘스트 맨 처음 대사 가지고 오기
+            // 아니면 기존 대사 가져오기
             if (!talkData.ContainsKey(id - id % 10))
+            {
                 return GetTalk(id - id % 100, talkIndex);
+                
+            }
             else
                 return GetTalk(id - id % 10, talkIndex);
         }

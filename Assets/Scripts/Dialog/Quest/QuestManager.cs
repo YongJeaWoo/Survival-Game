@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    public GameObject bossEmergence;
+    public GameObject bossHpBar;
+
     public GameObject questObject;
     public int questId;
     public int questOrder;
@@ -66,8 +69,16 @@ public class QuestManager : MonoBehaviour
                     questObject.SetActive(true);
                 break;
             case 20:
-                if (questOrder == 2)
-                    questObject.SetActive(false);
+                {
+                    if (questId == 0)
+                        questObject.SetActive(false);
+
+                    bossEmergence.SetActive(true);
+                    bossHpBar.SetActive(true);
+                }
+                break;
+            case 30:
+
                 break;
         }
     }
