@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(questManager.CheckQuest());
+        questManager.CheckQuest();
     }
 
     private void Awake()

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    public GameObject bossEmergence;
     public GameObject bossHpBar;
 
-    public GameObject questObject;
+    public GameObject[] questObject;
     public int questId;
     public int questOrder;      // 퀘스트 대화 순서
 
@@ -25,7 +24,7 @@ public class QuestManager : MonoBehaviour
                                         new int[] {1000, 2000}));
 
         questList.Add(20, new QuestData("보스를 잡자",
-                                        new int[] {2000}));
+                                        new int[] {2000, 5000}));
 
         questList.Add(30, new QuestData("퀘스트 클리어",
                                         new int[] {0}));
@@ -66,19 +65,21 @@ public class QuestManager : MonoBehaviour
         {
             case 10:
                 if (questOrder == 1)
-                    questObject.SetActive(true);
+                {
+                    questObject[0].SetActive(true);
+                }
                 break;
             case 20:
                 {
-                    if (questId == 0)
-                        questObject.SetActive(false);
-
-                    bossEmergence.SetActive(true);
-                    bossHpBar.SetActive(true);
+                    if (questOrder == 1)
+                    {
+                        questObject[0].SetActive(false);
+                        questObject[1].SetActive(true);
+                        bossHpBar.SetActive(true);
+                    }
                 }
                 break;
             case 30:
-
                 break;
         }
     }
