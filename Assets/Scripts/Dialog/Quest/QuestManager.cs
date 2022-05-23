@@ -9,7 +9,7 @@ public class QuestManager : MonoBehaviour
 
     public GameObject questObject;
     public int questId;
-    public int questOrder;
+    public int questOrder;      // 퀘스트 대화 순서
 
     Dictionary<int, QuestData> questList;
 
@@ -25,7 +25,7 @@ public class QuestManager : MonoBehaviour
                                         new int[] {1000, 2000}));
 
         questList.Add(20, new QuestData("보스를 잡자",
-                                        new int[] {1000, 2000 }));
+                                        new int[] {2000}));
 
         questList.Add(30, new QuestData("퀘스트 클리어",
                                         new int[] {0}));
