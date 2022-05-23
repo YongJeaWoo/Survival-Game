@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
         Vector3 rayVec = transform.position;
         rayVec.y += 0.5f;
         Debug.DrawRay(rayVec, transform.forward * 1f, Color.green);
-        isBorder = Physics.Raycast(rayVec, transform.forward, 1f, LayerMask.GetMask("Border", "Objects"));
+        isBorder = Physics.Raycast(rayVec, transform.forward, 1f, LayerMask.GetMask("Border", "Objects", "NPC"));
     }
 
     void Scanning()
@@ -124,8 +124,8 @@ public class Player : MonoBehaviour
         RaycastHit rayHit;
         Vector3 searchVec = transform.position;
         searchVec.y += 0.3f;
-        Debug.DrawRay(searchVec, transform.forward * 1f, Color.red);
-        bool check = Physics.Raycast(searchVec, transform.forward, out rayHit, 1f, LayerMask.GetMask("NPC"));
+        Debug.DrawRay(searchVec, transform.forward * 1.5f, Color.red);
+        bool check = Physics.Raycast(searchVec, transform.forward, out rayHit, 1.5f, LayerMask.GetMask("NPC"));
         
         if (check)
         {

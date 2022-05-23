@@ -53,8 +53,14 @@ public class GameManager : MonoBehaviour
     public bool isAction;
     public int talkIndex;
 
+    [Header("Another Manager")]
     public TalkManager talkManager;
+    public QuestManager questManager;
 
+    private void Start()
+    {
+        Debug.Log(questManager.CheckQuest());
+    }
 
     private void Awake()
     {
@@ -183,7 +189,8 @@ public class GameManager : MonoBehaviour
 
     void Talk(int id, bool isNpc)
     {
-        string talkData = talkManager.GetTalk(id, talkIndex);
+        int questIndex = questManager.GetQuestIndex(id);
+        string talkData = talkManager.GetTalk(id + questIndex, talkIndex);
 
         // 대화가 더 이상 없다면
         if (talkData == null)
@@ -192,6 +199,7 @@ public class GameManager : MonoBehaviour
             uiOff.SetActive(true);
             anim.SetBool("isOpen", false);
             talkIndex = 0;      // 대화 초기화
+            Debug.Log(questManager.CheckQuest(id));      // 대사 끝나면 퀘스트 진행
             Time.timeScale = 1;
             return;
         }
