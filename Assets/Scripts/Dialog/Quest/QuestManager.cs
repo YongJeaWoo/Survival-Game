@@ -28,6 +28,15 @@ public class QuestManager : MonoBehaviour
 
         questList.Add(30, new QuestData("퀘스트 클리어",
                                         new int[] {2000, 1000}));
+
+        questList.Add(40, new QuestData("NPC와의 대화",
+                                        new int[] {2000, 1000}));
+
+        questList.Add(50, new QuestData("엔딩 분기 시작",
+                                        new int[] {2000, 2000, 2000}));
+
+        questList.Add(60, new QuestData("엔딩을 향해서",
+                                        new int[] {0}));
     }
 
     public int GetQuestIndex(int id)
@@ -38,12 +47,18 @@ public class QuestManager : MonoBehaviour
     public string CheckQuest(int id)
     {
         if (id == questList[questId].npcId[questOrder])
+        {
             questOrder++;
-
-        ControlObject();
+            Debug.Log(questList[questId].questName);      // 퀘스트 오더가 늘어 났을때 발생
+        }
 
         if (questOrder == questList[questId].npcId.Length)
+        {
             NextQuest();
+            Debug.Log(questList[questId].questName);      // 다음 퀘스트가 진행 됐을때 발생
+        }
+
+        ControlObject();
 
         return questList[questId].questName;
     }
@@ -67,7 +82,7 @@ public class QuestManager : MonoBehaviour
                 break;
             case 20:
                 {
-                    if (questOrder == 1)
+                    if (questOrder == 1)    // 진행도
                     {
                         questObject[1].SetActive(true);
                         bossHpBar.SetActive(true);
@@ -76,12 +91,19 @@ public class QuestManager : MonoBehaviour
                 break;
             case 30:
                 {
-                    if (questOrder == 1)
+                    if (questOrder == 0)
                     {
-                        questObject[1].SetActive(false);
                         bossHpBar.SetActive(false);
                     }
                 }
+                break;
+            case 40:
+                break;
+            case 50:
+                break;
+            case 60:
+                break;
+            case 70:
                 break;
         }
     }

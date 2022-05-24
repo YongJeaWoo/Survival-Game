@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -305,7 +305,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1407684097}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -327,19 +327,20 @@ MonoBehaviour:
   info:
     name: "\uB098"
     descriptions:
-    - "\uAC70\uB300\uD55C \uAD34\uBB3C\uC774 \uB9C9\uACE0 \uC788\uC5B4 \uC9C0\uB098\uAC00\uC9C0
-      \uBABB\uD588\uB358 \uAE38\uC744 \uAC08 \uC218 \uC788\uC5C8\uB2E4."
-    - "\uC774 \uB9C8\uC744\uC5D0 \uC0DD\uC874\uC790\uAC00 \uC788\uB294\uC9C0\uB294
-      \uC798 \uBAA8\uB974\uACA0\uC9C0\uB9CC"
-    - "\uADF8\uB098\uB9C8 \uB2E4\uD589\uC778 \uAC83\uC740 \uAC70\uB300 \uAD34\uBB3C\uC744
-      \uC7A1\uACE0 \uB098\uC11C \uB354 \uC774\uC0C1 \uAD34\uBB3C\uB4E4\uC740 \uB098\uC624\uC9C0
-      \uC54A\uC558\uB2E4."
-    - "\uC6C0\uC9C1\uC774\uB294 \uCC28\uB7C9\uC740 \uBCF4\uC774\uC9C0 \uC54A\uC558\uACE0,
-      \uD734\uB300\uD3F0\uB3C4 \uBA39\uD1B5\uC778 \uC0C1\uD0DC\uB2E4."
-    - "\uB2E4\uB978 \uC9C0\uC5ED\uB3C4 \uB611\uAC19\uC740 \uAC83\uC77C\uAE4C?"
-    - "... \uAC00 \uBCF4\uBA74 \uC54C\uAC8C \uB418\uACA0\uC9C0."
-    - "\uADF8\uB807\uAC8C \uB09C \uAC71\uC815\uACFC \uAE30\uB300\uAC00 \uC11E\uC778
-      \uCC44\uB85C \uC774\uC5B4\uC9C4 \uAE38\uC744 \uCB49 \uB098\uC544\uAC14\uB2E4.."
+    - "\uB098\uB294 \uBCF4\uC2A4\uB97C \uC7A1\uACE0 \uB9C9\uD78C \uAE38\uC744 \uBCF4\uC790\uB9C8\uC790
+      \uB2EC\uB824\uB4E4\uC5C8\uB2E4."
+    - "\uADF8\uB807\uAC8C \uB05D\uC5C6\uC774 \uB2EC\uB9AC\uB2E4 \uC228\uC774 \uCC28\uC11C
+      \uBA48\uCDC4\uC744 \uB54C"
+    - "\uBB38\uB4DD \uC0DD\uC874\uC790\uB97C \uB5A0\uC62C\uB838\uB2E4."
+    - "\uC0DD\uAC01\uD574\uBCF4\uB2C8 \uADF8\uB4E4\uC740 \uC0B4\uC544\uC788\uC744\uAE4C?"
+    - "\uB2E4\uC2DC \uB3CC\uC544\uC640 \uB2EC\uB77C\uB294 \uBD80\uD0C1\uC744 \uBC1B\uC558\uC5C8\uB294\uB370"
+    - "\uC18D\uB9C8\uC74C\uC5D0\uC120 \uAE38\uC774 \uB6AB\uB9B0 \uC21C\uAC04\uB9CC\uC744
+      \uAE30\uB2E4\uB838\uB294\uC9C0 "
+    - "\uB098\uB3C4 \uBAA8\uB974\uAC8C \uADF8\uB9CC \uC9C0\uB098\uAC00\uACE0 \uB9D0\uC558\uB2E4."
+    - "\uB2E4\uC2DC \uB3CC\uC544\uAC00\uAE30\uC5D0\uB294 \uAD34\uBB3C\uC774 \uB354
+      \uB098\uC62C \uB450\uB824\uC6C0\uC5D0 \uBC1C\uC744 \uB5BC\uC9C0 \uBABB\uD588\uB2E4."
+    - "\uADF8\uB807\uAC8C \uB098\uB294 \uBB34\uAC70\uC6B4 \uBC1C\uAC78\uC74C\uC73C\uB85C
+      \uB098\uC544\uC9C4 \uAE38\uC744 \uACC4\uC18D \uD5A5\uD574 \uAC14\uB2E4.."
 --- !u!114 &171446718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -841,7 +842,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 24007132}
-  - {fileID: 1994206707}
   - {fileID: 2147028281}
   - {fileID: 171446716}
   m_Father: {fileID: 0}
@@ -900,80 +900,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1994206706
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1994206707}
-  - component: {fileID: 1994206710}
-  - component: {fileID: 1994206709}
-  m_Layer: 5
-  m_Name: Panel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1994206707
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994206706}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1407684097}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1994206709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994206706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.15686275}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1994206710
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994206706}
-  m_CullTransparentMesh: 0
 --- !u!1 &2147028280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,7 +934,7 @@ RectTransform:
   - {fileID: 458303017}
   - {fileID: 151910473}
   m_Father: {fileID: 1407684097}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}

@@ -123,6 +123,7 @@ public class Boss : Enemy
 
             yield return new WaitForSeconds(1.5f);
             attackArea.enabled = true;
+            boxCollider.enabled = true;
 
             yield return new WaitForSeconds(0.5f);
             attackArea.enabled = false;
@@ -130,7 +131,6 @@ public class Boss : Enemy
             yield return new WaitForSeconds(3f);
             isLook = true;
             nav.isStopped = true;
-            boxCollider.enabled = true;
             StartCoroutine(Think());
         }
         else

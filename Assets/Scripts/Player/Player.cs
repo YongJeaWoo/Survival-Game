@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     public GameManager manager;
     public TalkManager talkManager;
+    public QuestManager questManager;
 
     float hAxis;
     float vAxis;
@@ -420,7 +421,12 @@ public class Player : MonoBehaviour
         // 굿 엔딩 분기점
         else if (other.CompareTag("Victory"))
         {
-            manager.GoodEnding();
+            // 봤으면
+            if (questManager.questId >= 40)
+                manager.BadEnding();
+            // 안봤으면 열린 결말
+            else
+                manager.GoodEnding();
         }
     }
 

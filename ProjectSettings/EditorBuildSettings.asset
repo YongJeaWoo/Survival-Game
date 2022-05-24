@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOverScene.unity
     guid: a857e2b4f232dcf47b2b1db70e03cd84
   - enabled: 1
-    path: Assets/Scenes/OpenEndingScene.unity
+    path: Assets/Scenes/NPCNOTSeeScene.unity
     guid: 3a22285024ab67f4e967b754798b0ef4
+  - enabled: 1
+    path: Assets/Scenes/NPCSeeScene.unity
+    guid: 1661ea9df1f819247af64fd742aaf342
   m_configObjects: {}

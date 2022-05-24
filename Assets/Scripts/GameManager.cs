@@ -126,13 +126,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // npc 안 봄
     public void GoodEnding()
     {
-        StartCoroutine(GoodFade());
-        Invoke("VictoryChangeScn", 3f);
+        StartCoroutine(VictoryChangeScene());
     }
 
-    IEnumerator GoodFade()
+
+    // npc 봄
+    public void BadEnding()
+    {
+        StartCoroutine(VictoryButChangeScn());
+    }
+
+    // 열린엔딩 npc 안 봤다
+    IEnumerator VictoryChangeScene()
     {
         uiOff.SetActive(false);
         float fadeCount = 0; // 첫 알파값
@@ -142,20 +150,33 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             image.color = new Color(0, 0, 0, fadeCount);
         }
-    }
 
-    public void VictoryChangeScn()
-    {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.None;
-        SceneManager.LoadScene("OpenEndingScene");
+        SceneManager.LoadScene("NPCNOTSeeScene");
+    }
+
+    // 충격엔딩 npc 봤다
+    IEnumerator VictoryButChangeScn()
+    {
+        uiOff.SetActive(false);
+        float fadeCount = 0; // 첫 알파값
+        while (fadeCount < 1.0f)
+        {
+            fadeCount += 0.01f;
+            yield return new WaitForSeconds(0.01f);
+            image.color = new Color(0, 0, 0, fadeCount);
+        }
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene("NPCSeeScene");
     }
 
 
     public void GameOver()
     {
         StartCoroutine(GameOverFade());
-        Invoke("ChangeScn", 3f);
     }
 
     IEnumerator GameOverFade()
@@ -169,15 +190,11 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             image.color = new Color(0, 0, 0, fadeCount);
         }
-    }
 
-    void ChangeScn()
-    {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("GameOverScene");
     }
-
     
     // 대화창 표시
     public void Action(GameObject scanObj)
@@ -199,7 +216,7 @@ public class GameManager : MonoBehaviour
             uiOff.SetActive(true);
             anim.SetBool("isOpen", false);
             talkIndex = 0;      // 대화 초기화
-            Debug.Log(questManager.CheckQuest(id));      // 대사 끝나면 퀘스트 진행
+            questManager.CheckQuest(id);
             Time.timeScale = 1;
             return;
         }
