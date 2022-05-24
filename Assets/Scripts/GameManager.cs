@@ -142,6 +142,19 @@ public class GameManager : MonoBehaviour
         {
             int ran = Random.Range(0, 3);
             enemyList.Add(ran);
+
+            switch (ran)
+            {
+                case 0:
+                    enemyACount++;
+                    break;
+                case 1:
+                    enemyBCount++;
+                    break;
+                case 2:
+                    enemyCCount++;
+                    break;
+            }
         }
 
         while(enemyList.Count > 0)
