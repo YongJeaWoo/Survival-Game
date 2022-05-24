@@ -27,7 +27,7 @@ public class QuestManager : MonoBehaviour
                                         new int[] {2000, 5000}));
 
         questList.Add(30, new QuestData("퀘스트 클리어",
-                                        new int[] {0}));
+                                        new int[] {2000, 1000}));
     }
 
     public int GetQuestIndex(int id)
@@ -73,13 +73,17 @@ public class QuestManager : MonoBehaviour
                 {
                     if (questOrder == 1)
                     {
-                        questObject[0].SetActive(false);
                         questObject[1].SetActive(true);
                         bossHpBar.SetActive(true);
                     }
                 }
                 break;
             case 30:
+                {
+                    questObject[0].SetActive(false);
+                    bossHpBar.SetActive(false);
+
+                }
                 break;
         }
     }

@@ -40,6 +40,9 @@ public class TalkManager : MonoBehaviour
                                             "그 괴물을 조심해. : 1"});
 
         talkData.Add(2000 + 20 + 1, new string[] { "난 어서 들어가봐야겠어. 내 걱정은 하지 마. : 1" });
+
+        talkData.Add(1000 + 30, new string[] { "보이지 않는다." });
+        talkData.Add(2000 + 30, new string[] {"싸늘한 시체만이 나를 반기고 있다."});
     }
 
     // 대화를 받기
