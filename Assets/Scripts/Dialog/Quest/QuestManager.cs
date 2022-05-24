@@ -40,10 +40,10 @@ public class QuestManager : MonoBehaviour
         if (id == questList[questId].npcId[questOrder])
             questOrder++;
 
+        ControlObject();
+
         if (questOrder == questList[questId].npcId.Length)
             NextQuest();
-
-        ControlObject();
 
         return questList[questId].questName;
     }
@@ -64,10 +64,6 @@ public class QuestManager : MonoBehaviour
         switch (questId)
         {
             case 10:
-                if (questOrder == 1)
-                {
-                    questObject[0].SetActive(true);
-                }
                 break;
             case 20:
                 {
@@ -80,9 +76,11 @@ public class QuestManager : MonoBehaviour
                 break;
             case 30:
                 {
-                    questObject[0].SetActive(false);
-                    bossHpBar.SetActive(false);
-
+                    if (questOrder == 1)
+                    {
+                        questObject[1].SetActive(false);
+                        bossHpBar.SetActive(false);
+                    }
                 }
                 break;
         }

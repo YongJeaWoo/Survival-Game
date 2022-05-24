@@ -20,6 +20,7 @@ public class TalkManager : MonoBehaviour
         // 일반 대화
         talkData.Add(1000, new string[] {"빨리 돌아가야 해.."});              
         talkData.Add(2000, new string[] {"훌쩍...", "언제 오는 거야.."});  // 동생
+        talkData.Add(5000, new string[] {"괴물은 나에게 죽어 싸늘한 시체로 남아있다."});       // 보스
 
         // 퀘스트 대화
         talkData.Add(1000 + 10, new string[] {"으악! 깜짝이야.", "맞다. 혹시 한 여자아이를 못 봤어? : 0",

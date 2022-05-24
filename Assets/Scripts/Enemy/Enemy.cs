@@ -226,8 +226,6 @@ public class Enemy : MonoBehaviour
 
             if (!(enemyType == Type.Boss))
                 Destroy(gameObject, 4f);
-            else
-                gameObject.SetActive(false);
         }
     }
 

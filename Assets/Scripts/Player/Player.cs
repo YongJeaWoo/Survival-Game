@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
         Vector3 searchVec = transform.position;
         searchVec.y += 0.3f;
         Debug.DrawRay(searchVec, transform.forward * 1.5f, Color.red);
-        bool check = Physics.Raycast(searchVec, transform.forward, out rayHit, 1.5f, LayerMask.GetMask("NPC"));
+        bool check = Physics.Raycast(searchVec, transform.forward, out rayHit, 1.5f, LayerMask.GetMask("NPC", "EnemyDead"));
         
         if (check)
         {
