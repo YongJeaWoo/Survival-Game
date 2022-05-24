@@ -382,6 +382,7 @@ public class Player : MonoBehaviour
                         hasGrenades = maxHasGrenades;
                     break;
                 case Item.Type.Hp:
+                    hp += item.value;
                     if (hp > maxHp)
                         hp = maxHp;
                     break;
