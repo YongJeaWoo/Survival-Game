@@ -57,6 +57,11 @@ public class GameManager : MonoBehaviour
     public TalkManager talkManager;
     public QuestManager questManager;
 
+    [Header("EnemySpawnZone")]
+    public Transform[] enemyZones;
+    public GameObject[] enemies;
+    public List<int> enemyList;
+
     private void Start()
     {
         questManager.CheckQuest();
@@ -64,8 +69,11 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        enemyList = new List<int>();
+
         StartCoroutine(Fade());
         StartCoroutine(ShowDisplayInfo());
+        StartCoroutine(Spawn());
     }
 
     IEnumerator Fade()
@@ -123,6 +131,27 @@ public class GameManager : MonoBehaviour
         else
         {
             bossHpGroup.anchoredPosition = Vector3.up * 200;
+        }
+    }
+
+    IEnumerator Spawn()
+    {
+        yield return new WaitForSeconds(10f);
+
+        for (int index = 0; index < 10; index++)
+        {
+            int ran = Random.Range(0, 3);
+            enemyList.Add(ran);
+        }
+
+        while(enemyList.Count > 0)
+        {
+            int ranZone = Random.Range(0, 4);
+            GameObject instantEnemy = Instantiate(enemies[enemyList[0]], enemyZones[ranZone].position, enemyZones[ranZone].rotation);
+            Enemy enemy = instantEnemy.GetComponent<Enemy>();
+            enemy.target = player.transform;
+            enemyList.RemoveAt(0);  // 생성 후 지우기
+            yield return new WaitForSeconds(4f);
         }
     }
 
