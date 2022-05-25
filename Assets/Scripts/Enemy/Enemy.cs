@@ -206,6 +206,21 @@ public class Enemy : MonoBehaviour
             nav.enabled = false;
             anim.SetTrigger("doDie");
 
+            switch (enemyType)
+            {
+                case Type.A:
+                    SpawnManager.Instance.enemyACount--;
+                    break;
+                case Type.B:
+                    SpawnManager.Instance.enemyBCount--;
+                    break;
+                case Type.C:
+                    SpawnManager.Instance.enemyCCount--;
+                    break;
+            }
+
+
+
             // 넉백
             if (grenadeReact)
             {
@@ -226,9 +241,6 @@ public class Enemy : MonoBehaviour
 
             if (!(enemyType == Type.Boss))
                 Destroy(gameObject, 4f);
-
-            if (enemyType == Type.Boss && curHp <= 0)
-                SpawnManager.Instance.bossHpGroup.SetActive(false);
         }
     }
 
