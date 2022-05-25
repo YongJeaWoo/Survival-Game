@@ -377,10 +377,12 @@ public class Player : MonoBehaviour
             switch (item.type)
             {
                 case Item.Type.Grenade:
-                    grenades[hasGrenades].SetActive(true);
-                    hasGrenades += item.value;
-                    if (hasGrenades > maxHasGrenades)
-                        hasGrenades = maxHasGrenades;
+                    {
+                        grenades[hasGrenades].SetActive(true);
+                        hasGrenades += item.value;
+                        if (hasGrenades > maxHasGrenades)
+                            hasGrenades = maxHasGrenades;
+                    }
                     break;
                 case Item.Type.Hp:
                     hp += item.value;

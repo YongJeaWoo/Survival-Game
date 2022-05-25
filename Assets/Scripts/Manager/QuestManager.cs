@@ -4,16 +4,31 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    public GameObject bossHpBar;
-
     public GameObject[] questObject;
     public int questId;
     public int questOrder;      // 퀘스트 대화 순서
 
     Dictionary<int, QuestData> questList;
 
+    // 싱글톤
+    private static QuestManager instance = null;
+    public static QuestManager Instance
+    {
+        get
+        {
+            if (null == instance)
+                instance = new QuestManager();
+            return instance;
+        }
+    }
+
     private void Awake()
     {
+        if (null == instance)
+        {
+            instance = this;
+        }
+
         questList = new Dictionary<int, QuestData>();   // 생성
         GenerateData();
     }
@@ -85,17 +100,10 @@ public class QuestManager : MonoBehaviour
                     if (questOrder == 1)    // 진행도
                     {
                         SpawnManager.Instance.SpawnBoss();
-                        bossHpBar.SetActive(true);
                     }
                 }
                 break;
             case 30:
-                {
-                    if (questOrder == 0)
-                    {
-                        bossHpBar.SetActive(false);
-                    }
-                }
                 break;
             case 40:
                 break;

@@ -140,6 +140,11 @@ public class Boss : Enemy
         }
     }
 
+    protected override IEnumerator Ondamage(Vector3 reactVec, bool grenadeReact)
+    {
+        yield return null;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;

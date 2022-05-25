@@ -16,6 +16,7 @@ public class SpawnManager : MonoBehaviour
 
     [Header("Unit Info")]
     public Player player;
+    public Boss boss;
 
     [Header("Enemy Spawn Info")]
     public Transform[] enemyZones;
@@ -25,6 +26,9 @@ public class SpawnManager : MonoBehaviour
     [Header("Boss Spawn Info")]
     public Transform bossZone;
     public GameObject finalBoss;
+    public GameObject bossHpGroup;
+    public RectTransform bossCurHp;
+    public bool bossAppear = false;
 
     // 싱글톤
     private static SpawnManager instance = null;
@@ -57,6 +61,8 @@ public class SpawnManager : MonoBehaviour
         enemyATxt.text = enemyACount.ToString();
         enemyBTxt.text = enemyBCount.ToString();
         enemyCTxt.text = enemyCCount.ToString();
+
+        // bossCurHp.localScale = new Vector3(boss.curHp / boss.maxHp, 1, 1);
     }
 
     IEnumerator Spawn()
@@ -95,9 +101,23 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnBoss()
     {
+        if (bossAppear)
+            return;
+
+        bossAppear = true;
+
+        // 생성
         GameObject instantBoss = Instantiate(finalBoss, bossZone.position, bossZone.rotation);
         instantBoss.transform.Rotate(Vector3.up * 180);
+
         Boss boss = instantBoss.GetComponent<Boss>();
+        bossHpGroup.SetActive(true);
+        
+        if (instantBoss != null)
+        {
+            bossCurHp.localScale = new Vector3((float)boss.curHp / boss.maxHp, 1, 1);
+        }
+
         boss.target = player.transform;
     }
 }

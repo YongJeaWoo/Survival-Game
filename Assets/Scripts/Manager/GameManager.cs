@@ -14,18 +14,10 @@ public class GameManager : MonoBehaviour
 
     [Header ("InGame Units")]
     public Player player;
-    public Boss boss;
-
-    [Header ("UI Info")]
-    public GameObject gamePanel;
 
     [Header("Player Info")]
     public Text playerHpTxt;
     public Text playerAmmoTxt;
-
-    [Header("Boss Info")]
-    public RectTransform bossHpGroup;
-    public RectTransform bossCurHpBar;
 
     [Header("Inven Window")]
     public Image weapon1Img;
@@ -100,17 +92,6 @@ public class GameManager : MonoBehaviour
         weapon2Img.color = new Color(1, 1, 1, player.hasWeapons[1] ? 1 : 0);
         weapon3Img.color = new Color(1, 1, 1, player.hasWeapons[2] ? 1 : 0);
         weaponRImg.color = new Color(1, 1, 1, player.hasGrenades > 0 ? 1 : 0);
-
-        // 보스 체력바
-        if (boss != null)
-        {
-            bossHpGroup.anchoredPosition = Vector3.down * 30;
-            bossCurHpBar.localScale = new Vector3((float)boss.curHp / boss.maxHp, 1, 1);
-        }
-        else
-        {
-            bossHpGroup.anchoredPosition = Vector3.up * 200;
-        }
     }
 
     // npc 안 봄
@@ -118,7 +99,6 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(VictoryChangeScene());
     }
-
 
     // npc 봄
     public void BadEnding()

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 548561766}
   - component: {fileID: 548561767}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 1081248779}
   - component: {fileID: 1081248781}
   - component: {fileID: 1081248780}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4858,9 +4858,9 @@ GameObject:
   - component: {fileID: 5154853945344886360}
   - component: {fileID: 1633087971211330487}
   - component: {fileID: 3200937051943329516}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Item Ammo
-  m_TagString: Untagged
+  m_TagString: Items
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4936,7 +4936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc9f82625a6d5b448a0a8fdcb8c7eaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
+  type: 2
   value: 30
 --- !u!1 &7726404944722560191
 GameObject:
@@ -4949,7 +4949,7 @@ GameObject:
   - component: {fileID: 5576427484955112895}
   - component: {fileID: 1246096104984553711}
   - component: {fileID: 3116183710115492793}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mesh Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}

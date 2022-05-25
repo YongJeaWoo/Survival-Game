@@ -177,7 +177,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    IEnumerator Ondamage(Vector3 reactVec, bool grenadeReact)
+    protected virtual IEnumerator Ondamage(Vector3 reactVec, bool grenadeReact)
     {
         foreach(MeshRenderer meshs in mesh)
         {
@@ -226,6 +226,9 @@ public class Enemy : MonoBehaviour
 
             if (!(enemyType == Type.Boss))
                 Destroy(gameObject, 4f);
+
+            if (enemyType == Type.Boss && curHp <= 0)
+                SpawnManager.Instance.bossHpGroup.SetActive(false);
         }
     }
 

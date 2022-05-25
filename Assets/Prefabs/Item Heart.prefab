@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 329550171}
   - component: {fileID: 329550172}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 2105640457}
   - component: {fileID: 2105640459}
   - component: {fileID: 2105640458}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4856,7 +4856,7 @@ GameObject:
   - component: {fileID: 1339041128679573930}
   - component: {fileID: 5629927408624864094}
   - component: {fileID: 5481428051362991567}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mesh Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4937,9 +4937,9 @@ GameObject:
   - component: {fileID: 525591178}
   - component: {fileID: 525591177}
   - component: {fileID: 9171116144396804226}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Item Heart
-  m_TagString: Untagged
+  m_TagString: Items
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5015,5 +5015,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc9f82625a6d5b448a0a8fdcb8c7eaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 4
-  value: 1
+  type: 3
+  value: 30

@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class DestroyWall : MonoBehaviour
 {
-    public Boss boss;
-
     private void Update()
     {
-        if (boss.curHp <= 0)
+        var pos = SpawnManager.Instance.finalBoss.transform.position;
+        var getPos = SpawnManager.Instance.bossZone.transform.position;
+        var bossTrue = SpawnManager.Instance.bossAppear;
+
+        if (bossTrue && pos != getPos)
             Destroy(gameObject);
     }
 }
