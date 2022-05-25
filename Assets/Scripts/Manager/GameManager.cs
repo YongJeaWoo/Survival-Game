@@ -16,21 +16,12 @@ public class GameManager : MonoBehaviour
     public Player player;
     public Boss boss;
 
-    public int enemyACount;
-    public int enemyBCount;
-    public int enemyCCount;
-
     [Header ("UI Info")]
     public GameObject gamePanel;
 
     [Header("Player Info")]
     public Text playerHpTxt;
     public Text playerAmmoTxt;
-
-    [Header("Enemy Info")]
-    public Text enemyATxt;
-    public Text enemyBTxt;
-    public Text enemyCTxt;
 
     [Header("Boss Info")]
     public RectTransform bossHpGroup;
@@ -57,11 +48,6 @@ public class GameManager : MonoBehaviour
     public TalkManager talkManager;
     public QuestManager questManager;
 
-    [Header("EnemySpawnZone")]
-    public Transform[] enemyZones;
-    public GameObject[] enemies;
-    public List<int> enemyList;
-
     private void Start()
     {
         questManager.CheckQuest();
@@ -69,11 +55,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        enemyList = new List<int>();
-
         StartCoroutine(Fade());
         StartCoroutine(ShowDisplayInfo());
-        StartCoroutine(Spawn());
     }
 
     IEnumerator Fade()
@@ -118,10 +101,6 @@ public class GameManager : MonoBehaviour
         weapon3Img.color = new Color(1, 1, 1, player.hasWeapons[2] ? 1 : 0);
         weaponRImg.color = new Color(1, 1, 1, player.hasGrenades > 0 ? 1 : 0);
 
-        enemyATxt.text = enemyACount.ToString();
-        enemyBTxt.text = enemyBCount.ToString();
-        enemyCTxt.text = enemyCCount.ToString();
-
         // 보스 체력바
         if (boss != null)
         {
@@ -131,40 +110,6 @@ public class GameManager : MonoBehaviour
         else
         {
             bossHpGroup.anchoredPosition = Vector3.up * 200;
-        }
-    }
-
-    IEnumerator Spawn()
-    {
-        yield return new WaitForSeconds(10f);
-
-        for (int index = 0; index < 10; index++)
-        {
-            int ran = Random.Range(0, 3);
-            enemyList.Add(ran);
-
-            switch (ran)
-            {
-                case 0:
-                    enemyACount++;
-                    break;
-                case 1:
-                    enemyBCount++;
-                    break;
-                case 2:
-                    enemyCCount++;
-                    break;
-            }
-        }
-
-        while(enemyList.Count > 0)
-        {
-            int ranZone = Random.Range(0, 4);
-            GameObject instantEnemy = Instantiate(enemies[enemyList[0]], enemyZones[ranZone].position, enemyZones[ranZone].rotation);
-            Enemy enemy = instantEnemy.GetComponent<Enemy>();
-            enemy.target = player.transform;
-            enemyList.RemoveAt(0);  // 생성 후 지우기
-            yield return new WaitForSeconds(4f);
         }
     }
 

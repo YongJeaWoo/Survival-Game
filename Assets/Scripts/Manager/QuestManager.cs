@@ -84,7 +84,7 @@ public class QuestManager : MonoBehaviour
                 {
                     if (questOrder == 1)    // 진행도
                     {
-                        questObject[1].SetActive(true);
+                        SpawnManager.Instance.SpawnBoss();
                         bossHpBar.SetActive(true);
                     }
                 }

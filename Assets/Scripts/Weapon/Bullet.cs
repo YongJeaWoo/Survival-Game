@@ -10,19 +10,19 @@ public class Bullet : MonoBehaviour
     {
         // 탄피 제거
         if (collision.gameObject.CompareTag("BulletCheck"))
-            Destroy(gameObject, 2f);
+            Destroy(gameObject,2f);
         else if (collision.gameObject.CompareTag("Ground"))
             Destroy(gameObject, 2f);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Objects"))
+        if (other.gameObject.tag == "BulletCheck")
+            Destroy(gameObject);
+        else if (other.gameObject.CompareTag("Objects"))
             Destroy(gameObject);
         else if (other.gameObject.CompareTag("Ground"))
             Destroy(gameObject, 1f);
-        else if (other.gameObject.CompareTag("BulletCheck"))
-            Destroy(gameObject);
         else if (other.gameObject.CompareTag("Enemy"))
             Destroy(gameObject);
     }
