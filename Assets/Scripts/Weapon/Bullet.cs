@@ -17,13 +17,15 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "BulletCheck")
+        if (other.gameObject.CompareTag("BulletCheck"))
             Destroy(gameObject);
         else if (other.gameObject.CompareTag("Objects"))
             Destroy(gameObject);
         else if (other.gameObject.CompareTag("Ground"))
             Destroy(gameObject, 1f);
         else if (other.gameObject.CompareTag("Enemy"))
+            Destroy(gameObject);
+        else if (other.gameObject.CompareTag("Boss"))
             Destroy(gameObject);
     }
 }

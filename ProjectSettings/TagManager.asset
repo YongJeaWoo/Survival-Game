@@ -16,6 +16,7 @@ TagManager:
   - EnemyBullet
   - EnemyMelee
   - Victory
+  - Boss
   layers:
   - Default
   - TransparentFX
