@@ -114,6 +114,12 @@ public class SpawnManager : MonoBehaviour
         boss.target = player.transform;
     }
 
+    public void DeleteBoss()
+    {
+        bossAppear = false;
+        boss = null;
+    }
+
     public void HPBossBar()
     {
         if (null != boss)

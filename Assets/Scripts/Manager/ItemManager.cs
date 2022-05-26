@@ -19,16 +19,16 @@ public class ItemManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
 
-        int ran = Random.Range(0, 3);
-        itemList.Add(ran);
-
         for (int index = 0; index < 20; index++)
         {
+            int ranItem = Random.Range(0, 3);
+            itemList.Add(ranItem);
+
             while (itemList.Count > 0)
             {
-                int ranZone = Random.Range(0, 7);
+                int ranZone = Random.Range(0, 8);
                 Instantiate(items[itemList[0]], itemZones[ranZone].position, itemZones[ranZone].rotation);
-                //itemList.RemoveAt(0);
+                itemList.RemoveAt(0);
                 yield return new WaitForSeconds(10f);
             }
         }

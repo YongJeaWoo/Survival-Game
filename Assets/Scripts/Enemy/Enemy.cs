@@ -228,7 +228,7 @@ public class Enemy : MonoBehaviour
                 rigid.freezeRotation = false;
                 //rigid.AddForce(reactVec * Random.Range(30, 50), ForceMode.Impulse);
                 //rigid.AddTorque(reactVec * 15, ForceMode.Impulse);
-                rigid.AddExplosionForce(50f, reactVec, 10, 5, ForceMode.Impulse);
+                rigid.AddExplosionForce(Random.Range(30, 60), reactVec, 10, 5, ForceMode.Impulse);
 
             }
             else

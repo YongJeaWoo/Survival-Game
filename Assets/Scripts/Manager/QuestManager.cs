@@ -104,6 +104,10 @@ public class QuestManager : MonoBehaviour
                 }
                 break;
             case 30:
+                {
+                    if (questId == 30)
+                        SpawnManager.Instance.DeleteBoss();
+                }
                 break;
             case 40:
                 break;

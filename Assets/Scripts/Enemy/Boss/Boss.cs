@@ -31,11 +31,16 @@ public class Boss : Enemy
 
     void Update()
     {
+        Vector3 checkPos = transform.position;
+
         if (isDead)
         {
             StopAllCoroutines();
             return;
         }
+
+        if (checkPos.y < -5)
+            checkPos.y = 1;
 
         if (isLook)
         {
