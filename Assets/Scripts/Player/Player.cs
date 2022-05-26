@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
 
     public GameManager manager;
     public TalkManager talkManager;
-    public QuestManager questManager;
 
     float hAxis;
     float vAxis;
@@ -127,13 +126,16 @@ public class Player : MonoBehaviour
         searchVec.y += 0.3f;
         Debug.DrawRay(searchVec, transform.forward * 1.5f, Color.red);
         bool check = Physics.Raycast(searchVec, transform.forward, out rayHit, 1.5f, LayerMask.GetMask("NPC", "EnemyDead"));
-        
-        if (check)
+        Collider[] talkShow = Physics.OverlapSphere(transform.position, 10f, LayerMask.GetMask("NPC", "EnemyDead"));
+
+        if (check && talkShow.Length > 0)
         {
+            
             scanObject = rayHit.collider.gameObject;
         }
         else
         {
+            talkShow = null;
             scanObject = null;
         }
     }
@@ -378,7 +380,12 @@ public class Player : MonoBehaviour
             {
                 case Item.Type.Grenade:
                     {
-                        grenades[hasGrenades - 1].SetActive(true);
+                        if (hasGrenades == 4)
+                            grenades[hasGrenades - 1].SetActive(true);
+
+                        else
+                            grenades[hasGrenades].SetActive(true);
+
                         hasGrenades += item.value;
                         if (hasGrenades > maxHasGrenades)
                             hasGrenades = maxHasGrenades;
@@ -423,10 +430,13 @@ public class Player : MonoBehaviour
         // 굿 엔딩 분기점
         else if (other.CompareTag("Victory"))
         {
-            // 봤으면
-            if (questManager.questId >= 40)
+            // 보스를 안 잡고 갈 경우
+            if (QuestManager.Instance.questId >= 20)
+                manager.DontCatchBoss();
+            // 보스를 잡고 npc를 봤으면
+            else if (QuestManager.Instance.questId >= 40)
                 manager.BadEnding();
-            // 안봤으면 열린 결말
+            // 보스를 잡고 npc를 안봤으면 열린 결말
             else
                 manager.GoodEnding();
         }
@@ -445,11 +455,10 @@ public class Player : MonoBehaviour
         // 체력이 없으면 게임 오버
         if (hp <= 0 && !isDead)
         {
+            Enemy enemies = new Enemy();
             hp = 0;
+            enemies.TargetDead();
             OnDie();
-
-            if (hp < 0)
-                hp = 0;
         }
 
         yield return new WaitForSeconds(1f);
@@ -467,7 +476,8 @@ public class Player : MonoBehaviour
     void OnDie()
     {
         anim.SetTrigger("doDie");
-        isDead = true;
+        isDead = true; 
+
         manager.GameOver();
     }
 

@@ -15,7 +15,6 @@ public class Enemy : MonoBehaviour
 
     public Type enemyType;
 
-
     public int maxHp;
     public int curHp;
 
@@ -29,6 +28,7 @@ public class Enemy : MonoBehaviour
     public Transform target;
 
     float missileSpeed = 30f;
+    bool isTargetDead = false;
 
     public Rigidbody rigid;
     public BoxCollider boxCollider;
@@ -152,7 +152,7 @@ public class Enemy : MonoBehaviour
 
     void FreezeVelocity()
     {
-        if (isChase)
+        if (isChase || isTargetDead)
         {
             rigid.velocity = Vector3.zero;
             rigid.angularVelocity = Vector3.zero;
@@ -219,8 +219,6 @@ public class Enemy : MonoBehaviour
                     break;
             }
 
-
-
             // 넉백
             if (grenadeReact)
             {
@@ -228,8 +226,9 @@ public class Enemy : MonoBehaviour
                 reactVec += Vector3.up;
 
                 rigid.freezeRotation = false;
-                rigid.AddForce(reactVec * Random.Range(30, 50), ForceMode.Impulse);
-                rigid.AddTorque(reactVec * 15, ForceMode.Impulse);
+                //rigid.AddForce(reactVec * Random.Range(30, 50), ForceMode.Impulse);
+                //rigid.AddTorque(reactVec * 15, ForceMode.Impulse);
+                rigid.AddExplosionForce(50f, reactVec, 10, 5, ForceMode.Impulse);
 
             }
             else
@@ -249,5 +248,10 @@ public class Enemy : MonoBehaviour
         curHp -= 100;
         Vector3 reactVec = transform.position - explosion;
         StartCoroutine(Ondamage(reactVec, true));
+    }
+
+    public void TargetDead()
+    {
+        isTargetDead = true;
     }
 }

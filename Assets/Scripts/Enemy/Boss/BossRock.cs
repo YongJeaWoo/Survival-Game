@@ -6,7 +6,7 @@ public class BossRock : enemyMissileTri
 {
     Rigidbody rigid;
     float angularPower = 2;
-    float scaleValue = 0.1f;
+    float scaleValue = 0.08f;
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class BossRock : enemyMissileTri
         while (scaleValue <= 5f)
         {
             angularPower += 1f * Time.deltaTime;
-            scaleValue += 3f * Time.deltaTime;
+            scaleValue += 2f * Time.deltaTime;
             transform.localScale = Vector3.one * scaleValue;
             rigid.AddTorque(transform.right * angularPower, ForceMode.Acceleration);
             yield return null;

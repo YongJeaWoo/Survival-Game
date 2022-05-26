@@ -38,11 +38,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Another Manager")]
     public TalkManager talkManager;
-    public QuestManager questManager;
 
     private void Start()
     {
-        questManager.CheckQuest();
+        QuestManager.Instance.CheckQuest();
     }
 
     private void Awake()
@@ -106,6 +105,16 @@ public class GameManager : MonoBehaviour
         StartCoroutine(VictoryButChangeScn());
     }
 
+    public void GameOver()
+    {
+        StartCoroutine(GameOverFade());
+    }
+
+    public void DontCatchBoss()
+    {
+        StartCoroutine(DontCatch());
+    }
+
     // 열린엔딩 npc 안 봤다
     IEnumerator VictoryChangeScene()
     {
@@ -140,12 +149,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("NPCSeeScene");
     }
 
-
-    public void GameOver()
-    {
-        StartCoroutine(GameOverFade());
-    }
-
     IEnumerator GameOverFade()
     {
         yield return new WaitForSeconds(1f);
@@ -162,6 +165,21 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("GameOverScene");
     }
+
+    IEnumerator DontCatch()
+    {
+        float fadeCount = 0; // 첫 알파값
+        while (fadeCount < 1.0f)
+        {
+            fadeCount += 0.01f;
+            yield return new WaitForSeconds(0.01f);
+            image.color = new Color(0, 0, 0, fadeCount);
+        }
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene("BossLiveScene");
+    }
     
     // 대화창 표시
     public void Action(GameObject scanObj)
@@ -173,7 +191,7 @@ public class GameManager : MonoBehaviour
 
     void Talk(int id, bool isNpc)
     {
-        int questIndex = questManager.GetQuestIndex(id);
+        int questIndex = QuestManager.Instance.GetQuestIndex(id);
         string talkData = talkManager.GetTalk(id + questIndex, talkIndex);
 
         // 대화가 더 이상 없다면
@@ -183,7 +201,7 @@ public class GameManager : MonoBehaviour
             uiOff.SetActive(true);
             anim.SetBool("isOpen", false);
             talkIndex = 0;      // 대화 초기화
-            questManager.CheckQuest(id);
+            QuestManager.Instance.CheckQuest(id);
             Time.timeScale = 1;
             return;
         }

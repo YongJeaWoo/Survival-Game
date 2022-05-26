@@ -97,11 +97,6 @@ public class SpawnManager : MonoBehaviour
                 yield return new WaitForSeconds(4f);
             }
         }
-
-        //while (enemyACount + enemyBCount + enemyCCount > 0)
-        //{
-        //    yield return null;
-        //}
     }
 
     public void SpawnBoss()
@@ -115,7 +110,6 @@ public class SpawnManager : MonoBehaviour
         GameObject instantBoss = Instantiate(finalBoss, bossZone.position, bossZone.rotation);
         instantBoss.transform.Rotate(Vector3.up * 180);
         boss = instantBoss.GetComponent<Boss>();
-        HPBossBar();
 
         boss.target = player.transform;
     }
