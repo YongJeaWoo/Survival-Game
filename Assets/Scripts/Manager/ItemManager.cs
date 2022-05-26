@@ -28,6 +28,16 @@ public class ItemManager : MonoBehaviour
             {
                 int ranZone = Random.Range(0, 8);
                 Instantiate(items[itemList[0]], itemZones[ranZone].position, itemZones[ranZone].rotation);
+
+                //if (itemZones[ranZone] != null)
+                //    ranZone += 1;
+
+                //if (ranZone > itemZones.Length)
+                //    yield return null;
+
+                //if (itemZones[ranZone] )
+
+
                 itemList.RemoveAt(0);
                 yield return new WaitForSeconds(10f);
             }
