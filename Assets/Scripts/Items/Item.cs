@@ -15,6 +15,7 @@ public class Item : MonoBehaviour
     // 아이템 값과 그 변수
     public Type type;
     public int value;
+    public int index;
 
     private void Update()
     {

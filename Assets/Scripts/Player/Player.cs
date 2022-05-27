@@ -392,17 +392,21 @@ public class Player : MonoBehaviour
                         hasGrenades += item.value;
                         if (hasGrenades > maxHasGrenades)
                             hasGrenades = maxHasGrenades;
+                        //ItemManager.Instance.checkList.Remove(ItemManager.Instance.ranZone);
+                        ItemManager.Instance.checkList.Remove(item.index);
                     }
                     break;
                 case Item.Type.Hp:
                     hp += item.value;
                     if (hp > maxHp)
                         hp = maxHp;
+                    ItemManager.Instance.checkList.Remove(item.index);
                     break;
                 case Item.Type.Ammunition:
                     ammo += item.value;
                     if (ammo > maxAmmo)
                         ammo = maxAmmo;
+                    ItemManager.Instance.checkList.Remove(item.index);
                     break;
             }
             Destroy(other.gameObject);
