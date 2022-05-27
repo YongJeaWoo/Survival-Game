@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -47,6 +48,9 @@ public class Player : MonoBehaviour
     // 무적
     bool isDamage;
 
+    private float cinemachineTargetYaw;
+    private float cinemachineTargetPitch;
+
     Vector3 moveVec;
     Vector3 dodgeVec;
 
@@ -80,7 +84,6 @@ public class Player : MonoBehaviour
     public Transform grenadePos;
 
     public Camera cam;
-
 
     private void Awake()
     {

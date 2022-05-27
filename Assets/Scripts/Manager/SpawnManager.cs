@@ -69,7 +69,7 @@ public class SpawnManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
 
-        for (int index = 0; index < 10; index++)
+        while (!bossAppear)
         {
             int ran = Random.Range(0, 3);
             enemyList.Add(ran);

@@ -16,7 +16,6 @@ public class ChangeScene : MonoBehaviour
         if (Vector3.Distance(other.transform.position, transform.position) < 2f)
         {
             StartCoroutine(Fade());
-            //Invoke("ChangeScn", 3f);
         }
     }
 
