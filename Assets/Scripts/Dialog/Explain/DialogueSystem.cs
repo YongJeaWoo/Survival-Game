@@ -56,11 +56,11 @@ public class DialogueSystem : MonoBehaviour
         nameTxt.text = string.Empty;
         descriptionTxt.text = string.Empty;
 
-        Invoke("ChangeScn", 2f);        
+        LoadingController.LoadScene("GameScene");
     }
 
-    void ChangeScn()
-    {
-        SceneManager.LoadScene("GameScene");
-    }
+    //void ChangeScn()
+    //{
+    //    LoadingController.LoadScene("GameScene");
+    //}
 }

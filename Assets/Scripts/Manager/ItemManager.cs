@@ -40,7 +40,7 @@ public class ItemManager : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
 
         while(!SpawnManager.Instance.bossAppear)
         {
@@ -68,7 +68,7 @@ public class ItemManager : MonoBehaviour
                 StartCoroutine(Check());
                 yield break;
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(10f);
         }
     }
 

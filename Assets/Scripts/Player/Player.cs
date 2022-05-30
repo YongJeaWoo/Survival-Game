@@ -392,7 +392,6 @@ public class Player : MonoBehaviour
                         hasGrenades += item.value;
                         if (hasGrenades > maxHasGrenades)
                             hasGrenades = maxHasGrenades;
-                        //ItemManager.Instance.checkList.Remove(ItemManager.Instance.ranZone);
                         ItemManager.Instance.checkList.Remove(item.index);
                     }
                     break;
@@ -438,13 +437,13 @@ public class Player : MonoBehaviour
         else if (other.CompareTag("Victory"))
         {
             // 보스를 안 잡고 갈 경우
-            if (QuestManager.Instance.questId >= 20)
+            if (QuestManager.Instance.questId >= 20 && SpawnManager.Instance.bossAppear)
                 manager.DontCatchBoss();
             // 보스를 잡고 npc를 봤으면
-            else if (QuestManager.Instance.questId >= 40)
+            else if (QuestManager.Instance.questId >= 40 && !SpawnManager.Instance.bossAppear)
                 manager.BadEnding();
             // 보스를 잡고 npc를 안봤으면 열린 결말
-            else
+            else if (QuestManager.Instance.questId >= 30 && !SpawnManager.Instance.bossAppear)
                 manager.GoodEnding();
         }
     }
