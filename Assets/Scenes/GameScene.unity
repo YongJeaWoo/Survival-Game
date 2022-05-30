@@ -29126,6 +29126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 956561701}
+  - component: {fileID: 956561702}
   m_Layer: 0
   m_Name: VictoryEvent
   m_TagString: Victory
@@ -29148,6 +29149,20 @@ Transform:
   m_Father: {fileID: 1099728631}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &956561702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956561700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87db0604415cce845b06b60ec0fca8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 100
+  isNpc: 0
 --- !u!1001 &960091146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35480,7 +35495,7 @@ PrefabInstance:
     - target: {fileID: 924136447322616994, guid: 5b7ba7d378c4b8d4fbea7e1889391291,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.6
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 924136447322616994, guid: 5b7ba7d378c4b8d4fbea7e1889391291,
         type: 3}
@@ -35490,7 +35505,7 @@ PrefabInstance:
     - target: {fileID: 924136447322616994, guid: 5b7ba7d378c4b8d4fbea7e1889391291,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.3
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 924136447322616994, guid: 5b7ba7d378c4b8d4fbea7e1889391291,
         type: 3}
@@ -55606,6 +55621,7 @@ GameObject:
   - component: {fileID: 1830972374}
   - component: {fileID: 1830972373}
   - component: {fileID: 1830972376}
+  - component: {fileID: 1830972377}
   m_Layer: 30
   m_Name: LateDestroy
   m_TagString: Walls
@@ -55700,6 +55716,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5001456a4d3369458faeef7185836c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1830972377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830972371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87db0604415cce845b06b60ec0fca8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 100
+  isNpc: 0
 --- !u!1001 &1832002668
 PrefabInstance:
   m_ObjectHideFlags: 0

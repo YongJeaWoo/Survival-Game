@@ -35,22 +35,25 @@ public class QuestManager : MonoBehaviour
 
     void GenerateData()
     {
-        questList.Add(10, new QuestData("동생을 찾아보자", 
+        questList.Add(10, new QuestData("이곳을 지나갈 방법을 알 사람을 찾아보자",
+                                        new int[] { 100 }));
+
+        questList.Add(20, new QuestData("동생을 찾아보자", 
                                         new int[] {1000, 2000}));
 
-        questList.Add(20, new QuestData("보스를 잡자",
+        questList.Add(30, new QuestData("보스를 잡자",
                                         new int[] {2000, 5000}));
 
-        questList.Add(30, new QuestData("퀘스트 클리어",
+        questList.Add(40, new QuestData("퀘스트 클리어",
                                         new int[] {2000, 1000}));
 
-        questList.Add(40, new QuestData("NPC와의 대화",
+        questList.Add(50, new QuestData("NPC와의 대화",
                                         new int[] {2000, 1000}));
 
-        questList.Add(50, new QuestData("엔딩 분기 시작",
+        questList.Add(60, new QuestData("엔딩 분기 시작",
                                         new int[] {2000, 2000, 2000}));
 
-        questList.Add(60, new QuestData("엔딩을 향해서",
+        questList.Add(70, new QuestData("엔딩을 향해서",
                                         new int[] {0}));
     }
 

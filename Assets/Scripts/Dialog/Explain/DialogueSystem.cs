@@ -58,9 +58,4 @@ public class DialogueSystem : MonoBehaviour
 
         LoadingController.LoadScene("GameScene");
     }
-
-    //void ChangeScn()
-    //{
-    //    LoadingController.LoadScene("GameScene");
-    //}
 }
