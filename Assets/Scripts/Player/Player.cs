@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
 
     // 장전
     bool ReloadDown;
-    bool isReload;
+    bool isReload = false;
 
     // 무적
     bool isDamage;
@@ -216,7 +216,7 @@ public class Player : MonoBehaviour
             moveVec = dodgeVec;
 
         // 움직임 제한
-        if (isSwap || isReload ||!isFire || isDead || manager.isAction)
+        if (isSwap || !isFire || isDead || isReload || manager.isAction)
             moveVec = Vector3.zero;
 
         if (!isBorder)
@@ -268,7 +268,7 @@ public class Player : MonoBehaviour
         if (hasGrenades == 0)
             return;
 
-        if (grenadeDown && !isSwap && !isDodge && !isReload && !isDead && !(manager.isAction))
+        if (grenadeDown && !isSwap && !isDodge && isReload && !isDead && !(manager.isAction))
         {
             GameObject instantGrenade = Instantiate(grenadeObj, grenadePos.position, grenadePos.rotation);
             Rigidbody grenadeRigid = instantGrenade.GetComponent<Rigidbody>();
@@ -297,10 +297,10 @@ public class Player : MonoBehaviour
         if (equipWeapons.curAmmo == equipWeapons.maxAmmo)
             return;
 
-        if (ReloadDown && !isJump && !isDodge && !isSwap && isFire && !isDead && !(manager.isAction))
+        if (ReloadDown && !isReload && !isJump && !isDodge && !isSwap && isFire && !isDead && !(manager.isAction))
         {
-            anim.SetTrigger("doReload");
             isReload = true;
+            anim.SetTrigger("doReload");
 
             Invoke("Reloading", 2.5f);
         }
@@ -308,11 +308,11 @@ public class Player : MonoBehaviour
 
     void Reloading()
     {
+        isReload = false;
         int reAmmo = ammo + equipWeapons.curAmmo < equipWeapons.maxAmmo ? ammo : equipWeapons.maxAmmo - equipWeapons.curAmmo;
 
         equipWeapons.curAmmo += reAmmo;
         ammo -= reAmmo;
-        isReload = false;
     }
 
     void Dodge()

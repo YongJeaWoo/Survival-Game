@@ -48,14 +48,14 @@ public class Weapon : MonoBehaviour
 
     IEnumerator Swing()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         meleeArea.enabled = true;
         trailRenderer.enabled = true;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.3f);
         meleeArea.enabled = false;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.3f);
         meleeArea.enabled = false;
     }
 
