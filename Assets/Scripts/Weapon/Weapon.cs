@@ -12,6 +12,10 @@ public class Weapon : MonoBehaviour
 
     public Type type;
 
+    [Header("Sound Info")]
+    public AudioSource gunSound;
+    public AudioSource emptySound;
+
     [Header ("Weapon Type")]
     public int damage;
     public float rate;
@@ -22,7 +26,6 @@ public class Weapon : MonoBehaviour
     [Header ("Weapon Info")]
     public Transform bulletPos;
     public GameObject bullet;
-    public AudioSource gunSound;
 
     public Transform bulletCasePos;
     public GameObject bulletCase;
@@ -43,6 +46,11 @@ public class Weapon : MonoBehaviour
         {
             curAmmo--;
             StartCoroutine(Shot());
+        }
+
+        else if (type == Type.Range && curAmmo == 0)
+        {
+            StartCoroutine(Empty());
         }
     }
 
@@ -76,5 +84,11 @@ public class Weapon : MonoBehaviour
         caseRigid.AddForce(caseVec, ForceMode.Impulse);
         gunSound.Play();
         caseRigid.AddTorque(Vector3.up * 20f, ForceMode.Impulse);
+    }
+
+    IEnumerator Empty()
+    {
+        emptySound.Play();
+        yield break;
     }
 }

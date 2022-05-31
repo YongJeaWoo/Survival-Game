@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
     [Header("Sounds Info")]
     public AudioSource jumpSound;
     public AudioSource dodgeSound;
+    public AudioSource reloadSound;
 
 
     [Header ("Player Info")]
@@ -303,6 +304,7 @@ public class Player : MonoBehaviour
         if (ReloadDown && !isReload && !isJump && !isDodge && !isSwap && isFire && !isDead && !(manager.isAction))
         {
             isReload = true;
+            reloadSound.Play();
             anim.SetTrigger("doReload");
 
             Invoke("Reloading", 2.5f);
