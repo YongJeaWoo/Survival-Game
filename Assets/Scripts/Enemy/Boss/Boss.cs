@@ -39,7 +39,7 @@ public class Boss : Enemy
             return;
         }
 
-        if (checkPos.y < -5)
+        if (checkPos.y < -1)
             checkPos.y = 1;
 
         if (isLook)

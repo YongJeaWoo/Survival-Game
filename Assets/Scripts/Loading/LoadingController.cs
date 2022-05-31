@@ -9,7 +9,7 @@ public class LoadingController : MonoBehaviour
     static string nextScene;
 
     [SerializeField]
-    Image progressBar;
+    private Image progressBar;
 
     public static void LoadScene(string sceneName)
     {

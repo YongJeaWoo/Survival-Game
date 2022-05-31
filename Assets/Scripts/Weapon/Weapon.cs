@@ -8,7 +8,6 @@ public class Weapon : MonoBehaviour
     {
         Melee,
         Range,
-
     }
 
     public Type type;
@@ -23,6 +22,7 @@ public class Weapon : MonoBehaviour
     [Header ("Weapon Info")]
     public Transform bulletPos;
     public GameObject bullet;
+    public AudioSource gunSound;
 
     public Transform bulletCasePos;
     public GameObject bulletCase;
@@ -74,6 +74,7 @@ public class Weapon : MonoBehaviour
         Vector3 caseVec = bulletCasePos.forward * Random.Range(-3, -1) + Vector3.up * Random.Range(2, 4);
 
         caseRigid.AddForce(caseVec, ForceMode.Impulse);
+        gunSound.Play();
         caseRigid.AddTorque(Vector3.up * 20f, ForceMode.Impulse);
     }
 }

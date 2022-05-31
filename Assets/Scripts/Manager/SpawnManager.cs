@@ -110,7 +110,6 @@ public class SpawnManager : MonoBehaviour
         GameObject instantBoss = Instantiate(finalBoss, bossZone.position, bossZone.rotation);
         instantBoss.transform.Rotate(Vector3.up * 180);
         boss = instantBoss.GetComponent<Boss>();
-
         boss.target = player.transform;
     }
 

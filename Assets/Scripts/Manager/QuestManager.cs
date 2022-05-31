@@ -8,6 +8,8 @@ public class QuestManager : MonoBehaviour
     public int questId;
     public int questOrder;      // 퀘스트 대화 순서
 
+    public GameObject lunaNPC;
+
     Dictionary<int, QuestData> questList;
 
     // 싱글톤
@@ -45,7 +47,7 @@ public class QuestManager : MonoBehaviour
                                         new int[] {2000, 5000}));
 
         questList.Add(40, new QuestData("퀘스트 클리어",
-                                        new int[] {2000, 1000}));
+                                        new int[] {2000}));
 
         questList.Add(50, new QuestData("NPC와의 대화",
                                         new int[] {2000, 1000}));
@@ -99,6 +101,8 @@ public class QuestManager : MonoBehaviour
             case 10:
                 break;
             case 20:
+                break;
+            case 30:
                 {
                     if (questOrder == 1)    // 진행도
                     {
@@ -106,13 +110,10 @@ public class QuestManager : MonoBehaviour
                     }
                 }
                 break;
-            case 30:
-                {
-                    if (questId == 30)
-                        SpawnManager.Instance.DeleteBoss();
-                }
-                break;
             case 40:
+                SpawnManager.Instance.DeleteBoss();
+                lunaNPC.transform.position = new Vector3(-27, 0.15f, -31);
+                lunaNPC.transform.rotation = Quaternion.Euler(0, 270, 0);
                 break;
             case 50:
                 break;

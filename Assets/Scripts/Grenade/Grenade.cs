@@ -7,6 +7,7 @@ public class Grenade : MonoBehaviour
     public GameObject meshObj;
     public GameObject effectObj;
     public Rigidbody rigid;
+    public AudioSource explosionSound;
 
     private void Start()
     {
@@ -22,6 +23,7 @@ public class Grenade : MonoBehaviour
 
         meshObj.SetActive(false);
         effectObj.SetActive(true);
+        explosionSound.Play();
 
         RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, 
                                                     8, 

@@ -12,10 +12,11 @@ public class GameManager : MonoBehaviour
     public GameObject inGameInfo;
     public Image firstDis;
 
-    [Header ("InGame Units")]
-    public Player player;
+    [Header("InGame Units")]
+    public AudioSource backgroundSound;
 
     [Header("Player Info")]
+    public Player player;
     public Text playerHpTxt;
     public Text playerAmmoTxt;
 
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        backgroundSound.Play();
         StartCoroutine(Fade());
         StartCoroutine(ShowDisplayInfo());
     }

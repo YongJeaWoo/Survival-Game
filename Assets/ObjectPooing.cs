@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-/*
+
 // 프리팹화된 오브젝트를 생성할 오브젝트에 들어갈 코드
 public class Example : MonoBehaviour
 {
@@ -111,7 +111,7 @@ public class ExampleObj : MonoBehaviour
             GetComponentInParent<Example>().RemoveObj(gameObject);        
     }
 }
-*/
+
 public class ObjectPooing
 {
     Queue<GameObject> poolingObj = new Queue<GameObject>();

@@ -27,9 +27,6 @@ public class Player : MonoBehaviour
 
     bool isBorder;
 
-    // 사운드
-    public AudioSource jumpSound;
-
     // 무기 스왑
     bool isSwap;
     bool swap1;
@@ -64,6 +61,12 @@ public class Player : MonoBehaviour
     MeshRenderer[] meshRender;
 
     int equipWeaponIndex = -1;
+
+    // 사운드
+    [Header("Sounds Info")]
+    public AudioSource jumpSound;
+    public AudioSource dodgeSound;
+
 
     [Header ("Player Info")]
     // 캐릭터 뭐가 있지
@@ -267,9 +270,9 @@ public class Player : MonoBehaviour
     {
         if (hasGrenades == 0)
             return;
-
-        if (grenadeDown && !isSwap && !isDodge && isReload && !isDead && !(manager.isAction))
+        if (grenadeDown && !isSwap && !isDodge && !isReload && !isDead && !(manager.isAction))
         {
+            Debug.Log("던짐");
             GameObject instantGrenade = Instantiate(grenadeObj, grenadePos.position, grenadePos.rotation);
             Rigidbody grenadeRigid = instantGrenade.GetComponent<Rigidbody>();
 
@@ -324,6 +327,7 @@ public class Player : MonoBehaviour
             moveSpeed *= 2f;
             anim.SetTrigger("doDodge");
             isDodge = true;
+            dodgeSound.Play();
 
             // 시간차 호출
             Invoke("DodgeTime", 0.7f);

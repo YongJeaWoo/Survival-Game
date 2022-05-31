@@ -35,7 +35,7 @@ public class TalkManager : MonoBehaviour
         talkData.Add(1000 + 20 + 1, new string[] {"어서 가 줘. : 0",
                                                   "난 여기서 무기를 좀 찾아봐야겠어. : 0"});
 
-        talkData.Add(2000 + 20 + 1, new string[] {"지금이라도 찾으러 가 봐야 하나.. : 0"});
+        talkData.Add(2000 + 20 + 1, new string[] {"지금이라도 찾으러 가 봐야 하나.. : 1"});
 
         talkData.Add(2000 + 30, new string[] {"그쪽은 누구야..? : 1",
                                             "나를 찾고 있는 사람이 있다고? : 1",
@@ -45,7 +45,7 @@ public class TalkManager : MonoBehaviour
                                             "난 여기 있을 테니 우리 오빠를 데리고 같이 와 줬으면 해. : 1",
                                             "맞다! 가는 길에 이 마을을 나갈 수 있는 유일한 길목에 큰 괴물이 있어.. : 1",
                                             "그 괴물을 죽이면 그 길로 지나갈 수 있을 거 같아... : 1",
-                                            "그럼 부탁할게."});
+                                            "그럼 부탁할게. : 1"});
 
         talkData.Add(1000 + 30 + 1, new string[] {"어서 가 줘. : 0",
                                                   "난 여기서 무기를 좀 찾아봐야겠어. : 0"});
