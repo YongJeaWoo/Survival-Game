@@ -19,6 +19,7 @@ public class TalkManager : MonoBehaviour
     {
         // 일반 대화
         talkData.Add(100, new string[] { "무언가의 숨소리가 들린다.." });
+        talkData.Add(200, new string[] { "이곳으로 지나갈 수 없어.." });
         talkData.Add(1000, new string[] {"빨리 돌아가야 해.."});
         talkData.Add(2000, new string[] {"훌쩍...", "언제 오는 거야.."});  // 동생
         talkData.Add(5000, new string[] {"괴물은 나에게 죽어 싸늘한 시체로 남아있다."});       // 보스

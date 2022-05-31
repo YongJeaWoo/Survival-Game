@@ -7441,6 +7441,7 @@ GameObject:
   - component: {fileID: 238497504}
   - component: {fileID: 238497503}
   - component: {fileID: 238497502}
+  - component: {fileID: 238497505}
   m_Layer: 30
   m_Name: Alpha
   m_TagString: Walls
@@ -7523,6 +7524,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238497500}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &238497505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238497500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87db0604415cce845b06b60ec0fca8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 200
+  isNpc: 0
 --- !u!1001 &240656900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7533,6 +7548,10 @@ PrefabInstance:
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_Name
       value: sptp_grass_01 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7748,6 +7767,10 @@ PrefabInstance:
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_Name
       value: sptp_grass_01 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9176,6 +9199,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 300451993}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &300536224 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 300536224, guid: d24b94ba69441904f92e98467fc246a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 5951049387591743698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &300545877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9186,6 +9215,10 @@ PrefabInstance:
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_Name
       value: sptp_grass_01 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11400,6 +11433,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1274182514}
     m_Modifications:
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -12595,6 +12632,10 @@ PrefabInstance:
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_Name
       value: sptp_grass_01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -14066,6 +14107,10 @@ PrefabInstance:
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_Name
       value: sptp_grass_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -18102,6 +18147,10 @@ PrefabInstance:
       value: sptp_grass_01 (4)
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -18717,6 +18766,10 @@ PrefabInstance:
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_Name
       value: sptp_grass_01 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -22343,6 +22396,7 @@ GameObject:
   - component: {fileID: 707701983}
   - component: {fileID: 707701982}
   - component: {fileID: 707701981}
+  - component: {fileID: 707701984}
   m_Layer: 30
   m_Name: Alpha (5)
   m_TagString: Walls
@@ -22425,6 +22479,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707701979}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &707701984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707701979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87db0604415cce845b06b60ec0fca8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 200
+  isNpc: 0
 --- !u!1001 &708552030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22435,6 +22503,10 @@ PrefabInstance:
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_Name
       value: sptp_grass_01 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -25307,6 +25379,10 @@ PrefabInstance:
       value: sptp_grass_01 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -27523,6 +27599,7 @@ GameObject:
   - component: {fileID: 902216532}
   - component: {fileID: 902216531}
   - component: {fileID: 902216530}
+  - component: {fileID: 902216533}
   m_Layer: 30
   m_Name: Alpha (6)
   m_TagString: Walls
@@ -27605,6 +27682,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902216528}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &902216533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902216528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87db0604415cce845b06b60ec0fca8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 200
+  isNpc: 0
 --- !u!1001 &903942476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28812,6 +28903,10 @@ PrefabInstance:
       value: sptp_grass_01 (11)
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -28991,6 +29086,10 @@ PrefabInstance:
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_Name
       value: sptp_grass_01 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -30234,6 +30333,10 @@ PrefabInstance:
       value: sptp_grass_01 (13)
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -30531,6 +30634,7 @@ GameObject:
   - component: {fileID: 999195169}
   - component: {fileID: 999195168}
   - component: {fileID: 999195167}
+  - component: {fileID: 999195170}
   m_Layer: 30
   m_Name: Alpha (1)
   m_TagString: Walls
@@ -30613,6 +30717,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999195165}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &999195170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999195165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87db0604415cce845b06b60ec0fca8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 200
+  isNpc: 0
 --- !u!1001 &999454800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31737,6 +31855,7 @@ GameObject:
   - component: {fileID: 1023364985}
   - component: {fileID: 1023364984}
   - component: {fileID: 1023364983}
+  - component: {fileID: 1023364986}
   m_Layer: 30
   m_Name: Alpha (3)
   m_TagString: Walls
@@ -31819,6 +31938,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1023364981}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1023364986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023364981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87db0604415cce845b06b60ec0fca8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 200
+  isNpc: 0
 --- !u!1001 &1024817602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32767,7 +32900,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8184d0b9c17cfda4bafa3be04f59dcfb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -33324,6 +33457,7 @@ GameObject:
   - component: {fileID: 1081399057}
   - component: {fileID: 1081399056}
   - component: {fileID: 1081399055}
+  - component: {fileID: 1081399058}
   m_Layer: 30
   m_Name: Alpha (4)
   m_TagString: Walls
@@ -33406,6 +33540,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081399053}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1081399058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081399053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87db0604415cce845b06b60ec0fca8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 200
+  isNpc: 0
 --- !u!1001 &1081582602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40454,6 +40602,10 @@ PrefabInstance:
       value: sptp_grass_01 (16)
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -41270,6 +41422,10 @@ PrefabInstance:
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_Name
       value: sptp_grass_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -48801,6 +48957,7 @@ GameObject:
   - component: {fileID: 1568225149}
   - component: {fileID: 1568225148}
   - component: {fileID: 1568225147}
+  - component: {fileID: 1568225150}
   m_Layer: 30
   m_Name: Alpha (2)
   m_TagString: Walls
@@ -48883,6 +49040,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568225145}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1568225150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568225145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87db0604415cce845b06b60ec0fca8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 200
+  isNpc: 0
 --- !u!1001 &1578624129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49766,6 +49937,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1597896350}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1598638692 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1598638692, guid: d24b94ba69441904f92e98467fc246a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 5951049387591743698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1600454826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50329,6 +50506,10 @@ PrefabInstance:
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_Name
       value: sptp_grass_01 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -53768,6 +53949,10 @@ PrefabInstance:
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_Name
       value: sptp_grass_01 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
+      propertyPath: m_TagString
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 130656, guid: a93a4058bd3225b4fb6d6b59fa5bc871, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -66430,6 +66615,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 300536224, guid: d24b94ba69441904f92e98467fc246a6, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598638692, guid: d24b94ba69441904f92e98467fc246a6, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5951049386512855471, guid: d24b94ba69441904f92e98467fc246a6,
         type: 3}
       propertyPath: m_Name
@@ -66500,6 +66693,16 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 1063634971}
+    - target: {fileID: 8753762840623919346, guid: d24b94ba69441904f92e98467fc246a6,
+        type: 3}
+      propertyPath: tileSound
+      value: 
+      objectReference: {fileID: 1598638692}
+    - target: {fileID: 8753762840623919346, guid: d24b94ba69441904f92e98467fc246a6,
+        type: 3}
+      propertyPath: grassSound
+      value: 
+      objectReference: {fileID: 300536224}
     - target: {fileID: 8753762840623919346, guid: d24b94ba69441904f92e98467fc246a6,
         type: 3}
       propertyPath: talkManager

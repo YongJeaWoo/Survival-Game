@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2041841552785961744}
   m_Layer: 9
   m_Name: sptp_sidewalk_segment_03
-  m_TagString: Ground
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

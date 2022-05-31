@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
     // 무적
     bool isDamage;
 
+    bool isMove = false;
+
     private float cinemachineTargetYaw;
     private float cinemachineTargetPitch;
 
@@ -64,10 +66,11 @@ public class Player : MonoBehaviour
 
     // 사운드
     [Header("Sounds Info")]
+    public AudioSource tileSound;
+    public AudioSource grassSound;
     public AudioSource jumpSound;
     public AudioSource dodgeSound;
     public AudioSource reloadSound;
-
 
     [Header ("Player Info")]
     // 캐릭터 뭐가 있지
@@ -221,7 +224,14 @@ public class Player : MonoBehaviour
 
         // 움직임 제한
         if (isSwap || !isFire || isDead || isReload || manager.isAction)
+        {
             moveVec = Vector3.zero;
+        }
+
+        if (moveVec.sqrMagnitude < 0.01f)
+            isMove = false;
+        else
+            isMove = true;
 
         if (!isBorder)
             transform.position += moveVec * moveSpeed * (walkDown ? 0.3f : 1f) * Time.deltaTime;
@@ -351,10 +361,28 @@ public class Player : MonoBehaviour
 
     }
 
+    Coroutine tileCoroutine;
+    Coroutine grassCoroutine;
     private void OnCollisionEnter(Collision collision)
     {
+        // 움직임 사운드
+        if (collision.gameObject.tag == "Tile")
+        {
+            Debug.Log("타일 진입");
+            tileCoroutine =  StartCoroutine(Tile());
+        }
+
+        if (collision.gameObject.tag == "Grass")
+            grassCoroutine = StartCoroutine(Grass());
+
         // 착지 구현
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Tile")
+        {
+            anim.SetBool("isJump", false);
+            isJump = false;
+        }
+
+        if (collision.gameObject.tag == "Grass")
         {
             anim.SetBool("isJump", false);
             isJump = false;
@@ -368,6 +396,67 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Buildings")
         {
             anim.SetBool("isJump", false);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Tile")
+        {
+            Debug.Log("타일 탈출");
+            StopCoroutine(tileCoroutine);
+        }
+
+        if (collision.gameObject.tag == "Grass")
+        {
+            StopCoroutine(grassCoroutine);
+        }
+    }
+
+    //private float lastStepSound = 0;
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    lastStepSound += Time.fixedDeltaTime;
+    //    if (lastStepSound < 0.3f)
+    //        return;
+
+    //    lastStepSound = 0;
+    //    // 움직임
+    //    if (collision.gameObject.CompareTag("Tile") && isMove)
+    //    {
+    //        //StartCoroutine(Tile());
+    //        tileSound.Play();
+    //    }
+
+    //    if (collision.gameObject.CompareTag("Grass") && isMove)
+    //    {
+    //        grassSound.Play();
+    //        //StartCoroutine(Grass());
+    //    }
+    //}
+
+    IEnumerator Tile()
+    {
+        while(true)
+        {
+            if (isMove)
+            {
+                Debug.Log("타일 발자국");
+                tileSound.Play();
+            }
+            yield return new WaitForSeconds(0.3f);
+        }
+    }
+
+    IEnumerator Grass()
+    {
+        while (true)
+        {
+            if (isMove)
+            {
+                grassSound.Play();
+            }
+            yield return new WaitForSeconds(0.3f);
         }
     }
 

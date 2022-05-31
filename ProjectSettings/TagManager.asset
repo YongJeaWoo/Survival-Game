@@ -17,6 +17,8 @@ TagManager:
   - EnemyMelee
   - Victory
   - Boss
+  - Grass
+  - Tile
   layers:
   - Default
   - TransparentFX

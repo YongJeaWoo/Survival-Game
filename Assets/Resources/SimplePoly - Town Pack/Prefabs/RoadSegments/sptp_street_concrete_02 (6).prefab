@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7724067193841271386}
   m_Layer: 9
   m_Name: sptp_street_concrete_02 (6)
-  m_TagString: Ground
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
