@@ -11,7 +11,9 @@ public class Bullet : MonoBehaviour
         // 탄피 제거
         if (collision.gameObject.CompareTag("BulletCheck"))
             Destroy(gameObject,2f);
-        else if (collision.gameObject.CompareTag("Ground"))
+        else if (collision.gameObject.CompareTag("Tile"))
+            Destroy(gameObject, 2f);
+        else if (collision.gameObject.CompareTag("Grass"))
             Destroy(gameObject, 2f);
     }
 
@@ -21,8 +23,6 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         else if (other.gameObject.CompareTag("Objects"))
             Destroy(gameObject);
-        else if (other.gameObject.CompareTag("Ground"))
-            Destroy(gameObject, 1f);
         else if (other.gameObject.CompareTag("Enemy"))
             Destroy(gameObject);
         else if (other.gameObject.CompareTag("Boss"))

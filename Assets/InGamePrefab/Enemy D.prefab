@@ -376,6 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5000
   isNpc: 0
+  npcName: '  '
 --- !u!1 &6032230395669665937
 GameObject:
   m_ObjectHideFlags: 0

@@ -556,9 +556,7 @@ public class Player : MonoBehaviour
         // 체력이 없으면 게임 오버
         if (hp <= 0 && !isDead)
         {
-            Enemy enemies = new Enemy();
             hp = 0;
-            enemies.TargetDead();
             OnDie();
         }
 
@@ -577,7 +575,9 @@ public class Player : MonoBehaviour
     void OnDie()
     {
         anim.SetTrigger("doDie");
-        isDead = true; 
+        isDead = true;
+        Enemy enemieInfo = new Enemy();
+        enemieInfo.TargetDead();
 
         manager.GameOver();
     }

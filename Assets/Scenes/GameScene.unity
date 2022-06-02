@@ -7538,6 +7538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 200
   isNpc: 0
+  npcName: '   '
 --- !u!1001 &240656900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22493,6 +22494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 200
   isNpc: 0
+  npcName: '   '
 --- !u!1001 &708552030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27696,6 +27698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 200
   isNpc: 0
+  npcName: '   '
 --- !u!1001 &903942476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29219,7 +29222,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 956561701}
-  - component: {fileID: 956561702}
   m_Layer: 0
   m_Name: VictoryEvent
   m_TagString: Victory
@@ -29242,20 +29244,6 @@ Transform:
   m_Father: {fileID: 1099728631}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &956561702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956561700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87db0604415cce845b06b60ec0fca8ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 100
-  isNpc: 0
 --- !u!1001 &960091146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30731,6 +30719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 200
   isNpc: 0
+  npcName: '   '
 --- !u!1001 &999454800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31952,6 +31941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 200
   isNpc: 0
+  npcName: '   '
 --- !u!1001 &1024817602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33554,6 +33544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 200
   isNpc: 0
+  npcName: '   '
 --- !u!1001 &1081582602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34124,6 +34115,7 @@ GameObject:
   - component: {fileID: 1099551216}
   - component: {fileID: 1099551215}
   - component: {fileID: 1099551214}
+  - component: {fileID: 1099551217}
   m_Layer: 15
   m_Name: Victory
   m_TagString: Victory
@@ -34205,6 +34197,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099551212}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1099551217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099551212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87db0604415cce845b06b60ec0fca8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 100
+  isNpc: 0
+  npcName: '  '
 --- !u!1001 &1099719152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35356,6 +35363,14 @@ PrefabInstance:
     - target: {fileID: 1130044348, guid: 51c2a60a1bc9f1043979e1ade29b8bb8, type: 3}
       propertyPath: id
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130044348, guid: 51c2a60a1bc9f1043979e1ade29b8bb8, type: 3}
+      propertyPath: name
+      value: "\uB8E8\uB3C4"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130044348, guid: 51c2a60a1bc9f1043979e1ade29b8bb8, type: 3}
+      propertyPath: npcName
+      value: "\uB8E8\uB3C4"
       objectReference: {fileID: 0}
     - target: {fileID: 2626205932478927815, guid: 51c2a60a1bc9f1043979e1ade29b8bb8,
         type: 3}
@@ -49054,6 +49069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 200
   isNpc: 0
+  npcName: '   '
 --- !u!1001 &1578624129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56006,6 +56022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 100
   isNpc: 0
+  npcName: 
 --- !u!1001 &1832002668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56924,6 +56941,14 @@ PrefabInstance:
     - target: {fileID: 1515764540, guid: f6e649bf469c32e4fb51cd7630e1067b, type: 3}
       propertyPath: id
       value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515764540, guid: f6e649bf469c32e4fb51cd7630e1067b, type: 3}
+      propertyPath: name
+      value: "\uB8E8\uB098"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515764540, guid: f6e649bf469c32e4fb51cd7630e1067b, type: 3}
+      propertyPath: npcName
+      value: "\uB8E8\uB098"
       objectReference: {fileID: 0}
     - target: {fileID: 3855948662225289030, guid: f6e649bf469c32e4fb51cd7630e1067b,
         type: 3}

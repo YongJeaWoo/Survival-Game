@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
     [Header("Another Manager")]
     public TalkManager talkManager;
 
+    // 싱글톤
+    private static GameManager instance = null;
+
     private void Start()
     {
         QuestManager.Instance.CheckQuest();
@@ -47,9 +50,22 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (null == instance)
+            instance = this;
+
         backgroundSound.Play();
         StartCoroutine(Fade());
         StartCoroutine(ShowDisplayInfo());
+    }
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if (null == instance)
+                instance = new GameManager();
+            return instance;
+        }
     }
 
     IEnumerator Fade()
@@ -188,11 +204,15 @@ public class GameManager : MonoBehaviour
     {
         scanObject = scanObj;
         ObjData objData = scanObject.GetComponent<ObjData>();
-        Talk(objData.id, objData.isNpc);
+        Talk(objData);
     }
 
-    void Talk(int id, bool isNpc)
+    void Talk(ObjData objData)
     {
+        int id = objData.id;
+        bool isNpc = objData.isNpc;
+        string npcName = objData.npcName;
+
         int questIndex = QuestManager.Instance.GetQuestIndex(id);
         string talkData = talkManager.GetTalk(id + questIndex, talkIndex);
 
@@ -210,10 +230,12 @@ public class GameManager : MonoBehaviour
 
         if (isNpc)
         {
+            nameText.text = npcName;
             descriptionText.text = talkData;
         }
         else
         {
+            nameText.text = "";
             descriptionText.text = talkData;
         }
         Time.timeScale = 0;

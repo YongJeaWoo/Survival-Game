@@ -28,7 +28,6 @@ public class Enemy : MonoBehaviour
     public Transform target;
 
     float missileSpeed = 30f;
-    bool isTargetDead = false;
 
     public Rigidbody rigid;
     public BoxCollider boxCollider;
@@ -128,7 +127,7 @@ public class Enemy : MonoBehaviour
                 yield return new WaitForSeconds(3f);
                 break;
             case Type C:
-                yield return new WaitForSeconds(0.35f);
+                yield return new WaitForSeconds(0.3f);
 
                 GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
@@ -152,7 +151,7 @@ public class Enemy : MonoBehaviour
 
     void FreezeVelocity()
     {
-        if (isChase || isTargetDead)
+        if (isChase)
         {
             rigid.velocity = Vector3.zero;
             rigid.angularVelocity = Vector3.zero;
@@ -252,6 +251,7 @@ public class Enemy : MonoBehaviour
 
     public void TargetDead()
     {
-        isTargetDead = true;
+        isAttack = false;
+        isChase = false;
     }
 }
