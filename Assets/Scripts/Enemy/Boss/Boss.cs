@@ -29,18 +29,21 @@ public class Boss : Enemy
         StartCoroutine(Think());
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         Vector3 checkPos = transform.position;
 
+        if (checkPos.y < -1)
+            checkPos.y = 1;
+    }
+
+    void Update()
+    {
         if (isDead)
         {
             StopAllCoroutines();
             return;
         }
-
-        if (checkPos.y < -1)
-            checkPos.y = 1;
 
         if (isLook)
         {

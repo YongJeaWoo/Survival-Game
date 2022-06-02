@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class GameManager : MonoBehaviour
     public Animator anim;
 
     [Header("Info UI Off")]
+    public GameObject Icon;
+    public TextMeshProUGUI interName;
     public GameObject uiOff;
     public bool isAction;
     public int talkIndex;
@@ -222,6 +225,7 @@ public class GameManager : MonoBehaviour
             isAction = false;
             uiOff.SetActive(true);
             anim.SetBool("isOpen", false);
+            Icon.SetActive(true);
             talkIndex = 0;      // 대화 초기화
             QuestManager.Instance.CheckQuest(id);
             Time.timeScale = 1;
@@ -238,10 +242,12 @@ public class GameManager : MonoBehaviour
             nameText.text = "";
             descriptionText.text = talkData;
         }
+
         Time.timeScale = 0;
         isAction = true;
         talkIndex++;            // 대화 더 있으면 계속 증가
         uiOff.SetActive(false);
         anim.SetBool("isOpen", true);
+        Icon.SetActive(false);
     }
 }

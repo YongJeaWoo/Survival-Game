@@ -205,6 +205,9 @@ public class Enemy : MonoBehaviour
             nav.enabled = false;
             anim.SetTrigger("doDie");
 
+            if (enemyType == Type.Boss)
+                gameObject.layer = 22;
+
             switch (enemyType)
             {
                 case Type.A:
@@ -238,7 +241,7 @@ public class Enemy : MonoBehaviour
             }
 
             if (!(enemyType == Type.Boss))
-                Destroy(gameObject, 4f);
+                Destroy(gameObject, 2f);
         }
     }
 

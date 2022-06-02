@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -135,16 +137,24 @@ public class Player : MonoBehaviour
         Vector3 searchVec = transform.position;
         searchVec.y += 0.3f;
         Debug.DrawRay(searchVec, transform.forward * 1.5f, Color.red);
-        bool check = Physics.Raycast(searchVec, transform.forward, out rayHit, 1.5f, LayerMask.GetMask("NPC", "EnemyDead", "Border"));
-        Collider[] talkShow = Physics.OverlapSphere(transform.position, 10f, LayerMask.GetMask("NPC", "EnemyDead", "Border"));
+        bool check = Physics.Raycast(searchVec, transform.forward, out rayHit, 1.5f, LayerMask.GetMask("NPC", "EnemyBossDead", "Border"));
+        Collider[] talkShow = Physics.OverlapSphere(transform.position, 10f, LayerMask.GetMask("NPC", "EnemyBossDead", "Border"));
 
         if (check && talkShow.Length > 0)
         {
-            
+            manager.Icon.SetActive(true);
+            //GameObject obj = manager.Icon.transform.GetChild(0).GetChild(0).gameObject;
+            //obj.GetComponent<TextMeshProUGUI>().text = GameManager.Instance.interName;
             scanObject = rayHit.collider.gameObject;
+            ObjData data = scanObject.GetComponent<ObjData>();
+            if (data.isNpc)
+                GameManager.Instance.interName.text = data.npcName;
+            else
+                GameManager.Instance.interName.text = "살펴보기";
         }
         else
         {
+            manager.Icon.SetActive(false);
             talkShow = null;
             scanObject = null;
         }
@@ -358,7 +368,6 @@ public class Player : MonoBehaviour
         {
             manager.Action(scanObject);
         }
-
     }
 
     Coroutine tileCoroutine;
