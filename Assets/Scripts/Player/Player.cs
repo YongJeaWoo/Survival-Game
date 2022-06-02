@@ -193,7 +193,7 @@ public class Player : MonoBehaviour
         if ((swap1 || swap2 || swap3) && !isJump && !isDodge && !isSwap)
         {
             if (equipWeapons != null)
-                equipWeapons.gameObject.SetActive(false);             // 
+                equipWeapons.gameObject.SetActive(false);         
 
             equipWeaponIndex = weaponIndex;
             equipWeapons = weapons[weaponIndex].GetComponent<Weapon>();       // 해당 무기 가지기
@@ -439,7 +439,7 @@ public class Player : MonoBehaviour
     {
         while(true)
         {
-            if (isMove)
+            if (isMove && !isJump && !isDodge)
             {
                 Debug.Log("타일 발자국");
                 tileSound.Play();
@@ -452,7 +452,7 @@ public class Player : MonoBehaviour
     {
         while (true)
         {
-            if (isMove)
+            if (isMove && !isJump && !isDodge)
             {
                 grassSound.Play();
             }
