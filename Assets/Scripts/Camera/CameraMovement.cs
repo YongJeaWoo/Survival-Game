@@ -20,6 +20,12 @@ public class CameraMovement : MonoBehaviour
     private float rotX;
     private float rotY;
 
+    private void Awake()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     void Start()
     {
         rotX = transform.localRotation.eulerAngles.x;
@@ -27,9 +33,6 @@ public class CameraMovement : MonoBehaviour
 
         dirNormalized = realCamera.localPosition.normalized;
         finalDistance = realCamera.localPosition.magnitude;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     void Update()

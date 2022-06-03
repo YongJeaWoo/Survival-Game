@@ -71,10 +71,11 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        yield return new WaitForSeconds(15f);
 
         while (!bossAppear)
         {
+            yield return new WaitForSeconds(10f);
+
             int ran = Random.Range(0, 3);
             enemyList.Add(ran);
 
@@ -98,7 +99,7 @@ public class SpawnManager : MonoBehaviour
                 Enemy enemy = instantEnemy.GetComponent<Enemy>();
                 enemy.target = player.transform;
                 enemyList.RemoveAt(0);
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(10f);
             }
         }
     }

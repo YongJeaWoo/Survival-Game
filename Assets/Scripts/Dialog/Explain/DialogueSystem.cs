@@ -56,6 +56,11 @@ public class DialogueSystem : MonoBehaviour
         nameTxt.text = string.Empty;
         descriptionTxt.text = string.Empty;
 
+        Invoke("ChangingScn", 1f);
+    }
+
+    void ChangingScn()
+    {
         LoadingController.LoadScene("GameScene");
     }
 }
