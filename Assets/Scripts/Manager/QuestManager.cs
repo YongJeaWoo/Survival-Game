@@ -101,6 +101,7 @@ public class QuestManager : MonoBehaviour
             case 10:
                 break;
             case 20:
+                SpawnManager.Instance.SpawnEnemy();
                 break;
             case 30:
                 {

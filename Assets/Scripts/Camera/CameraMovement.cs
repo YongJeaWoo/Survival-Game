@@ -49,11 +49,15 @@ public class CameraMovement : MonoBehaviour
         finalDir = transform.TransformPoint(dirNormalized * maxDistance);
 
         RaycastHit hit;
+        bool check = Physics.Linecast(transform.position, finalDir, LayerMask.GetMask("Enemy"));
 
-        if (Physics.Linecast(transform.position, finalDir, out hit))
-            finalDistance = Mathf.Clamp(hit.distance, minDistance, maxDistance);
-        else
-            finalDistance = maxDistance;
-        realCamera.localPosition = Vector3.Lerp(realCamera.localPosition, dirNormalized * finalDistance, Time.deltaTime * smoothness);
+        if (!check)
+        {
+            if (Physics.Linecast(transform.position, finalDir, out hit))
+                finalDistance = Mathf.Clamp(hit.distance, minDistance, maxDistance);
+            else
+                finalDistance = maxDistance;
+            realCamera.localPosition = Vector3.Lerp(realCamera.localPosition, dirNormalized * finalDistance, Time.deltaTime * smoothness);
+        }
     }
 }

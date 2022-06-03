@@ -6,6 +6,6 @@ public class enemyCMissile : MonoBehaviour
 {
     void Update()
     {
-        transform.Rotate(Vector3.right * 100f * Time.deltaTime);
+        transform.Rotate(Vector3.right * 80f * Time.deltaTime);
     }
 }
