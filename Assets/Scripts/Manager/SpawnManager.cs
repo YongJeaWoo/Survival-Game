@@ -71,11 +71,10 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator Spawn()
     {
+        yield return new WaitForSeconds(10f);
 
         while (!bossAppear)
         {
-            yield return new WaitForSeconds(10f);
-
             int ran = Random.Range(0, 3);
             enemyList.Add(ran);
 

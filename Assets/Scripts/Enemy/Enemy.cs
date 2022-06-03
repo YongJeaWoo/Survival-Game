@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
 
     public Transform target;
 
-    float missileSpeed = 30f;
+    float missileSpeed = 25f;
 
     public Rigidbody rigid;
     public BoxCollider boxCollider;
