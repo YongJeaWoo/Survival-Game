@@ -12,6 +12,9 @@ public class TitleButton : MonoBehaviour
 
     public Image image;
 
+    public GameObject optionPanel;
+    public GameObject buttonCollect;
+
     public void StartButton()
     {
         title.SetActive(false);
@@ -36,12 +39,26 @@ public class TitleButton : MonoBehaviour
         }
     }
 
+    public void OptionButton()
+    {
+        Time.timeScale = 0.5f;
+        optionPanel.SetActive(true);
+        buttonCollect.SetActive(false);
+    }
+
+    public void OptionExit()
+    {
+        Time.timeScale = 1f;
+        optionPanel.SetActive(false);
+        buttonCollect.SetActive(true);
+    }
+
     public void ExitButton()
     {
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-#else
+        #else
         Application.Quit();
-#endif
+        #endif
     }
 }
