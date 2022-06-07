@@ -138,11 +138,16 @@ public class Player : MonoBehaviour
         searchVec.y += 0.3f;
         Debug.DrawRay(searchVec, transform.forward * 1.5f, Color.red);
         bool check = Physics.Raycast(searchVec, transform.forward, out rayHit, 1.5f, LayerMask.GetMask("NPC", "EnemyBossDead", "Border"));
-        Collider[] talkShow = Physics.OverlapSphere(transform.position, 10f, LayerMask.GetMask("NPC", "EnemyBossDead", "Border"));
 
-        if (check && talkShow.Length > 0)
+        if (check)
         {
             manager.Icon.SetActive(true);
+
+            if (GameManager.Instance.isAction)
+            {
+                manager.Icon.SetActive(false);
+            }
+
             //GameObject obj = manager.Icon.transform.GetChild(0).GetChild(0).gameObject;
             //obj.GetComponent<TextMeshProUGUI>().text = GameManager.Instance.interName;
             scanObject = rayHit.collider.gameObject;
@@ -155,7 +160,6 @@ public class Player : MonoBehaviour
         else
         {
             manager.Icon.SetActive(false);
-            talkShow = null;
             scanObject = null;
         }
     }
@@ -164,6 +168,11 @@ public class Player : MonoBehaviour
     {
         FreezeRotation();
         StopWall();
+        // Scanning();
+    }
+
+    private void LateUpdate()
+    {
         Scanning();
     }
 

@@ -98,6 +98,10 @@ public class SpawnManager : MonoBehaviour
                 Enemy enemy = instantEnemy.GetComponent<Enemy>();
                 enemy.target = player.transform;
                 enemyList.RemoveAt(0);
+
+                if (enemyList.Count < 3)
+                    yield break;
+
                 yield return new WaitForSeconds(10f);
             }
         }

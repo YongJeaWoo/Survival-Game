@@ -69,13 +69,11 @@ public class QuestManager : MonoBehaviour
         if (id == questList[questId].npcId[questOrder])
         {
             questOrder++;
-            Debug.Log(questList[questId].questName);      // 퀘스트 오더가 늘어 났을때 발생
         }
 
         if (questOrder == questList[questId].npcId.Length)
         {
             NextQuest();
-            Debug.Log(questList[questId].questName);      // 다음 퀘스트가 진행 됐을때 발생
         }
 
         ControlObject();
