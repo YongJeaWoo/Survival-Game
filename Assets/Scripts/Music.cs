@@ -8,11 +8,11 @@ public class Music : MonoBehaviour
     public Slider backVolume;
     public AudioSource audio;
 
-    float backVol = 1f;
+    float backVol = 0.8f;
 
     private void Start()
     {
-        backVol = PlayerPrefs.GetFloat("backvol", 1f);
+        backVol = PlayerPrefs.GetFloat("backvol", 0.8f);
         backVolume.value = backVol;
         audio.volume = backVolume.value;
     }
