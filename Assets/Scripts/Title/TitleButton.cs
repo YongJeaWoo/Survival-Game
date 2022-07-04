@@ -7,36 +7,24 @@ using UnityEngine.SceneManagement;
 public class TitleButton : MonoBehaviour
 {
     public GameObject title;
+    public GameObject fadeOut;
     public GameObject targetCam;
     public GameObject movingCam;
-
-    public Image image;
 
     public GameObject optionPanel;
     public GameObject buttonCollect;
 
+    private void Awake()
+    {
+        Screen.SetResolution(Screen.width, Screen.width * 16 / 9, true);
+    }
+
     public void StartButton()
     {
         title.SetActive(false);
+        fadeOut.SetActive(true);
         targetCam.SetActive(false);
         movingCam.SetActive(true);
-
-        image.enabled = false;
-        // StartCoroutine(Fade());
-
-    }
-
-    IEnumerator Fade()
-    {
-        image.enabled = true;
-
-        float fadeCount = 1; // 첫 알파값
-        while (fadeCount <= 0f)
-        {
-            fadeCount -= 0.01f;
-            yield return new WaitForSeconds(0.01f);
-            image.color = new Color(0, 0, 0, fadeCount);
-        }
     }
 
     public void OptionButton()
