@@ -8,12 +8,10 @@ public class ChangeScene : MonoBehaviour
 {
     public GameObject other;
     public Image image;
-    public GameObject padeTrigger;
-
 
     private void Update()
     {
-        if (Vector3.Distance(other.transform.position, transform.position) < 2f)
+        if (Vector3.Distance(other.transform.position, transform.position) < 1.5f)
         {
             StartCoroutine(Fade());
         }
@@ -22,12 +20,13 @@ public class ChangeScene : MonoBehaviour
     IEnumerator Fade()
     {
         float fadeCount = 0; // 첫 알파값
-        while (fadeCount < 1.0f)
+        while (fadeCount <= 1.0f)
         {
             fadeCount += 0.01f;
             yield return new WaitForSeconds(0.01f);
             image.color = new Color(0, 0, 0, fadeCount);
         }
+
         ChangeScn();
     }
 

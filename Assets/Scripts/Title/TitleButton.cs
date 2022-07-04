@@ -22,7 +22,7 @@ public class TitleButton : MonoBehaviour
         movingCam.SetActive(true);
 
         image.enabled = false;
-        StartCoroutine(Fade());
+        // StartCoroutine(Fade());
 
     }
 
