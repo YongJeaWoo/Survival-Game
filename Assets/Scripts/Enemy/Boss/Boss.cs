@@ -62,7 +62,7 @@ public class Boss : Enemy
     {
         yield return new WaitForSeconds(0.5f);
 
-        int randomAct = Random.Range(0, 5);
+        int randomAct = Random.Range(0, 4);
         switch (randomAct)
         {
             case 0:
@@ -70,19 +70,14 @@ public class Boss : Enemy
             case 1:
                 // 미사일 공격
                 StartCoroutine(Missile());
-
                 break;
             case 2:
-                
-            case 3:
                 // 돌 공격
                 StartCoroutine(Rock());
-
                 break;
-            case 4:
+            case 3:
                 // 점프
                 StartCoroutine(Taunt());
-
                 break;
         }
     }

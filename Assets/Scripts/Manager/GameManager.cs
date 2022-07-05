@@ -147,9 +147,6 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             image.color = new Color(0, 0, 0, fadeCount);
         }
-
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("NPCNOTSeeScene");
     }
 
@@ -164,9 +161,6 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             image.color = new Color(0, 0, 0, fadeCount);
         }
-
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("NPCSeeScene");
     }
 
@@ -181,9 +175,6 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             image.color = new Color(0, 0, 0, fadeCount);
         }
-
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("GameOverScene");
     }
 
@@ -196,9 +187,6 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             image.color = new Color(0, 0, 0, fadeCount);
         }
-
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("BossLiveScene");
     }
     

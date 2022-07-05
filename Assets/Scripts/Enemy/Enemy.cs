@@ -87,7 +87,10 @@ public class Enemy : MonoBehaviour
 
 
 
-            RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, targetRadius, transform.forward, targetRange, LayerMask.GetMask("Player"));
+            RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, 
+                                                        targetRadius, 
+                                                        transform.forward, 
+                                                        targetRange, LayerMask.GetMask("Player"));
 
             if (rayHits.Length > 0 && !isAttack)
             {

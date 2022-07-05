@@ -44,6 +44,11 @@ public class SpawnManager : MonoBehaviour
         enemyList = new List<int>();
     }
 
+    private void Start()
+    {
+        StartCoroutine(Spawn());
+    }
+
     public static SpawnManager Instance
     {
         get
@@ -54,7 +59,6 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-
     private void LateUpdate()
     {
         enemyATxt.text = enemyACount.ToString();
@@ -64,15 +68,8 @@ public class SpawnManager : MonoBehaviour
         HPBossBar();
     }
 
-    public void SpawnEnemy()
-    {
-        StartCoroutine(Spawn());
-    }
-
     IEnumerator Spawn()
     {
-        yield return new WaitForSeconds(10f);
-
         while (!bossAppear)
         {
             int ran = Random.Range(0, 3);
@@ -99,10 +96,7 @@ public class SpawnManager : MonoBehaviour
                 enemy.target = player.transform;
                 enemyList.RemoveAt(0);
 
-                if (enemyList.Count < 3)
-                    yield break;
-
-                yield return new WaitForSeconds(10f);
+                yield return new WaitForSeconds(15f);
             }
         }
     }
