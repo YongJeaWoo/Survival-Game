@@ -379,79 +379,25 @@ public class Player : MonoBehaviour
         }
     }
 
-    Coroutine tileCoroutine;
-    Coroutine grassCoroutine;
-    private void OnCollisionEnter(Collision collision)
+    private float lastStepSound = 0;
+    private void OnCollisionStay(Collision collision)
     {
-        // 움직임 사운드
-        if (collision.gameObject.tag == "Tile")
+        lastStepSound += Time.fixedDeltaTime;
+        if (lastStepSound < 0.45f)
+            return;
+
+        lastStepSound = 0;
+        // 움직임
+        if (collision.gameObject.CompareTag("Tile") && isMove && !isDodge)
         {
-            Debug.Log("타일 진입");
-            tileCoroutine =  StartCoroutine(Tile());
+            tileSound.Play();
         }
 
-        if (collision.gameObject.tag == "Grass")
-            grassCoroutine = StartCoroutine(Grass());
-
-        // 착지 구현
-        if (collision.gameObject.tag == "Tile")
+        if (collision.gameObject.CompareTag("Grass") && isMove && !isDodge)
         {
-            anim.SetBool("isJump", false);
-            isJump = false;
-        }
-
-        if (collision.gameObject.tag == "Grass")
-        {
-            anim.SetBool("isJump", false);
-            isJump = false;
-        }
-
-        if (collision.gameObject.tag == "Objects")
-        {
-            anim.SetBool("isJump", false);
-        }
-
-        if (collision.gameObject.tag == "Buildings")
-        {
-            anim.SetBool("isJump", false);
+            grassSound.Play();
         }
     }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "Tile")
-        {
-            Debug.Log("타일 탈출");
-            StopCoroutine(tileCoroutine);
-        }
-
-        if (collision.gameObject.tag == "Grass")
-        {
-            StopCoroutine(grassCoroutine);
-        }
-    }
-
-    //private float lastStepSound = 0;
-    //private void OnCollisionStay(Collision collision)
-    //{
-    //    lastStepSound += Time.fixedDeltaTime;
-    //    if (lastStepSound < 0.3f)
-    //        return;
-
-    //    lastStepSound = 0;
-    //    // 움직임
-    //    if (collision.gameObject.CompareTag("Tile") && isMove)
-    //    {
-    //        //StartCoroutine(Tile());
-    //        tileSound.Play();
-    //    }
-
-    //    if (collision.gameObject.CompareTag("Grass") && isMove)
-    //    {
-    //        grassSound.Play();
-    //        //StartCoroutine(Grass());
-    //    }
-    //}
 
     IEnumerator Tile()
     {

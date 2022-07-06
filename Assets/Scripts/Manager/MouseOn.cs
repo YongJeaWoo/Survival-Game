@@ -6,7 +6,7 @@ public class MouseOn : MonoBehaviour
 {
     void Start()
     {
-        Cursor.visible = false;
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
 

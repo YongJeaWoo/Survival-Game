@@ -24,9 +24,10 @@ public class TalkManager : MonoBehaviour
         talkData.Add(1000, new string[] {"빨리 돌아가야 해.."});
         talkData.Add(2000, new string[] {"훌쩍...", "언제 오는 거야.."});  // 동생
 
-        talkData.Add(5000, new string[] {"괴물은 나에게 죽어 싸늘한 시체로 남아있다."});       // 보스
 
         // 퀘스트 대화
+        talkData.Add(5000, new string[] {"괴물은 나에게 죽어 싸늘한 시체로 남아있다."});       // 보스
+
         talkData.Add(100 + 10, new string[] {"무언가가 막고 있어 갈 수가 없다."});
 
         talkData.Add(1000 + 20, new string[] {"으악! 깜짝이야.", "맞다. \n혹시 한 여자아이를 못 봤어?",

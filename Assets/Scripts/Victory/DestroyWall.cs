@@ -9,7 +9,6 @@ public class DestroyWall : MonoBehaviour
         var pos = SpawnManager.Instance.finalBoss.transform.position;
         var getPos = SpawnManager.Instance.bossZone.transform.position;
         var bossTrue = SpawnManager.Instance.bossAppear;
-        var bossHp = SpawnManager.Instance.bossCurHp;
 
         if (bossTrue && pos != getPos)
             Destroy(gameObject);
