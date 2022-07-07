@@ -390,39 +390,43 @@ public class Player : MonoBehaviour
         // 움직임
         if (collision.gameObject.CompareTag("Tile") && isMove && !isDodge)
         {
+            anim.SetBool("isJump", false);
+            isJump = false;
             tileSound.Play();
         }
 
         if (collision.gameObject.CompareTag("Grass") && isMove && !isDodge)
         {
+            anim.SetBool("isJump", false);
+            isJump = false;
             grassSound.Play();
         }
     }
 
-    IEnumerator Tile()
-    {
-        while(true)
-        {
-            if (isMove && !isJump && !isDodge)
-            {
-                Debug.Log("타일 발자국");
-                tileSound.Play();
-            }
-            yield return new WaitForSeconds(0.3f);
-        }
-    }
+    //IEnumerator Tile()
+    //{
+    //    while(true)
+    //    {
+    //        if (isMove && !isJump && !isDodge)
+    //        {
+    //            Debug.Log("타일 발자국");
+    //            tileSound.Play();
+    //        }
+    //        yield return new WaitForSeconds(0.3f);
+    //    }
+    //}
 
-    IEnumerator Grass()
-    {
-        while (true)
-        {
-            if (isMove && !isJump && !isDodge)
-            {
-                grassSound.Play();
-            }
-            yield return new WaitForSeconds(0.3f);
-        }
-    }
+    //IEnumerator Grass()
+    //{
+    //    while (true)
+    //    {
+    //        if (isMove && !isJump && !isDodge)
+    //        {
+    //            grassSound.Play();
+    //        }
+    //        yield return new WaitForSeconds(0.3f);
+    //    }
+    //}
 
     private void OnTriggerEnter(Collider other)
     {

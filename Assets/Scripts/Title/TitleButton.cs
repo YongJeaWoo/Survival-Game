@@ -14,11 +14,6 @@ public class TitleButton : MonoBehaviour
     public GameObject optionPanel;
     public GameObject buttonCollect;
 
-    private void Awake()
-    {
-        Screen.SetResolution(Screen.width, Screen.width * 16 / 9, true);
-    }
-
     public void StartButton()
     {
         title.SetActive(false);
