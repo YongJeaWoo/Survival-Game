@@ -267,12 +267,11 @@ public class Player : MonoBehaviour
         if (jumpDown && !isJump && !isDodge && !isReload && !isDead && (!manager.isAction))
         {
             // 즉각 반응
+            isJump = true;
             rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             rigid.angularVelocity = Vector3.zero;       // 관성 움직임 없애기
             anim.SetBool("isJump", true);
             anim.SetTrigger("doJump");
-            isJump = true;
-
             jumpSound.Play();
         }
     }
@@ -383,24 +382,24 @@ public class Player : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         lastStepSound += Time.fixedDeltaTime;
-        if (lastStepSound < 0.45f)
+        if (lastStepSound < 0.4f)
             return;
 
+
         lastStepSound = 0;
+
         // 움직임
         if (collision.gameObject.CompareTag("Tile") && isMove && !isDodge)
         {
-            anim.SetBool("isJump", false);
-            isJump = false;
             tileSound.Play();
         }
 
         if (collision.gameObject.CompareTag("Grass") && isMove && !isDodge)
         {
-            anim.SetBool("isJump", false);
-            isJump = false;
             grassSound.Play();
         }
+        anim.SetBool("isJump", false);
+        isJump = false;
     }
 
     //IEnumerator Tile()

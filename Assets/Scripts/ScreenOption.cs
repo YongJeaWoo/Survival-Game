@@ -7,7 +7,7 @@ using TMPro;
 public class ScreenOption : MonoBehaviour
 {
     FullScreenMode mFullScreenMode;
-    public TMP_Dropdown resolutionDropdown;
+    public TMP_Dropdown Dropdown;
     public Toggle fullScreenClick;
     [SerializeField] int resolutionNum;
     List<Resolution> resolutions = new List<Resolution> ();
@@ -27,7 +27,7 @@ public class ScreenOption : MonoBehaviour
             }
         }
 
-        resolutionDropdown.options.Clear();
+        Dropdown.options.Clear();
 
         int optionNum = 0;
 
@@ -35,13 +35,13 @@ public class ScreenOption : MonoBehaviour
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
             option.text = item.width + "x" + item.height + " " + item.refreshRate + "hz";
-            resolutionDropdown.options.Add(option);
+            Dropdown.options.Add(option);
 
             if (item.width == Screen.width && item.height == Screen.height)
-                resolutionDropdown.value = optionNum;
+                Dropdown.value = optionNum;
             optionNum++;
         }
-        resolutionDropdown.RefreshShownValue();
+        Dropdown.RefreshShownValue();
 
         fullScreenClick.isOn = Screen.fullScreenMode.Equals(FullScreenMode.FullScreenWindow) ? true : false;
     }
@@ -61,7 +61,5 @@ public class ScreenOption : MonoBehaviour
         Screen.SetResolution(resolutions[resolutionNum].width,
             resolutions[resolutionNum].height,
             mFullScreenMode);
-        Debug.Log(resolutions[resolutionNum].width);
-        Debug.Log(resolutions[resolutionNum].height);
     }
 }

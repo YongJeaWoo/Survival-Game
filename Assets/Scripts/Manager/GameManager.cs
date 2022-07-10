@@ -57,7 +57,6 @@ public class GameManager : MonoBehaviour
             instance = this;
 
         backgroundSound.Play();
-        StartCoroutine(Fade());
         StartCoroutine(ShowDisplayInfo());
     }
 
@@ -69,20 +68,6 @@ public class GameManager : MonoBehaviour
                 instance = new GameManager();
             return instance;
         }
-    }
-
-    IEnumerator Fade()
-    {
-        imageGo.gameObject.SetActive(true);
-        float fadeCount = 1f; // 첫 알파값
-        while (fadeCount > 0f)
-        {
-            fadeCount -= 0.01f;
-            yield return new WaitForSeconds(0.01f);
-            image.color = new Color(0, 0, 0, fadeCount);
-        }
-
-        yield break;
     }
 
     IEnumerator ShowDisplayInfo()
@@ -166,8 +151,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator GameOverFade()
     {
-        yield return new WaitForSeconds(1f);
-
         float fadeCount = 0; // 첫 알파값
         while (fadeCount < 1.0f)
         {

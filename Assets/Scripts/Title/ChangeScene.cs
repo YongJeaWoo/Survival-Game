@@ -11,7 +11,7 @@ public class ChangeScene : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(other.transform.position, transform.position) < 1.5f)
+        if (Vector3.Distance(transform.position, other.transform.position) < 2.0f)
         {
             StartCoroutine(Fade());
         }
@@ -20,18 +20,13 @@ public class ChangeScene : MonoBehaviour
     IEnumerator Fade()
     {
         float fadeCount = 0; // 첫 알파값
-        while (fadeCount < 1f)
+        while (fadeCount < 1.0f)
         {
             fadeCount += 0.01f;
             yield return new WaitForSeconds(0.01f);
             fadeOut.color = new Color(0, 0, 0, fadeCount);
         }
 
-        ChangeScn();
-    }
-
-    void ChangeScn()
-    {
         SceneManager.LoadScene("ExplainScene");
     }
 }
