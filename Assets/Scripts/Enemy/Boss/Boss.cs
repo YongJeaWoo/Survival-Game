@@ -60,7 +60,7 @@ public class Boss : Enemy
 
     IEnumerator Think()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         int randomAct = Random.Range(0, 4);
         switch (randomAct)
