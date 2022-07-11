@@ -179,7 +179,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected virtual IEnumerator Ondamage(Vector3 reactVec, bool grenadeReact)
+    IEnumerator Ondamage(Vector3 reactVec, bool grenadeReact)
     {
         foreach(MeshRenderer meshs in mesh)
         {
@@ -202,32 +202,35 @@ public class Enemy : MonoBehaviour
             {
                 meshs.material.color = Color.grey;
             }
-            gameObject.layer = 21;
+
+
+            if (enemyType == Type.Boss)
+                gameObject.layer = 22;
+            else
+                gameObject.layer = 21;
+
             isDead = true;
             isChase = false;
             nav.enabled = false;
             anim.SetTrigger("doDie");
 
-            if (enemyType == Type.Boss)
-                gameObject.layer = 22;
-
             switch (enemyType)
             {
                 case Type.A:
-                    if (SpawnManager.Instance.enemyACount < 0)
-                        SpawnManager.Instance.enemyACount = 0;
+                    //if (SpawnManager.Instance.enemyACount < 0)
+                    //    SpawnManager.Instance.enemyACount = 0;
                     SpawnManager.Instance.enemyACount--;
                     break;
 
                 case Type.B:
-                    if (SpawnManager.Instance.enemyBCount < 0)
-                        SpawnManager.Instance.enemyBCount = 0;
+                    //if (SpawnManager.Instance.enemyBCount < 0)
+                    //    SpawnManager.Instance.enemyBCount = 0;
                     SpawnManager.Instance.enemyBCount--;
                     break;
 
                 case Type.C:
-                    if (SpawnManager.Instance.enemyCCount < 0)
-                        SpawnManager.Instance.enemyCCount = 0;
+                    //if (SpawnManager.Instance.enemyCCount < 0)
+                    //    SpawnManager.Instance.enemyCCount = 0;
                     SpawnManager.Instance.enemyCCount--;
                     break;
             }
@@ -251,8 +254,11 @@ public class Enemy : MonoBehaviour
                 rigid.AddForce(reactVec * 8f, ForceMode.Impulse);
             }
 
-            if (!(enemyType == Type.Boss))
+            if (enemyType != Type.Boss)
+            {
                 Destroy(gameObject, 2f);
+            }
+                
         }
     }
 

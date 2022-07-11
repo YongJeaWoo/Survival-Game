@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    public GameObject[] questObject;
     public int questId;
     public int questOrder;      // 퀘스트 대화 순서
 

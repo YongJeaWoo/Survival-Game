@@ -29,14 +29,6 @@ public class Boss : Enemy
         StartCoroutine(Think());
     }
 
-    private void FixedUpdate()
-    {
-        Vector3 checkPos = transform.position;
-
-        if (checkPos.y < -1)
-            checkPos.y = 1;
-    }
-
     void Update()
     {
         if (isDead)
@@ -117,7 +109,7 @@ public class Boss : Enemy
 
         tauntVec = target.position + lookVec;
 
-        if (rayTaunt.Length > 0)
+        if (rayTaunt.Length > 0 && curHp > 0)
         {
             isLook = false;
             nav.isStopped = false;

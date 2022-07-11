@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -130,7 +131,7 @@ public class SpawnManager : MonoBehaviour
         }
         else
         {
-            bossHpGroup.anchoredPosition = Vector3.up * 200;
+            bossHpGroup.anchoredPosition = Vector3.up * 180;
         }
     }
 }
