@@ -499,7 +499,7 @@ public class Player : MonoBehaviour
         {
             // 보스를 안 잡고 갈 경우
             if (QuestManager.Instance.questId >= 20 && SpawnManager.Instance.bossAppear)
-                GameManager.Instnace.ChangeEndingScene("BossLiveScene");
+                GameManager.Instance.ChangeEndingScene("BossLiveScene");
             // 보스를 잡고 npc를 봤으면
             else if (QuestManager.Instance.questId >= 40 && !SpawnManager.Instance.bossAppear)
                 GameManager.Instance.ChangeEndingScene("NPCSeeScene");
