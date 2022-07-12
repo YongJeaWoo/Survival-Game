@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossRock : enemyMissileTri
+public class BossRock : EnemyMissileTrigger
 {
     Rigidbody rigid;
     float angularPower = 2;

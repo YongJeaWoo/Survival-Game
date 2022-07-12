@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyMissileTri : MonoBehaviour
+public class EnemyMissileTrigger : MonoBehaviour
 {
     public int damage;
 

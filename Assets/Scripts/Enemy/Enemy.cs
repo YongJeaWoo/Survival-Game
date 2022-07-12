@@ -209,10 +209,11 @@ public class Enemy : MonoBehaviour
             else
                 gameObject.layer = 21;
 
+            anim.SetTrigger("doDie");
             isDead = true;
             isChase = false;
             nav.enabled = false;
-            anim.SetTrigger("doDie");
+            
 
             switch (enemyType)
             {
@@ -244,8 +245,7 @@ public class Enemy : MonoBehaviour
                 rigid.freezeRotation = false;
                 //rigid.AddForce(reactVec * Random.Range(30, 50), ForceMode.Impulse);
                 //rigid.AddTorque(reactVec * 15, ForceMode.Impulse);
-                rigid.AddExplosionForce(Random.Range(30, 60), reactVec, 10, 5, ForceMode.Impulse);
-
+                rigid.AddExplosionForce(Random.Range(30, 60), reactVec, 10, 10, ForceMode.Impulse);
             }
             else
             {
@@ -257,8 +257,7 @@ public class Enemy : MonoBehaviour
             if (enemyType != Type.Boss)
             {
                 Destroy(gameObject, 2f);
-            }
-                
+            }                
         }
     }
 

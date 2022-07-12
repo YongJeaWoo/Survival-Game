@@ -109,16 +109,16 @@ public class Boss : Enemy
 
         tauntVec = target.position + lookVec;
 
-        if (rayTaunt.Length > 0 && curHp > 0)
+        if (rayTaunt.Length > 0)
         {
             isLook = false;
             nav.isStopped = false;
-            boxCollider.enabled = false;
+            // boxCollider.enabled = false;
             anim.SetTrigger("doTaunt");
 
             yield return new WaitForSeconds(1.5f);
             attackArea.enabled = true;
-            boxCollider.enabled = true;
+            // boxCollider.enabled = true;
 
             yield return new WaitForSeconds(0.5f);
             attackArea.enabled = false;

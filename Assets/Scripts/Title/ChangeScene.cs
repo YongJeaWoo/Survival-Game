@@ -9,7 +9,7 @@ public class ChangeScene : MonoBehaviour
     public GameObject other;
     public Image fadeOut;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Vector3.Distance(transform.position, other.transform.position) < 2.0f)
         {

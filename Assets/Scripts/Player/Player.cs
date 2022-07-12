@@ -49,9 +49,6 @@ public class Player : MonoBehaviour
 
     bool isMove = false;
 
-    private float cinemachineTargetYaw;
-    private float cinemachineTargetPitch;
-
     Vector3 moveVec;
     Vector3 dodgeVec;
 
@@ -74,8 +71,6 @@ public class Player : MonoBehaviour
     public AudioSource dodgeSound;
     public AudioSource reloadSound;
 
-    [Header ("Player Info")]
-    // 캐릭터 뭐가 있지
     public int ammo;
     public int maxAmmo;
     public int hp;
@@ -105,7 +100,8 @@ public class Player : MonoBehaviour
     {
         InputGet();
         Move();
-        Jump();
+        if (!isJump)
+            Jump();
         Attack();
         Grenade();
         Reload();
@@ -264,7 +260,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (jumpDown && !isJump && !isDodge && !isReload && !isDead && (!manager.isAction))
+        if (jumpDown && !isDodge && !isReload && !isDead && (!manager.isAction))
         {
             // 즉각 반응
             isJump = true;
@@ -385,8 +381,12 @@ public class Player : MonoBehaviour
         if (lastStepSound < 0.4f)
             return;
 
+        isJump = false;
+        anim.SetBool("isJump", false);
 
         lastStepSound = 0;
+
+      
 
         // 움직임
         if (collision.gameObject.CompareTag("Tile") && isMove && !isDodge)
@@ -398,8 +398,7 @@ public class Player : MonoBehaviour
         {
             grassSound.Play();
         }
-        anim.SetBool("isJump", false);
-        isJump = false;
+
     }
 
     //IEnumerator Tile()
@@ -487,7 +486,7 @@ public class Player : MonoBehaviour
         {
             if (!isDamage)
             {
-                enemyMissileTri enemyMissile = other.GetComponent<enemyMissileTri>();
+                EnemyMissileTrigger enemyMissile = other.GetComponent<EnemyMissileTrigger>();
                 hp -= enemyMissile.damage;
 
                 bool isBossAtk = other.name == "BossMelee";
