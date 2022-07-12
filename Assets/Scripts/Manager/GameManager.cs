@@ -99,79 +99,98 @@ public class GameManager : MonoBehaviour
         weaponRImg.color = new Color(1, 1, 1, player.hasGrenades > 0 ? 1 : 0);
     }
 
-    // npc 안 봄
-    public void GoodEnding()
+    public void ChangeEndingScene(string sceneName)
     {
-        StartCoroutine(VictoryChangeScene());
+        StartCoroutine(Changing(sceneName));
     }
 
-    // npc 봄
-    public void BadEnding()
+    IEnuemrator Changing(string sceneName)
     {
-        StartCoroutine(VictoryButChangeScn());
-    }
-
-    public void GameOver()
-    {
-        StartCoroutine(GameOverFade());
-    }
-
-    public void DontCatchBoss()
-    {
-        StartCoroutine(DontCatch());
-    }
-
-    // 열린엔딩 npc 안 봤다
-    IEnumerator VictoryChangeScene()
-    {
-        uiOff.SetActive(false);
-        float fadeCount = 0; // 첫 알파값
+        uiOff.SetACtive(false);
+        float fadeCount = 0;
         while (fadeCount < 1.0f)
         {
             fadeCount += 0.01f;
             yield return new WaitForSeconds(0.01f);
-            image.color = new Color(0, 0, 0, fadeCount);
+            image.color = new Color(0, 0, 0 fadeCount);
         }
-        SceneManager.LoadScene("NPCNOTSeeScene");
-    }
+        SceneManager.LoadScene(sceneName);
+    }    
 
-    // 충격엔딩 npc 봤다
-    IEnumerator VictoryButChangeScn()
-    {
-        uiOff.SetActive(false);
-        float fadeCount = 0; // 첫 알파값
-        while (fadeCount < 1.0f)
-        {
-            fadeCount += 0.01f;
-            yield return new WaitForSeconds(0.01f);
-            image.color = new Color(0, 0, 0, fadeCount);
-        }
-        SceneManager.LoadScene("NPCSeeScene");
-    }
+    // // npc 안 봄
+    // public void GoodEnding(string sceneName)
+    // {
+    //     StartCoroutine(VictoryChangeScene(sceneName));
+    // }
 
-    IEnumerator GameOverFade()
-    {
-        float fadeCount = 0; // 첫 알파값
-        while (fadeCount < 1.0f)
-        {
-            fadeCount += 0.01f;
-            yield return new WaitForSeconds(0.01f);
-            image.color = new Color(0, 0, 0, fadeCount);
-        }
-        SceneManager.LoadScene("GameOverScene");
-    }
+    // // npc 봄
+    // public void BadEnding()
+    // {
+    //     StartCoroutine(VictoryButChangeScn());
+    // }
 
-    IEnumerator DontCatch()
-    {
-        float fadeCount = 0; // 첫 알파값
-        while (fadeCount < 1.0f)
-        {
-            fadeCount += 0.01f;
-            yield return new WaitForSeconds(0.01f);
-            image.color = new Color(0, 0, 0, fadeCount);
-        }
-        SceneManager.LoadScene("BossLiveScene");
-    }
+    // public void GameOver()
+    // {
+    //     StartCoroutine(GameOverFade());
+    // }
+
+    // public void DontCatchBoss()
+    // {
+    //     StartCoroutine(DontCatch());
+    // }
+
+    // // 열린엔딩 npc 안 봤다
+    // IEnumerator VictoryChangeScene(string sceneName)
+    // {
+    //     uiOff.SetActive(false);
+    //     float fadeCount = 0; // 첫 알파값
+    //     while (fadeCount < 1.0f)
+    //     {
+    //         fadeCount += 0.01f;
+    //         yield return new WaitForSeconds(0.01f);
+    //         image.color = new Color(0, 0, 0, fadeCount);
+    //     }
+    //     // SceneManager.LoadScene("NPCNOTSeeScene");
+    //     SceneManager.LoadScene(sceneName);
+    // }
+
+    // // 충격엔딩 npc 봤다
+    // IEnumerator VictoryButChangeScn()
+    // {
+    //     uiOff.SetActive(false);
+    //     float fadeCount = 0; // 첫 알파값
+    //     while (fadeCount < 1.0f)
+    //     {
+    //         fadeCount += 0.01f;
+    //         yield return new WaitForSeconds(0.01f);
+    //         image.color = new Color(0, 0, 0, fadeCount);
+    //     }
+    //     SceneManager.LoadScene("NPCSeeScene");
+    // }
+
+    // IEnumerator GameOverFade()
+    // {
+    //     float fadeCount = 0; // 첫 알파값
+    //     while (fadeCount < 1.0f)
+    //     {
+    //         fadeCount += 0.01f;
+    //         yield return new WaitForSeconds(0.01f);
+    //         image.color = new Color(0, 0, 0, fadeCount);
+    //     }
+    //     SceneManager.LoadScene("GameOverScene");
+    // }
+
+    // IEnumerator DontCatch()
+    // {
+    //     float fadeCount = 0; // 첫 알파값
+    //     while (fadeCount < 1.0f)
+    //     {
+    //         fadeCount += 0.01f;
+    //         yield return new WaitForSeconds(0.01f);
+    //         image.color = new Color(0, 0, 0, fadeCount);
+    //     }
+    //     SceneManager.LoadScene("BossLiveScene");
+    // }
     
     // 대화창 표시
     public void Action(GameObject scanObj)

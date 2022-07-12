@@ -499,13 +499,13 @@ public class Player : MonoBehaviour
         {
             // 보스를 안 잡고 갈 경우
             if (QuestManager.Instance.questId >= 20 && SpawnManager.Instance.bossAppear)
-                manager.DontCatchBoss();
+                GameManager.Instnace.ChangeEndingScene("BossLiveScene");
             // 보스를 잡고 npc를 봤으면
             else if (QuestManager.Instance.questId >= 40 && !SpawnManager.Instance.bossAppear)
-                manager.BadEnding();
+                GameManager.Instance.ChangeEndingScene("NPCSeeScene");
             // 보스를 잡고 npc를 안봤으면 열린 결말
             else if (QuestManager.Instance.questId >= 30 && !SpawnManager.Instance.bossAppear)
-                manager.GoodEnding();
+                GameManager.Instance.ChangeEndingScene("NPCNOTSeeScene");
         }
     }
 
@@ -545,7 +545,7 @@ public class Player : MonoBehaviour
         Enemy enemieInfo = new Enemy();
         enemieInfo.TargetDead();
 
-        manager.GameOver();
+        GameManager.Instance.ChangeEndingScene("GameOverScene");
     }
 
     private void OnTriggerStay(Collider other)

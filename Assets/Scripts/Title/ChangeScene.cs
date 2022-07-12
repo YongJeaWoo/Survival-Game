@@ -8,12 +8,18 @@ public class ChangeScene : MonoBehaviour
 {
     public GameObject other;
     public Image fadeOut;
+    private bool isLoader=true;
+
 
     private void FixedUpdate()
     {
         if (Vector3.Distance(transform.position, other.transform.position) < 2.0f)
         {
-            StartCoroutine(Fade());
+            if(isLoader)
+            {
+                StartCoroutine(Fade());
+                isLoader = false;
+            }
         }
     }
 
