@@ -108,6 +108,7 @@ public class QuestManager : MonoBehaviour
                 }
                 break;
             case 40:
+                SpawnManager.Instance.DeleteBoss();
                 lunaNPC.transform.position = new Vector3(-27, 0.15f, -31);
                 lunaNPC.transform.rotation = Quaternion.Euler(0, 270, 0);
                 break;
