@@ -197,7 +197,9 @@ public class Enemy : MonoBehaviour
         else
         {
             curHp = 0;
-            
+
+            SpawnManager.Instance.bossAppear = false;
+
             foreach (MeshRenderer meshs in mesh)
             {
                 meshs.material.color = Color.grey;
