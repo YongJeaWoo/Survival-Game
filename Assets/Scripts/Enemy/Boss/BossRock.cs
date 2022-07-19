@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossRock : EnemyMissileTrigger
 {
     Rigidbody rigid;
-    float angularPower = 2;
+    float angularPower = 1.5f;
     float scaleValue = 0.08f;
 
     private void Awake()

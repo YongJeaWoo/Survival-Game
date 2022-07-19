@@ -389,12 +389,12 @@ public class Player : MonoBehaviour
       
 
         // 움직임
-        if (collision.gameObject.CompareTag("Tile") && isMove && !isDodge)
+        if (collision.gameObject.CompareTag("Tile") && isMove && !isDodge && !walkDown)
         {
             tileSound.Play();
         }
 
-        if (collision.gameObject.CompareTag("Grass") && isMove && !isDodge)
+        if (collision.gameObject.CompareTag("Grass") && isMove && !isDodge && !walkDown)
         {
             grassSound.Play();
         }

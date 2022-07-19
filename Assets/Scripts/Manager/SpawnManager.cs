@@ -114,6 +114,8 @@ public class SpawnManager : MonoBehaviour
         instantBoss.transform.Rotate(Vector3.up * 180);
         boss = instantBoss.GetComponent<Boss>();
         boss.target = player.transform;
+
+        Debug.Log(bossAppear);
     }
 
     public void DeleteBoss()
