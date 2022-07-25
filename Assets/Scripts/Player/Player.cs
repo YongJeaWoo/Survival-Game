@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpPower = 8f;
 
-    public GameManager manager;
     public TalkManager talkManager;
 
     float hAxis;
@@ -137,11 +136,11 @@ public class Player : MonoBehaviour
 
         if (check)
         {
-            manager.Icon.SetActive(true);
+            GameManager.Instance.Icon.SetActive(true);
 
             if (GameManager.Instance.isAction)
             {
-                manager.Icon.SetActive(false);
+                GameManager.Instance.Icon.SetActive(false);
             }
 
             //GameObject obj = manager.Icon.transform.GetChild(0).GetChild(0).gameObject;
@@ -155,7 +154,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            manager.Icon.SetActive(false);
+            GameManager.Instance.Icon.SetActive(false);
             scanObject = null;
         }
     }
@@ -238,7 +237,7 @@ public class Player : MonoBehaviour
             moveVec = dodgeVec;
 
         // 움직임 제한
-        if (isSwap || !isFire || isDead || isReload || manager.isAction)
+        if (isSwap || !isFire || isDead || isReload || GameManager.Instance.isAction)
         {
             moveVec = Vector3.zero;
         }
@@ -260,7 +259,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (jumpDown && !isDodge && !isReload && !isDead && (!manager.isAction))
+        if (jumpDown && !isDodge && !isReload && !isDead && (!GameManager.Instance.isAction))
         {
             // 즉각 반응
             isJump = true;
@@ -283,7 +282,7 @@ public class Player : MonoBehaviour
         fireDelay += Time.deltaTime;
         isFire = equipWeapons.rate < fireDelay;
 
-        if (fireDown && isFire && !isDodge && !isSwap && !isDead && !(manager.isAction))
+        if (fireDown && isFire && !isDodge && !isSwap && !isDead && !(GameManager.Instance.isAction))
         {
             equipWeapons.Use();
             anim.SetTrigger(equipWeapons.type == Weapon.Type.Melee ? "doSwing" : "doShot");
@@ -295,7 +294,7 @@ public class Player : MonoBehaviour
     {
         if (hasGrenades == 0)
             return;
-        if (grenadeDown && !isSwap && !isDodge && !isReload && !isDead && !(manager.isAction))
+        if (grenadeDown && !isSwap && !isDodge && !isReload && !isDead && !(GameManager.Instance.isAction))
         {
             Debug.Log("던짐");
             GameObject instantGrenade = Instantiate(grenadeObj, grenadePos.position, grenadePos.rotation);
@@ -325,7 +324,7 @@ public class Player : MonoBehaviour
         if (equipWeapons.curAmmo == equipWeapons.maxAmmo)
             return;
 
-        if (ReloadDown && !isReload && !isJump && !isDodge && !isSwap && isFire && !isDead && !(manager.isAction))
+        if (ReloadDown && !isReload && !isJump && !isDodge && !isSwap && isFire && !isDead && !(GameManager.Instance.isAction))
         {
             isReload = true;
             reloadSound.Play();
@@ -346,7 +345,7 @@ public class Player : MonoBehaviour
 
     void Dodge()
     {
-        if (dodgeDown && !isJump && moveVec != Vector3.zero && !isDodge && !isDead && !(manager.isAction))
+        if (dodgeDown && !isJump && moveVec != Vector3.zero && !isDodge && !isDead && !(GameManager.Instance.isAction))
         {
             dodgeVec = moveVec;
 
@@ -370,7 +369,7 @@ public class Player : MonoBehaviour
     {
         if (interAction && scanObject != null)
         {
-            manager.Action(scanObject);
+            GameManager.Instance.Action(scanObject);
         }
     }
 
