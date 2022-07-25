@@ -121,8 +121,8 @@ public class Player : MonoBehaviour
     void StopWall()
     {
         Vector3 rayVec = transform.position;
-        rayVec.y += 0.5f;
-        Debug.DrawRay(rayVec, transform.forward * 1f, Color.green);
+        rayVec.y += 0.3f;
+        Debug.DrawRay(rayVec, transform.forward * 1f, Color.red);
         isBorder = Physics.Raycast(rayVec, transform.forward, 1f, LayerMask.GetMask("Border", "Objects", "NPC"));
     }
 
@@ -130,8 +130,8 @@ public class Player : MonoBehaviour
     {
         RaycastHit rayHit;
         Vector3 searchVec = transform.position;
-        searchVec.y += 0.3f;
-        Debug.DrawRay(searchVec, transform.forward * 1.5f, Color.red);
+        searchVec.y += 0.5f;
+        Debug.DrawRay(searchVec, transform.forward * 1.5f, Color.green);
         bool check = Physics.Raycast(searchVec, transform.forward, out rayHit, 1.5f, LayerMask.GetMask("NPC", "EnemyBossDead", "Border"));
 
         if (check)

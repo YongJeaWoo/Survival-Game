@@ -85,8 +85,6 @@ public class Enemy : MonoBehaviour
                     break;
             }
 
-
-
             RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, 
                                                         targetRadius, 
                                                         transform.forward, 
