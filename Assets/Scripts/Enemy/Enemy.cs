@@ -218,20 +218,20 @@ public class Enemy : MonoBehaviour
             switch (enemyType)
             {
                 case Type.A:
-                    //if (SpawnManager.Instance.enemyACount < 0)
-                    //    SpawnManager.Instance.enemyACount = 0;
+                    if (SpawnManager.Instance.enemyACount < 0)
+                        SpawnManager.Instance.enemyACount = 0;
                     SpawnManager.Instance.enemyACount--;
                     break;
 
                 case Type.B:
-                    //if (SpawnManager.Instance.enemyBCount < 0)
-                    //    SpawnManager.Instance.enemyBCount = 0;
+                    if (SpawnManager.Instance.enemyBCount < 0)
+                        SpawnManager.Instance.enemyBCount = 0;
                     SpawnManager.Instance.enemyBCount--;
                     break;
 
                 case Type.C:
-                    //if (SpawnManager.Instance.enemyCCount < 0)
-                    //    SpawnManager.Instance.enemyCCount = 0;
+                    if (SpawnManager.Instance.enemyCCount < 0)
+                        SpawnManager.Instance.enemyCCount = 0;
                     SpawnManager.Instance.enemyCCount--;
                     break;
             }
