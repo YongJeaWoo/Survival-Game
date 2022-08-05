@@ -1,31 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Bullet : MonoBehaviour
 {
     public int damage;
 
+    public event UnityAction<GameObject> onReleaseBulletEvent;
+
     private void OnCollisionEnter(Collision collision)
     {
         // 탄피 제거
         if (collision.gameObject.CompareTag("BulletCheck"))
-            Destroy(gameObject,2f);
+        {
+            gameObject.SetActive(false);
+            onReleaseBulletEvent?.Invoke(gameObject);
+        }
         else if (collision.gameObject.CompareTag("Tile"))
-            Destroy(gameObject, 2f);
+        {
+            gameObject.SetActive(false);
+            onReleaseBulletEvent?.Invoke(gameObject);
+        }
         else if (collision.gameObject.CompareTag("Grass"))
-            Destroy(gameObject, 2f);
+        {
+            gameObject.SetActive(false);
+            onReleaseBulletEvent?.Invoke(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("BulletCheck"))
-            Destroy(gameObject);
+        {
+            gameObject.SetActive(false);
+            onReleaseBulletEvent?.Invoke(gameObject);
+        }
         else if (other.gameObject.CompareTag("Objects"))
-            Destroy(gameObject);
+        {
+            gameObject.SetActive(false);
+            onReleaseBulletEvent?.Invoke(gameObject);
+        }
         else if (other.gameObject.CompareTag("Enemy"))
-            Destroy(gameObject);
+        {
+            gameObject.SetActive(false);
+            onReleaseBulletEvent?.Invoke(gameObject);
+        }
         else if (other.gameObject.CompareTag("Boss"))
-            Destroy(gameObject);
+        {
+            gameObject.SetActive(false);
+            onReleaseBulletEvent?.Invoke(gameObject);
+        }
     }
 }

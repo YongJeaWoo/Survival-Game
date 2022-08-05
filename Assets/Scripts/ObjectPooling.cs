@@ -15,7 +15,7 @@ public class ObjectPooling
         poolingObj.Enqueue(obj);
     }
 
-    public GameObject Pop(Vector3 pos = new Vector3(), Vector3 rotate = new Vector3())
+    public GameObject Pop(Vector3 pos, Quaternion rotate)
     {
         if (0 == poolingObj.Count) OnRePooling?.Invoke();
 
@@ -25,7 +25,7 @@ public class ObjectPooling
             pos = obj.transform.position;
 
         obj.transform.position = pos;
-        obj.transform.rotation = Quaternion.Euler(rotate);
+        obj.transform.rotation = rotate;
         return obj;
     }
 }
