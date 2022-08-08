@@ -5,17 +5,40 @@ using UnityEngine.AI;
 
 public class Boss : Enemy
 {
+    public enum EBossState
+    {
+        IDLE,
+        ATTACK,
+        DEAD,
+        END
+    }
+
+    public enum EBossAttack
+    {
+        NONE,
+        MISSILE,
+        ROCK,
+        TAUNT,
+        END
+    }
+    
+    BossState curBossState;
+    BossAttack curBossAttack;
+
+    List<BossState> bossStates = new List<BossState>();
+    List<BossAttack> bossAttack = new List<BossAttack>();
+
     [Header ("Missile Info")]
     public GameObject missile;
     public Transform missileR;
     public Transform missileL;
 
     // 플레이어 움직임 예측
-    Vector3 lookVec;
-    Vector3 tauntVec;
+    public Vector3 lookVec;
+    public Vector3 tauntVec;
 
     // 플레이어 바라보는 플래그
-    bool isLook;
+    public bool isLook;
 
     private void Awake()
     {
@@ -25,31 +48,43 @@ public class Boss : Enemy
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
 
+        bossStates.Add(new BossIdleState());
+        bossStates.Add(new BossDeadState());
+        bossAttack.Add(new BossAttackState());
+
+        foreach (BossState state in bossStates)
+            state?.Init(this);
+    }
+
+    private void Start()
+    {
         nav.isStopped = true;
-        StartCoroutine(Think());
+        curBossState = bossStates[(int)EBossState.IDLE];
+        curBossAttack = bossAttack[(int)EBossAttack.NONE];
+        // StartCoroutine(Think());
+    }
+
+    public void ChangeState(EBossState nextState)
+    {
+        curBossState.ExcuteExit();
+        curBossState = bossStates[(int)nextState];
+        curBossState.ExcuteEnter();
+    }
+
+    public void ChangeAttack(EBossAttack nextAttack)
+    {
+        curBossAttack.AttackExit();
+        curBossAttack = bossAttack[(int)nextAttack];
+        curBossAttack.AttackEnter();
     }
 
     void Update()
     {
-        if (isDead)
-        {
-            StopAllCoroutines();
-            return;
-        }
-
-        if (isLook)
-        {
-            float h = Input.GetAxisRaw("Horizontal");
-            float v = Input.GetAxisRaw("Vertical");
-            lookVec = new Vector3(h, 0, v) * 5f;
-            transform.LookAt(target.position + lookVec);
-        }
-        else
-        {
-            nav.SetDestination(tauntVec);
-        }
+        curBossState.ExcuteEnter();
+        curBossAttack.AttackEnter();
     }
 
+    /*
     IEnumerator Think()
     {
         yield return new WaitForSeconds(1f);
@@ -58,7 +93,7 @@ public class Boss : Enemy
         switch (randomAct)
         {
             case 0:
-                // 기본상태
+            // 기본상태
             case 1:
                 // 미사일 공격
                 StartCoroutine(Missile());
@@ -88,7 +123,7 @@ public class Boss : Enemy
         bossMissileL.target = target;
 
         yield return new WaitForSeconds(3f);
-        StartCoroutine(Think());
+        // StartCoroutine(Think());
     }
 
     IEnumerator Rock()
@@ -100,7 +135,7 @@ public class Boss : Enemy
         yield return new WaitForSeconds(3f);
 
         isLook = true;
-        StartCoroutine(Think());
+        // StartCoroutine(Think());
     }
 
     IEnumerator Taunt()
@@ -126,14 +161,15 @@ public class Boss : Enemy
             yield return new WaitForSeconds(3f);
             isLook = true;
             nav.isStopped = true;
-            StartCoroutine(Think());
+            // StartCoroutine(Think());
         }
         else
         {
-            StartCoroutine(Think());
+            // StartCoroutine(Think());
             yield return null;
         }
     }
+    */
 
     private void OnDrawGizmos()
     {
