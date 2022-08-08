@@ -9895,12 +9895,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 300451993}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &300536224 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 300536224, guid: d24b94ba69441904f92e98467fc246a6,
-    type: 3}
-  m_PrefabInstance: {fileID: 5951049387591743698}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &300545877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53399,12 +53393,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1597896350}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1598638692 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1598638692, guid: d24b94ba69441904f92e98467fc246a6,
-    type: 3}
-  m_PrefabInstance: {fileID: 5951049387591743698}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1600454826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70781,43 +70769,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 300536224, guid: d24b94ba69441904f92e98467fc246a6, type: 3}
-      propertyPath: m_Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1598638692, guid: d24b94ba69441904f92e98467fc246a6, type: 3}
-      propertyPath: m_Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5951049386512855468, guid: d24b94ba69441904f92e98467fc246a6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5951049386512855468, guid: d24b94ba69441904f92e98467fc246a6,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5951049386512855471, guid: d24b94ba69441904f92e98467fc246a6,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5951049387097167490, guid: d24b94ba69441904f92e98467fc246a6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5951049387785726915, guid: d24b94ba69441904f92e98467fc246a6,
-        type: 3}
-      propertyPath: rate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5951049387785726915, guid: d24b94ba69441904f92e98467fc246a6,
-        type: 3}
-      propertyPath: damage
-      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8307639205593239079, guid: d24b94ba69441904f92e98467fc246a6,
         type: 3}
@@ -70879,21 +70834,6 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 456584046}
-    - target: {fileID: 8753762840623919346, guid: d24b94ba69441904f92e98467fc246a6,
-        type: 3}
-      propertyPath: manager
-      value: 
-      objectReference: {fileID: 1063634971}
-    - target: {fileID: 8753762840623919346, guid: d24b94ba69441904f92e98467fc246a6,
-        type: 3}
-      propertyPath: tileSound
-      value: 
-      objectReference: {fileID: 1598638692}
-    - target: {fileID: 8753762840623919346, guid: d24b94ba69441904f92e98467fc246a6,
-        type: 3}
-      propertyPath: grassSound
-      value: 
-      objectReference: {fileID: 300536224}
     - target: {fileID: 8753762840623919346, guid: d24b94ba69441904f92e98467fc246a6,
         type: 3}
       propertyPath: talkManager

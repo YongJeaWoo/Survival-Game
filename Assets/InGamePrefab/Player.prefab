@@ -170,7 +170,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ad5de75eeb6f27a49a13d399389a8f7b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -806,7 +806,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 304f2bf2228cba94e91cd22803e54bcf, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1132,11 +1132,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpPower: 8
-  manager: {fileID: 0}
   talkManager: {fileID: 0}
   equipWeapons: {fileID: 0}
-  tileSound: {fileID: 0}
-  grassSound: {fileID: 0}
+  tileSound: {fileID: 1598638692}
+  grassSound: {fileID: 300536224}
   jumpSound: {fileID: 5951049387838658421}
   dodgeSound: {fileID: 560622119}
   reloadSound: {fileID: 359856747}

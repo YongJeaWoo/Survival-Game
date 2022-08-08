@@ -199,7 +199,7 @@ public class Player : MonoBehaviour
             return;
 
         int weaponIndex = -1;
-        
+
         if (swap1) weaponIndex = 0;
         if (swap2) weaponIndex = 1;
         if (swap3) weaponIndex = 2;
@@ -207,7 +207,7 @@ public class Player : MonoBehaviour
         if ((swap1 || swap2 || swap3) && !isJump && !isDodge && !isSwap)
         {
             if (equipWeapons != null)
-                equipWeapons.gameObject.SetActive(false);         
+                equipWeapons.gameObject.SetActive(false);
 
             equipWeaponIndex = weaponIndex;
             equipWeapons = weapons[weaponIndex].GetComponent<Weapon>();       // 해당 무기 가지기
@@ -289,7 +289,7 @@ public class Player : MonoBehaviour
             fireDelay = 0;
         }
     }
-    
+
     void Grenade()
     {
         if (hasGrenades == 0)
@@ -385,7 +385,7 @@ public class Player : MonoBehaviour
 
         lastStepSound = 0;
 
-      
+
 
         // 움직임
         if (collision.gameObject.CompareTag("Tile") && isMove && !isDodge && !walkDown)
@@ -511,7 +511,7 @@ public class Player : MonoBehaviour
     IEnumerator OnDamage(bool isBossAtk)
     {
         isDamage = true;
-        foreach(MeshRenderer mesh in meshRender)
+        foreach (MeshRenderer mesh in meshRender)
         {
             mesh.material.color = Color.cyan;
         }
@@ -533,7 +533,7 @@ public class Player : MonoBehaviour
             mesh.material.color = Color.white;
         }
 
-        if(isBossAtk)
+        if (isBossAtk)
             rigid.velocity = Vector3.zero;
     }
 
