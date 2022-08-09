@@ -48,6 +48,7 @@ public class SpawnManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Spawn());
+        SpawnBoss();
     }
 
     public static SpawnManager Instance

@@ -10,23 +10,12 @@ public class Boss : Enemy
         IDLE,
         ATTACK,
         DEAD,
-        END
-    }
-
-    public enum EBossAttack
-    {
-        NONE,
-        MISSILE,
-        ROCK,
-        TAUNT,
-        END
+        COUNT,
     }
     
-    BossState curBossState;
-    BossAttack curBossAttack;
+    IBossState curBossState;
 
-    List<BossState> bossStates = new List<BossState>();
-    List<BossAttack> bossAttack = new List<BossAttack>();
+    List<IBossState> bossStates = new List<IBossState>();
 
     [Header ("Missile Info")]
     public GameObject missile;
@@ -49,10 +38,10 @@ public class Boss : Enemy
         anim = GetComponentInChildren<Animator>();
 
         bossStates.Add(new BossIdleState());
-        bossStates.Add(new BossDeadState());
-        bossAttack.Add(new BossAttackState());
+        bossStates.Add(gameObject.AddComponent<BossAttackState>());
+        bossStates.Add(gameObject.AddComponent<BossDeadState>());
 
-        foreach (BossState state in bossStates)
+        foreach (IBossState state in bossStates)
             state?.Init(this);
     }
 
@@ -60,7 +49,7 @@ public class Boss : Enemy
     {
         nav.isStopped = true;
         curBossState = bossStates[(int)EBossState.IDLE];
-        curBossAttack = bossAttack[(int)EBossAttack.NONE];
+
         // StartCoroutine(Think());
     }
 
@@ -71,17 +60,9 @@ public class Boss : Enemy
         curBossState.ExcuteEnter();
     }
 
-    public void ChangeAttack(EBossAttack nextAttack)
-    {
-        curBossAttack.AttackExit();
-        curBossAttack = bossAttack[(int)nextAttack];
-        curBossAttack.AttackEnter();
-    }
-
     void Update()
     {
-        curBossState.ExcuteEnter();
-        curBossAttack.AttackEnter();
+        curBossState.ExcuteUpdate();
     }
 
     /*

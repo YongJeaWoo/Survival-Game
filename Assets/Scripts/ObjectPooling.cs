@@ -17,7 +17,15 @@ public class ObjectPooling
 
     public GameObject Pop(Vector3 pos, Quaternion rotate)
     {
-        if (0 == poolingObj.Count) OnRePooling?.Invoke();
+        Debug.Log(poolingObj.Count);
+        if (0 == poolingObj.Count)
+        {
+            Debug.Log("2");
+            OnRePooling?.Invoke();
+
+            Debug.Log("3");
+        }
+       
 
         GameObject obj = poolingObj.Dequeue();
 
@@ -27,5 +35,10 @@ public class ObjectPooling
         obj.transform.position = pos;
         obj.transform.rotation = rotate;
         return obj;
+    }
+
+    public int GetPoolCount()
+    {
+        return poolingObj.Count;
     }
 }

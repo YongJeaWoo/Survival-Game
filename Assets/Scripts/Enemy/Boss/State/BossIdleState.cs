@@ -2,27 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossIdleState : BossState
+public class BossIdleState : IBossState
 {
     Boss owner;
 
-    int actionTime = 0;
+    float actionTime = 0;
 
     public void ExcuteEnter()
     {
-        actionTime++;
 
+    }
+
+    public void ExcuteUpdate()
+    {
         LookTarget();
+
+        actionTime += Time.deltaTime;
+
+        if (actionTime > 4)
+        {
+            owner.ChangeState(Boss.EBossState.ATTACK);
+            Debug.Log("Change to Attack");
+        }
+
+        Debug.Log("IDLE");
     }
 
     public void ExcuteExit()
     {
-        if (actionTime > 4)
-        {
-            owner.ChangeState(Boss.EBossState.ATTACK);
-            actionTime = 0;
-        }
+        actionTime = 0;
     }
+
 
     public void Init(Boss owner)
     {

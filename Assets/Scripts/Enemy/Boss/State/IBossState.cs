@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface BossState
+public interface IBossState
 {
     void Init(Boss owner);
     void ExcuteEnter();
+    void ExcuteUpdate();
     void ExcuteExit();
 }
 

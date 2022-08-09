@@ -31,6 +31,7 @@ public class Weapon : MonoBehaviour
 
     void PoolingObj()
     {
+        Debug.Log("RePool");
         for (int i = 0; i < poolingCount; ++i)
         {
             GameObject instantiateBullet = Instantiate(bullet, transform.position, Quaternion.identity);
@@ -64,11 +65,15 @@ public class Weapon : MonoBehaviour
     //    bulletRigid.velocity = bulletPos.forward * 50f;
     //}
 
-    public void RemoveObj(GameObject obj)
+    public void RemoveBullet(GameObject obj)
     {
         bulletPool.Push(obj);
-        casePool.Push(obj);
         // popList.Remove(obj);
+    }
+
+    public void RemoveCase(GameObject obj)
+    {
+        casePool.Push(obj);
     }
 
     //public void RemoveAllObj()
@@ -104,6 +109,8 @@ public class Weapon : MonoBehaviour
     public int maxAmmo;
     public int curAmmo;
 
+    bool isShot = false;
+
     public void Use()
     {
         if (type == Type.Melee)
@@ -112,8 +119,9 @@ public class Weapon : MonoBehaviour
             StartCoroutine(Swing());
         }
 
-        else if (type == Type.Range && curAmmo > 0)
+        else if (!isShot && type == Type.Range && curAmmo > 0)
         {
+            isShot = true;
             curAmmo--;
             StartCoroutine(Shot());
         }
@@ -136,21 +144,22 @@ public class Weapon : MonoBehaviour
 
     IEnumerator Shot()
     {
+        Debug.Log("bulletPool.count : " + bulletPool.GetPoolCount());
         // CreateObj();
 
         //Instantiate(bullet, bulletPos.position, bulletPos.rotation);
         Bullet instantBullet = bulletPool.Pop(bulletPos.position, bulletPos.rotation).GetComponent<Bullet>();
-        instantBullet.onReleaseBulletEvent += RemoveObj;
-        instantBullet.gameObject.SetActive(true);
+        instantBullet.onReleaseBulletEvent = RemoveBullet;
+        instantBullet.gameObject.SetActive(true);            Debug.Log("instantBullet : " + instantBullet);
 
         Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();
         bulletRigid.velocity = bulletPos.forward * 50f;
 
         Bullet instantCase = casePool.Pop(bulletCasePos.position, bulletCasePos.rotation).GetComponent<Bullet>();
-        instantCase.onReleaseBulletEvent += RemoveObj;
+        instantCase.onReleaseBulletEvent = RemoveCase;
         instantCase.gameObject.SetActive(true);
 
-        Rigidbody caseRigid = instantCase.GetComponent<Rigidbody>(); 
+        Rigidbody caseRigid = instantCase.GetComponent<Rigidbody>();
         Vector3 caseVec = bulletCasePos.forward * Random.Range(-3, -1) + Vector3.up * Random.Range(2, 4);
 
         caseRigid.AddForce(caseVec, ForceMode.Impulse);
@@ -158,6 +167,7 @@ public class Weapon : MonoBehaviour
         caseRigid.AddTorque(Vector3.up * 20f, ForceMode.Impulse);
 
         yield return null;
+        isShot = false;
     }
 
     IEnumerator Empty()

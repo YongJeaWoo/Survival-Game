@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
 {
     public int damage;
 
-    public event UnityAction<GameObject> onReleaseBulletEvent;
+    public UnityAction<GameObject> onReleaseBulletEvent;
 
     private void OnCollisionEnter(Collision collision)
     {

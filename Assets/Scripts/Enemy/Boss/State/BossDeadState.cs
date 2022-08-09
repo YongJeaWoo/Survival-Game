@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossDeadState : MonoBehaviour, BossState
+public class BossDeadState : MonoBehaviour, IBossState
 {
     Boss owner;
 
     public void ExcuteEnter()
     {
         StopAllCoroutines();
+    }
+
+    public void ExcuteUpdate()
+    {
+        
     }
 
     public void ExcuteExit()
